@@ -1,0 +1,239 @@
+!-------------------------------------
+!   ESM2M ID104 Control 0281-0300
+!-------------------------------------
+
+SET DATA "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_tracers_month.0281-0300.o2.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean.0281-0300.temp.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean.0281-0300.salt.nc"
+
+Let o2b = o2[d=1]*1000*1000  !mol/kg to umol/kg
+Let tempb = temp[d=2]-274.15
+
+Let a_0 = 5.80871
+Let a_1 = 3.20291
+Let a_2 = 4.17887
+Let a_3 = 5.10006
+Let a_4 = -9.86643e-2
+Let a_5 = 3.80369
+Let b_0 = -7.01577e-3
+Let b_1 = -7.70028e-3
+Let b_2 =  -1.13864e-2
+Let b_3 = -9.51519e-3
+Let c_0 = -2.75915E-7
+
+
+Let tt = 298.15 - tempb
+Let tk = 273.15 + tempb
+Let ts = ln(tt / tk)
+Let ts2 = ts  * ts
+Let ts3 = ts2 * ts
+Let ts4 = ts3 * ts
+Let ts5 = ts4 * ts
+
+Let o2_saturation = exp( a_0 + a_1*ts + a_2*ts2 + a_3*ts3 + a_4*ts4 + a_5*ts5 + (b_0 + b_1*ts + b_2*ts2 + b_3*ts3 + c_0*salt[d=3])*salt[d=3])
+
+Let o2_alpha = (o2_saturation / 0.21)  !0.21 is atmospheric composition of O2
+Let po2_calc = (o2b/o2_alpha)*101.32501   !convert po2 from atm to kPa
+
+Let po2 = if po2_calc lt 0 then 0 else po2_calc
+
+define att po2.long_name = "Oxygen Pressure"
+define att po2.units = "kPa"
+
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/CMIP5/ESM2M/processed/controls/esm2m.0281-0300.po2.nc"/LLIMITS=1:20/L=1 po2
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/CMIP5/ESM2M/processed/controls/esm2m.0281-0300.po2.nc"/L=`l` po2)
+
+Cancel Data/all
+
+!-------------------------------------
+!   ESM2M ID104 Control 0381-0400
+!-------------------------------------
+
+SET DATA "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_tracers_month.0381-0400.o2.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean.0381-0400.temp.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean.0381-0400.salt.nc"
+
+Let o2b = o2[d=1]*1000*1000  !mol/kg to umol/kg
+Let tempb = temp[d=2]-274.15
+
+Let a_0 = 5.80871
+Let a_1 = 3.20291
+Let a_2 = 4.17887
+Let a_3 = 5.10006
+Let a_4 = -9.86643e-2
+Let a_5 = 3.80369
+Let b_0 = -7.01577e-3
+Let b_1 = -7.70028e-3
+Let b_2 =  -1.13864e-2
+Let b_3 = -9.51519e-3
+Let c_0 = -2.75915E-7
+
+
+Let tt = 298.15 - tempb
+Let tk = 273.15 + tempb
+Let ts = ln(tt / tk)
+Let ts2 = ts  * ts
+Let ts3 = ts2 * ts
+Let ts4 = ts3 * ts
+Let ts5 = ts4 * ts
+
+Let o2_saturation = exp( a_0 + a_1*ts + a_2*ts2 + a_3*ts3 + a_4*ts4 + a_5*ts5 + (b_0 + b_1*ts + b_2*ts2 + b_3*ts3 + c_0*salt[d=3])*salt[d=3])
+
+Let o2_alpha = (o2_saturation / 0.21)  !0.21 is atmospheric composition of O2
+Let po2_calc = (o2b/o2_alpha)*101.32501   !convert po2 from atm to kPa
+
+Let po2 = if po2_calc lt 0 then 0 else po2_calc
+
+define att po2.long_name = "Oxygen Pressure"
+define att po2.units = "kPa"
+
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/CMIP5/ESM2M/processed/controls/esm2m.0381-0400.po2.nc"/LLIMITS=1:20/L=1 po2
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/CMIP5/ESM2M/processed/controls/esm2m.0381-0400.po2.nc"/L=`l` po2)
+
+Cancel Data/all
+
+
+!---------------------------------
+!	ESM2M ID120 Historical
+!---------------------------------
+
+SET DATA "/Data/CMIP5/ESM2M/downloaded/historical_ID120/ocean_topaz_tracers_month.1981-2000.o2.nc", "/Data/CMIP5/ESM2M/downloaded/historical_ID120/ocean.1981-2000.temp.nc", "/Data/CMIP5/ESM2M/downloaded/historical_ID120/ocean.1981-2000.salt.nc"
+
+Let o2b = o2[d=1]*1000*1000  !mol/kg to umol/kg
+Let tempb = temp[d=2]-274.15
+
+Let a_0 = 5.80871
+Let a_1 = 3.20291
+Let a_2 = 4.17887
+Let a_3 = 5.10006
+Let a_4 = -9.86643e-2
+Let a_5 = 3.80369
+Let b_0 = -7.01577e-3
+Let b_1 = -7.70028e-3
+Let b_2 =  -1.13864e-2
+Let b_3 = -9.51519e-3
+Let c_0 = -2.75915E-7
+
+
+Let tt = 298.15 - tempb
+Let tk = 273.15 + tempb
+Let ts = ln(tt / tk)
+Let ts2 = ts  * ts
+Let ts3 = ts2 * ts
+Let ts4 = ts3 * ts
+Let ts5 = ts4 * ts
+
+Let o2_saturation = exp( a_0 + a_1*ts + a_2*ts2 + a_3*ts3 + a_4*ts4 + a_5*ts5 + (b_0 + b_1*ts + b_2*ts2 + b_3*ts3 + c_0*salt[d=3])*salt[d=3])
+
+Let o2_alpha = (o2_saturation / 0.21)  !0.21 is atmospheric composition of O2
+Let po2_calc = (o2b/o2_alpha)*101.32501   !convert po2 from atm to kPa
+
+Let po2 = if po2_calc lt 0 then 0 else po2_calc
+
+define att po2.long_name = "Oxygen Pressure"
+define att po2.units = "kPa"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/CMIP5/ESM2M/processed/historical/esm2m.1981-2000.po2.nc"/LLIMITS=1:20/L=1 po2
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/CMIP5/ESM2M/processed/historical/esm2m.1981-2000.po2.nc"/L=`l` po2)
+
+Cancel Data/all
+
+
+!----------------------------------
+!	ESM2M ID162 RCP6.0
+!----------------------------------
+
+SET DATA "/Data/CMIP5/ESM2M/downloaded/experimental_ID162/ocean_topaz_tracers_month.2081-2100.o2.nc", "/Data/CMIP5/ESM2M/downloaded/experimental_ID162/ocean.2081-2100.temp.nc", "/Data/CMIP5/ESM2M/downloaded/experimental_ID162/ocean.2081-2100.salt.nc"
+
+Let o2b = o2[d=1]*1000*1000  !mol/kg to umol/kg
+Let tempb = temp[d=2]-274.15
+
+Let a_0 = 5.80871
+Let a_1 = 3.20291
+Let a_2 = 4.17887
+Let a_3 = 5.10006
+Let a_4 = -9.86643e-2
+Let a_5 = 3.80369
+Let b_0 = -7.01577e-3
+Let b_1 = -7.70028e-3
+Let b_2 =  -1.13864e-2
+Let b_3 = -9.51519e-3
+Let c_0 = -2.75915E-7
+
+
+Let tt = 298.15 - tempb
+Let tk = 273.15 + tempb
+Let ts = ln(tt / tk)
+Let ts2 = ts  * ts
+Let ts3 = ts2 * ts
+Let ts4 = ts3 * ts
+Let ts5 = ts4 * ts
+
+Let o2_saturation = exp( a_0 + a_1*ts + a_2*ts2 + a_3*ts3 + a_4*ts4 + a_5*ts5 + (b_0 + b_1*ts + b_2*ts2 + b_3*ts3 + c_0*salt[d=3])*salt[d=3])
+
+Let o2_alpha = (o2_saturation / 0.21)  !0.21 is atmospheric composition of O2
+Let po2_calc = (o2b/o2_alpha)*101.32501   !convert po2 from atm to kPa
+
+Let po2 = if po2_calc lt 0 then 0 else po2_calc
+
+define att po2.long_name = "Oxygen Pressure"
+define att po2.units = "kPa"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/CMIP5/ESM2M/processed/rcp6.0/esm2m.rcp60.2081-2100.po2.nc"/LLIMITS=1:20/L=1 po2
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/CMIP5/ESM2M/processed/rcp6.0/esm2m.rcp60.2081-2100.po2.nc"/L=`l` po2)
+
+Cancel Data/all
+
+!----------------------------------
+!	ESM2M ID135 RCP8.5
+!----------------------------------
+
+SET DATA "/Data/CMIP5/ESM2M/downloaded/experimental_ID135/ocean_topaz_tracers_month.2081-2100.o2.nc", "/Data/CMIP5/ESM2M/downloaded/experimental_ID135/ocean.2081-2100.temp.nc", "/Data/CMIP5/ESM2M/downloaded/experimental_ID135/ocean.2081-2100.salt.nc"
+
+Let o2b = o2[d=1]*1000*1000  !mol/kg to umol/kg
+Let tempb = temp[d=2]-274.15
+
+Let a_0 = 5.80871
+Let a_1 = 3.20291
+Let a_2 = 4.17887
+Let a_3 = 5.10006
+Let a_4 = -9.86643e-2
+Let a_5 = 3.80369
+Let b_0 = -7.01577e-3
+Let b_1 = -7.70028e-3
+Let b_2 =  -1.13864e-2
+Let b_3 = -9.51519e-3
+Let c_0 = -2.75915E-7
+
+
+Let tt = 298.15 - tempb
+Let tk = 273.15 + tempb
+Let ts = ln(tt / tk)
+Let ts2 = ts  * ts
+Let ts3 = ts2 * ts
+Let ts4 = ts3 * ts
+Let ts5 = ts4 * ts
+
+Let o2_saturation = exp( a_0 + a_1*ts + a_2*ts2 + a_3*ts3 + a_4*ts4 + a_5*ts5 + (b_0 + b_1*ts + b_2*ts2 + b_3*ts3 + c_0*salt[d=3])*salt[d=3])
+
+Let o2_alpha = (o2_saturation / 0.21)  !0.21 is atmospheric composition of O2
+Let po2_calc = (o2b/o2_alpha)*101.32501   !convert po2 from atm to kPa
+
+Let po2 = if po2_calc lt 0 then 0 else po2_calc
+
+define att po2.long_name = "Oxygen Pressure"
+define att po2.units = "kPa"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/CMIP5/ESM2M/processed/rcp8.5/esm2m.rcp85.2081-2100.po2.nc"/LLIMITS=1:20/L=1 po2
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/CMIP5/ESM2M/processed/rcp8.5/esm2m.rcp85.2081-2100.po2.nc"/L=`l` po2)
+
+Cancel Data/all
+

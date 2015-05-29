@@ -1,0 +1,23 @@
+SET DATA "/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/p50av/esm2m.0281-0300.p50av.Acanthephyra_acutifrons.nc", "/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/p50av/esm2m.0381-0400.p50av.Acanthephyra_acutifrons.nc", "/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/p50av/esm2m.1981-2000.p50av.Acanthephyra_acutifrons.nc", "/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/p50av/esm2m.rcp85.2081-2100.p50av.Acanthephyra_acutifrons.nc"
+Let c281max = p50av[d=1, z=@max]
+Let c281zero = p50av[d=1] - c281max
+Let c281maxdepth = c281zero[z=@loc:0]
+Let c381max = p50av[d=2, z=@max]
+Let c381zero = p50av[d=2] - c381max
+Let c381maxdepth = c381zero[z=@loc:0]
+Let histmax = p50av[d=3, z=@max]
+Let histzero = p50av[d=3] - histmax
+Let histmaxdepth = histzero[z=@loc:0]
+Let rcp85max = p50av[d=4, z=@max]
+Let rcp85zero = p50av[d=4] - rcp85max
+Let rcp85maxdepth = rcp85zero[z=@loc:0]
+Let hist_diff = histmaxdepth - c281maxdepth
+Let rcp85_diff = rcp85maxdepth - c381maxdepth
+Let delta_depthp50max = hist_diff-rcp85_diff
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/depthp50max/esm2m.0281-0300.depthp50max.Acanthephyra_acutifrons.nc" c281maxdepth
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/depthp50max/esm2m.0381-0400.depthp50max.Acanthephyra_acutifrons.nc" c381maxdepth
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/depthp50max/esm2m.1981-2000.depthp50max.Acanthephyra_acutifrons.nc" histmaxdepth
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M_Blood/Acanthephyra_acutifrons/depthp50max/esm2m.rcp85.2081-2100.depthp50max.Acanthephyra_acutifrons.nc" rcp85maxdepth
+list/nohead/file="/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Results/ESM2M/deltadepthp50max/ESM2M.rcp85.deltadepthp50max.geostats.txt"/format=tab/append "Acanthephyra_acutifrons", 1.5, -10, delta_depthp50max[x=@ave, y=@ave], delta_depthp50max[x=@var, y=@var]^0.5
+SAVE/CLOBBER/FILE="/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Results/ESM2M/deltadepthp50max/ESM2M.rcp85.deltadepthp50max.Acanthephyra_acutifrons.nc" delta_depthp50max
+quit

@@ -1,0 +1,40 @@
+SET DATA "/Data/CMIP5/ESM2M/processed/controls/ocean.0281-0300.temp.nc", "/Data/CMIP5/ESM2M/processed/controls/esm2m.0281-0300.po2.nc"
+
+Let p50_critter = 7.8
+
+Let deltaH_critter = -40
+
+Let R =  0.008314
+
+Let tempK = temp[d=1]
+
+Let tempK_ml = temp[d=1, z=10]
+
+Let tempshift_p50 = (deltaH_critter*((1/tempK)-(1/tempK_ml))/(2.303*R))
+
+Let p50 = 10^(log(p50_critter) + tempshift_p50)
+
+Let p50_diff = PO2[d=2]-p50
+
+Let p50depth = p50_diff[z=@loc:0]
+
+define att p50.long_name = "p50"
+
+define att p50.units = "kPa"
+
+define att p50depth.long_name = "Depth of P50 Threshold"
+
+define att p50depth.units = "m"
+
+Set memory/size=200
+
+SAVE/CLOBBER/FILE="/Data/Projects/BloodOxygenBinding/ESM2M_Blood/esm2m.0281-0300.p50.nc"/LLIMITS=1:20/L=1 p50
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/Projects/BloodOxygenBinding/ESM2M_Blood/esm2m.0281-0300.p50.nc"/L=`l` p50)
+
+SAVE/CLOBBER/FILE="/Data/Projects/BloodOxygenBinding/ESM2M_Blood/esm2m.0281-0300.p50depth.nc"/LLIMITS=1:20/L=1 p50depth
+
+repeat/L=2:20 (SAVE/APPEND/FILE="/Data/Projects/BloodOxygenBinding/ESM2M_Blood/esm2m.0281-0300.p50depth.nc"/L=`l` p50depth)
+
+
+
