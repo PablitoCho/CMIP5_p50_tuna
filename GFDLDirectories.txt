@@ -1,0 +1,10 @@
+/archive/esm2m/fre/postriga_esm_20100603/ESM2M/ESM2M_pi-control_C1/prod/pp
+
+/archive/esm2m/fre/postriga_esm_20100603/ESM2M/ESM2M-C1_all_historical_HC1/prod/pp
+
+/archive/esm2m/fre/postriga_esm_20110506/ESM2M/ESM2M-HC2_2006-2100_all_rcp85_ZC2/gfdl.default-prod/pp
+
+
+
+#NOT THE RIGHT DIRECTORY!!  (Only 2005)
+/archive/esm2m/fre/postriga_esm_20100603/ESM2M/ESM2M-HC1_2005_all_rcp85_ZC1/prod/pp

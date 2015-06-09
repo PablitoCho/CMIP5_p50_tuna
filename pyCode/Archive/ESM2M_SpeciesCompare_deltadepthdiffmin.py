@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 
-Folder = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Results/ESM2M/deltap50depth/'
+Folder = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Results/ESM2M/deltadepthdiffmin/'
 species1 = ['Todarodes_sagittatus', 'Thunnus_thynnus', 'Thunnus_obesus', 'Thunnus_maccoyii', 'Thunnus_albacares', 'Systellaspis_debilis', 'Scomber_japonicus', 'Pagothenia_borchgrevinki']
 species2 = ['Oplophorus_gracilirostris', 'Nautilus_pompilius', 'Meganyctiphanes_norvegica', 'Loligo_vulgaris', 'Katsuwonus_pelamis', 'Gnathphausia_ingens', 'Euphausia_superba', 'Dosidicus_gigas']
 species3 = ['Doryteuthis_pealeii', 'Dissostichus_mawsoni', 'Clupea_harengus', 'Architeuthis_dux', 'Acipenser_medirostris', 'Acanthephyra_smithi', 'Acanthephyra_curtirostris', 'Acanthephyra_acutifrons']
@@ -29,19 +29,19 @@ g = [[0.06, bottomlist[0], width, height], [0.56, bottomlist[0], width, height],
 
 i = 0
 while i<len(species1):
-  file = Folder + 'ESM2M.rcp85.deltap50depth.' + species1[i] + '.nc'
+  file = Folder + 'ESM2M.rcp85.deltadepthdiffmin.' + species1[i] + '.nc'
   nc = Dataset(file,'r')
   lats = nc.variables['YT_OCEAN'][:]
   lons = nc.variables['XT_OCEAN'][:]
   lons2 = lons+360
-  depth = nc.variables['DELTA_P50DEPTH'][:]
+  depth = nc.variables['DELTADEPTHDIFFMIN'][:]
   depth = depth.squeeze()
   fig = plt.figure(1, figsize(8,10))
   axg1 = plt.axes(g[i])
   m = Basemap(llcrnrlon=20.,llcrnrlat=-80.,urcrnrlon=380.,urcrnrlat=80.,projection='cyl',lon_0=180)
   x, y = m(*np.meshgrid(lons, lats))
   a, b = m(*np.meshgrid(lons2, lats))
-  m.drawmapboundary(fill_color='0.7') #fill_color='0.5'
+  m.drawmapboundary(fill_color='0.5') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='black', lake_color='0.5')
   if (i == 0) or (i == 2) or (i == 4) or (i == 6):
@@ -55,23 +55,23 @@ while i<len(species1):
   cb.set_ticks([-200,-100,0,100,200])
   cb.set_ticklabels([-200,-100,0,100,200])
   plt.title(species1[i], fontsize=12)
-  plt.suptitle("ESM2M P50 Depth Change")
+  plt.suptitle("ESM2M Change ")
   i=i+1
 
 plt.show()
 
-outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/ESM2M_species1.ps'
-plt.savefig(outfig, dpi=72, bbox_inches=0)
+outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/deltadepthdiffmin/ESM2M_species1.ps'
+plt.savefig(outfig, dpi=300, bbox_inches=0)
 
 
 i = 0
 while i<len(species2):
-  file = Folder + 'ESM2M.rcp85.deltap50depth.' + species2[i] + '.nc'
+  file = Folder + 'ESM2M.rcp85.deltadepthdiffmin.' + species2[i] + '.nc'
   nc = Dataset(file,'r')
   lats = nc.variables['YT_OCEAN'][:]
   lons = nc.variables['XT_OCEAN'][:]
   lons2 = lons+360
-  depth = nc.variables['DELTA_P50DEPTH'][:]
+  depth = nc.variables['DELTADEPTHDIFFMIN'][:]
   depth = depth.squeeze()
   fig = plt.figure(2, figsize(8,10))
   axg1 = plt.axes(g[i])
@@ -97,25 +97,25 @@ while i<len(species2):
 
 plt.show()
 
-outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/ESM2M_species2.ps'
-plt.savefig(outfig, dpi=72, bbox_inches=0)
+outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/deltadepthdiffmin/ESM2M_species2.ps'
+plt.savefig(outfig, dpi=300, bbox_inches=0)
 
 
 i = 0
 while i<len(species3):
-  file = Folder + 'ESM2M.rcp85.deltap50depth.' + species3[i] + '.nc'
+  file = Folder + 'ESM2M.rcp85.deltadepthdiffmin.' + species3[i] + '.nc'
   nc = Dataset(file,'r')
   lats = nc.variables['YT_OCEAN'][:]
   lons = nc.variables['XT_OCEAN'][:]
   lons2 = lons+360
-  depth = nc.variables['DELTA_P50DEPTH'][:]
+  depth = nc.variables['DELTADEPTHDIFFMIN'][:]
   depth = depth.squeeze()
   fig = plt.figure(3, figsize(8,10))
   axg1 = plt.axes(g[i])
   m = Basemap(llcrnrlon=20.,llcrnrlat=-80.,urcrnrlon=390.,urcrnrlat=80.,projection='cyl',lon_0=180)
   x, y = m(*np.meshgrid(lons, lats))
   a, b = m(*np.meshgrid(lons2, lats))
-  m.drawmapboundary(fill_color='0.7') #fill_color='0.5'
+  m.drawmapboundary(fill_color='0.5') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='black', lake_color='0.5')
   if (i == 0) or (i == 2) or (i == 4) or (i == 6):
@@ -134,8 +134,8 @@ while i<len(species3):
 
 plt.show()
 
-outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/ESM2M_species3.ps'
-plt.savefig(outfig, dpi=72, bbox_inches=0)
+outfig = '/Users/kasmith/Dropbox/Manuscripts/CMIP5_p50/Graphs/deltadepthdiffmin/ESM2M_species3.ps'
+plt.savefig(outfig, dpi=300, bbox_inches=0)
 
 
 
