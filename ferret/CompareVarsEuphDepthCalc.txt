@@ -1,0 +1,19 @@
+SET DATA "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_tracers_year.028101-030012.irr_inst.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_misc.0281-0300.jprod_ntot.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_sfc_100.0281-0300.sfc_irr.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_tracers_month.0281-0300.chl.nc"
+
+
+let euph_1per = irr_inst[d=1, z=1]*0.01
+let eupha = irr_inst[d=1]-euph_1per
+let euphd = eupha[z=@loc:0]
+
+
+let chl2 = chl[d=4, z=@loc:0.001]
+
+let morel = 912.5*chl[d=4, z=0]^-0.839
+
+
+
+
+let jprod_units =  jprod_ntot[d=2]*1000*60*60*24 !umol m^-2 d^-1
+let euphd_jprod = jprod_units[d=2, z=@loc:0.0005]
+
+plot/vs euphd[l=1],euphd_jprod[l=1]
