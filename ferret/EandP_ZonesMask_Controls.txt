@@ -1,0 +1,40 @@
+SET DATA "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_tracers_month.0281-0300.chl.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean.0281-0300.rho.nc", "/Data/CMIP5/ESM2M/downloaded/control_ID104/ocean_topaz_fluxes.0281-0300.fndet.nc"
+
+!--------------------
+! Euphotic Zone Mask
+!--------------------
+let chl_mgm3 = (chl[d=1]/1000)*rho[d=2] !convert chl units from ug kg^-1 to mg m^-3
+!list z[gz=chl, d=1] !depths on z axis
+let Ez1 = 912.5*chl_mgm3[z=@din]^-0.839
+let Ez2 = 426.3*chl_mgm3[z=@din]^-0.547
+let merge1 = if Ez1 ge 102 then 0 else Ez1
+let merge2 = if Ez2 lt 102 then 0 else Ez2
+let Ez = merge1 + merge2
+let zdepths = if z le Ez then 1
+let Ezmask = zdepths*(chl[d=1]*0+1)
+
+!---------------------------------------------
+! Find Particle Zone Upper Ocean
+!---------------------------------------------
+let zdepths0 = if z le Ez then 1 else 0
+let Ezmask0 = zdepths0*(chl[d=1]*0+1)
+
+Let fcdet = fndet[d=3]*(106/15)*(12*1000)*(60*60*24)  !convert (to Carbon),(to mg),(to day)
+Let delta = abs(fcdet[z=@DDF])
+Let deep = if delta le 0.01 then 0 else delta
+Let deep1 = ignore0(deep)
+Let upmask = deep1*0+1
+Let mask2 =  Ezmask0 + upmask
+Let mask3 = if mask2 eq 2 then 0 else mask2
+Let pmask = ignore0(mask3)
+
+Let pmaskz = pmask * z
+Let pmaskz2 = if pmaskz le 2000 then pmaskz else 0
+Let pmaskz3 = ignore0(pmaskz2)
+Let lowerp = pmaskz3[z=@max]
+shade lowerp[l=1]
+
+
+
+
+
