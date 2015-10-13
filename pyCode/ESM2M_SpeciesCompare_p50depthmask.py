@@ -33,10 +33,8 @@ while i<len(species1):
   nc2 = Dataset(file2,'r')
   lats1 = nc1.variables['YT_OCEAN'][:]
   lons1 = nc1.variables['XT_OCEAN'][:]
-#  lons12 = lons1+360
   lats2 = nc2.variables['YT_OCEAN'][:]
   lons2 = nc2.variables['XT_OCEAN'][:]
-#  lons22 = lons2+360
   mask1 = nc1.variables['P50DEPTHMASK'][:]
   mask1 = mask1.squeeze()
   mask2 = nc2.variables['P50DEPTHMASK'][:]
@@ -49,9 +47,7 @@ while i<len(species1):
   mask2_cyclic, lons2_cyclic = addcyclic(mask2[:,:], lons2)
   mask2_cyclic, lons2_cyclic = shiftgrid(20., mask2_cyclic, lons2_cyclic, start=True)
   x1, y1 = m(*np.meshgrid(lons1_cyclic, lats1))
-#  a1, b1 = m(*np.meshgrid(lons12, lats1))
   x2, y2 = m(*np.meshgrid(lons2_cyclic, lats2))
-#  a2, b2 = m(*np.meshgrid(lons22, lats2))
   m.drawmapboundary(fill_color='white') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='black', lake_color='0.5')
@@ -61,9 +57,7 @@ while i<len(species1):
     m.drawparallels(np.arange(-90.,120.,30.),labels=[0,0,0,0])
   m.drawmeridians(np.arange(0.,420.,60.),labels=[0,0,0,0])
   im1 = m.contourf(x1,y1,mask1_cyclic, alpha=1, colors='red')
- # im2 = m.contourf(a1,b1,mask1, alpha=1, colors='red')
   im3 = m.contourf(x2,y2,mask2_cyclic, alpha=0.5, colors='blue')
- # im4 = m.contourf(a2,b2,mask2, alpha=0.5, colors='blue')
   cb.set_ticks([-200,-100,0,100,200])
   cb.set_ticklabels([-200,-100,0,100,200])
   plt.title(species1[i], fontsize=12)
