@@ -1,12 +1,12 @@
 #!/bin/sh
 rm geostats.jnl
-#rm /Data/Projects/CMIP5_p50/ESM2M_Blood/P50Depthav_geostats.txt
+#rm /Data/Projects/CMIP5_p50/ESM2M/P50Depthav_geostats.txt
 
 while IFS=, read -r species p50 deltaH
 do
-      rm /Data/Projects/CMIP5_p50/ESM2M_Blood/${species}/P50Depthav_geostats_rcp85.txt
+      rm /Data/Projects/CMIP5_p50/ESM2M/${species}/P50Depthav_geostats_rcp85.txt
 
-      echo "SET DATA \"/Data/CMIP5/ESM2M/processed/rcp8.5/ocean.rcp85.2081-2100.temp.nc\", \"/Data/CMIP5/ESM2M/processed/rcp8.5/esm2m.rcp85.2081-2100.po2.nc\"" > geostats.jnl
+      echo "SET DATA \"/Data/CMIP5/ESM2M/processed/rcp8.5/ocean.rcp85.2081-2100.temp.nc\", \"/Data/CMIP5/ESM2M/processed/rcp8.5/esm2m.rcp85.2081-2100.po2.nc\", \"/Data/Projects/CMIP5_p50/ESM2M/${species}/ESM2M.rcp85.deltap50depth.${species}.nc\"" > geostats.jnl
 
       echo "Let p50_critter = ${p50}" >> geostats.jnl #kPa
 
@@ -42,9 +42,13 @@ do
 
       echo "Let p50depthav_area = p50depthav*0+1" >> geostats.jnl
 
-      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M_Blood/${species}/P50Depth_geostats_rcp85.txt\"/format=tab/append ocean[x=@din, y=@din, k=1], p50depth_area[x=@din, y=@din], p50depth[x=@ave, y=@ave], p50depth[x=@var, y=@var], p50depth[x=@ngd, y=@ngd]" >> geostats.jnl
+      echo "Let mask = DELTA_P50DEPTH*0+1" >> geostats.jnl
 
-      echo "list/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M_Blood/P50Depthav_geostats.txt\"/format=tab/append \"rcp8.5\", \"${species}\", ${p50}, ${deltaH}, oceanav[x=@din, y=@din, k=1], p50depthav_area[x=@din, y=@din], p50depthav[x=@ave, y=@ave], p50depthav[x=@var, y=@var], p50depthav[x=@ngd, y=@ngd]" >> geostats.jnl
+      echo "Let p50depthav2 = p50depthav*mask" >> geostats.jnl
+
+      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/P50Depth_geostats_rcp85.txt\"/format=tab/append ocean[x=@din, y=@din, k=1], p50depth_area[x=@din, y=@din], p50depth[x=@ave, y=@ave], p50depth[x=@var, y=@var], p50depth[x=@ngd, y=@ngd]" >> geostats.jnl
+
+      echo "list/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_geostats.txt\"/format=tab/append \"rcp8.5\", \"${species}\", ${p50}, ${deltaH}, oceanav[x=@din, y=@din, k=1], p50depthav_area[x=@din, y=@din], p50depthav[x=@ave, y=@ave], p50depthav[x=@var, y=@var], p50depthav[x=@ngd, y=@ngd], p50depthav2[x=@din, y=@din]" >> geostats.jnl
 
       echo "quit" >> geostats.jnl
 
