@@ -1,11 +1,10 @@
 #!/bin/sh
 rm binstats.jnl
-rm /Data/Projects/CMIP5_p50/ESM2M/P50Depthav_bins.txt
-
 
 while IFS=, read -r species p50 deltaH
 do
-      echo "SET DATA \"/Data/CMIP5/ESM2M/processed/controls/ocean.0281-0300.temp.nc\", \"/Data/CMIP5/ESM2M/processed/controls/esm2m.0281-0300.po2.nc\"" > binstats.jnl
+
+      echo "SET DATA \"/Data/CMIP5/ESM2M/processed/controls/ocean.0381-0400.temp.nc\", \"/Data/CMIP5/ESM2M/processed/controls/esm2m.0381-0400.po2.nc\"" > binstats.jnl
 
       echo "Let p50_critter = ${p50}" >> binstats.jnl #kPa
 
@@ -75,7 +74,7 @@ do
 
       echo "Let depth900to1000_area = depth900to1000*0+1" >> binstats.jnl
 
-      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_bins.txt\"/format=tab/append \"control0281\", \"${species}\", ${p50}, ${deltaH}, depth0to100_area[x=@din, y=@din], depth100to200_area[x=@din, y=@din], depth200to300_area[x=@din, y=@din], depth300to400_area[x=@din, y=@din], depth400to500_area[x=@din, y=@din], depth500to600_area[x=@din, y=@din], depth600to700_area[x=@din, y=@din], depth700to800_area[x=@din, y=@din], depth800to900_area[x=@din, y=@din], depth900to1000_area[x=@din, y=@din]" >> binstats.jnl
+      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_bins.txt\"/format=tab/append \"control0381\", \"${species}\", ${p50}, ${deltaH}, depth0to100_area[x=@din, y=@din], depth100to200_area[x=@din, y=@din], depth200to300_area[x=@din, y=@din], depth300to400_area[x=@din, y=@din], depth400to500_area[x=@din, y=@din], depth500to600_area[x=@din, y=@din], depth600to700_area[x=@din, y=@din], depth700to800_area[x=@din, y=@din], depth800to900_area[x=@din, y=@din], depth900to1000_area[x=@din, y=@din]" >> binstats.jnl
 
       echo "quit" >> binstats.jnl
 
