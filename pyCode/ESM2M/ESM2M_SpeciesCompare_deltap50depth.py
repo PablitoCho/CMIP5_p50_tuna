@@ -1,13 +1,13 @@
 #ipython --pylab
 import scipy
-from mpl_toolkits.basemap import Basemap
+from mpl_toolkits.basemap import Basemap, addcyclic, shiftgrid
 from netCDF4 import Dataset
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 
-Folder = '/Data/Projects/CMIP5_p50/ESM2M_Blood/'
-species1 = ['Thunnus_thynnus', 'Thunnus_obesus', 'Thunnus_maccoyii', 'Thunnus_albacares', 'Scomber_japonicus', 'Katsuwonus_pelamis']
+Folder = '/Data/Projects/CMIP5_p50/ESM2M/'
+species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Scomber_japonicus', 'Thunnus_maccoyii']
 
 #leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
 leftlist = [0.02, 0.24, 0.48, 0.72]

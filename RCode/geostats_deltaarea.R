@@ -1,6 +1,6 @@
-#geostats<-read.table("/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_geostats.txt")
+geostats<-read.table("/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_geostats.txt")
 
-geostats<-read.table("/Data/Projects/CMIP5_p50/ESM2G/P50Depthav_geostats.txt")
+#geostats<-read.table("/Data/Projects/CMIP5_p50/ESM2G/P50Depthav_geostats.txt")
 geostats<-geostats[,4:12]
 
 colnames(geostats)<-c("experiment","species", "p50", "deltaH", "globalarea", "p50deptharea", "meanp50depth", "varp50depth", "np50depth")

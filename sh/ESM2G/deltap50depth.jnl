@@ -1,6 +1,6 @@
 SET DATA "/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/p50depthav/esm2g.0281-0300.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/p50depthav/esm2g.0381-0400.p50depthav.Katsuwonus_pelamis.nc",  "/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/p50depthav/esm2g.1981-2000.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/p50depthav/esm2g.rcp85.2081-2100.p50depthav.Katsuwonus_pelamis.nc"
-Let hist_diff = p50depthav[d=3]-p50depthav[d=1]
-Let rcp85_diff = p50depthav[d=4]-p50depthav[d=2]
-Let delta_p50depth = hist_diff-rcp85_diff
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/ESM2M.rcp85.deltap50depth.Katsuwonus_pelamis.nc" delta_p50depth
+Let control_diff = p50depthav[d=1]-p50depthav[d=2]
+Let rcp85_diff = p50depthav[d=3]-p50depthav[d=4]
+Let delta_p50depth = rcp85_diff-control_diff
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/ESM2G.rcp85.deltap50depth.Katsuwonus_pelamis.nc" delta_p50depth
 quit

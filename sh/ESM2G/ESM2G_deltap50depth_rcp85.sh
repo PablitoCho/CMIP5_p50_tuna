@@ -6,11 +6,11 @@ do
 
   echo "SET DATA \"/Data/Projects/CMIP5_p50/ESM2G/${species}/p50depthav/esm2g.0281-0300.p50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/ESM2G/${species}/p50depthav/esm2g.0381-0400.p50depthav.${species}.nc\",  \"/Data/Projects/CMIP5_p50/ESM2G/${species}/p50depthav/esm2g.1981-2000.p50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/ESM2G/${species}/p50depthav/esm2g.rcp85.2081-2100.p50depthav.${species}.nc\"" > deltap50depth.jnl
 
-  echo "Let hist_diff = p50depthav[d=3]-p50depthav[d=1]" >> deltap50depth.jnl
+  echo "Let control_diff = p50depthav[d=1]-p50depthav[d=2]" >> deltap50depth.jnl
 
-  echo "Let rcp85_diff = p50depthav[d=4]-p50depthav[d=2]" >> deltap50depth.jnl
+  echo "Let rcp85_diff = p50depthav[d=3]-p50depthav[d=4]" >> deltap50depth.jnl
 
-  echo "Let delta_p50depth = hist_diff-rcp85_diff" >> deltap50depth.jnl  #in future, shallower is positive
+  echo "Let delta_p50depth = rcp85_diff-control_diff" >> deltap50depth.jnl  #in future, shallower is positive
 
 #  echo "Let mask1 = p50depthav[d=1]*0+1" >> deltap50depth.jnl
 

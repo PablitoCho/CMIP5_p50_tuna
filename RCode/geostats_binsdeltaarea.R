@@ -1,4 +1,6 @@
-bins<-read.table("/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_bins.txt")
+#bins<-read.table("/Data/Projects/CMIP5_p50/ESM2M/P50Depthav_bins.txt")
+
+bins<-read.table("/Data/Projects/CMIP5_p50/ESM2G/P50Depthav_bins.txt")
 
 bins<-bins[,4:17]
 
@@ -7,7 +9,6 @@ colnames(bins)<-c("experiment","species", "p50", "deltaH", "z0_100", "z100_200",
 bins<-bins[order(bins$deltaH),]
 
 specieslist<-unique(bins$species)
-
 
 quartz()
 par(mfrow=c(3,2))
@@ -29,8 +30,8 @@ for(a in 1:length(specieslist)){
 	
 	deltaarea2$idbin<-rownames(deltaarea2)
 	
-	#print(max(deltaarea2$change))
-	#print(min(deltaarea2$change))
+	print(max(deltaarea2$change))
+	print(min(deltaarea2$change))
 
 	if(specieslist[a]=="Thunnus_maccoyii"){
 
