@@ -1,0 +1,13 @@
+SET DATA "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_po2.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_temp.nc"
+
+Let p50_critter = 2
+Let deltaH_critter = 0
+Let R =  0.008314
+Let tempK = temp_rcp[d=2] + 273.15
+Let tempK_ml = tempK[z=10] 
+Let tempshift_p50 = (deltaH_critter*((1/tempK)-(1/tempK_ml))/(2.303*R))
+Let p50 = 10^(log(p50_critter) + tempshift_p50)
+Let p50_diff = po2[d=1]-p50
+Let p50depth = p50_diff[z=@loc:0]
+
+
