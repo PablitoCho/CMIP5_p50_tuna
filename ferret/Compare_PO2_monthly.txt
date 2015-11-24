@@ -1,21 +1,22 @@
-SET DATA "/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50/woa.p50.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/ESM2M/Thunnus_maccoyii/p50/esm2m.rcp85.2081-2100.p50.Thunnus_maccoyii.nc", "/Data/WOA/WOA_o2/WOA_po2_monthly_1deg.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_po2.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50/woa.p50.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/ESM2M/Thunnus_obesus/p50/esm2m.rcp85.2081-2100.p50.Thunnus_obesus.nc"
+SET DATA "/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50/woa.p50.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/ESM2M/Thunnus_maccoyii/p50/esm2m.rcp85.2081-2100.p50.Thunnus_maccoyii.nc", "/Data/WOA/WOA_o2/WOA_po2_monthly_1deg.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_po2.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50/woa.p50.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/ESM2M/Thunnus_obesus/p50/esm2m.rcp85.2081-2100.p50.Thunnus_obesus.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_temp.nc"
 
 
-plot p50[d=1, x=220, y=30, l=1], p50[d=2, x=220, y=30, l=1], po2[d=3, x=220, y=30, l=1], po2[d=4, x=220, y=30, l=1], p50[d=5, x=220, y=30, l=1], p50[d=6, x=220, y=30, l=1]
+plot p50[d=1, x=220, y=30, l=1], p50[d=2, x=220, y=30, l=1], po2[d=3, x=220, y=30, l=1], po2[d=4, x=220, y=30, l=1], p50[d=5, x=220, y=30, l=1], p50[d=6, x=220, y=30, l=1], t_an[d=7, x=220, y=30, l=1], temp_rcp[d=8, x=220, y=30, l=1]
 
-plot p50[d=1, x=70, y=15, l=1], p50[d=2, x=70, y=15, l=1], po2[d=3, x=70, y=15, l=1], po2[d=4, x=70, y=15, l=1], p50[d=5, x=70, y=15, l=1], p50[d=6, x=70, y=15, l=1]
-
-
-plot p50[d=1, x=210, y=40, l=1], p50[d=2, x=210, y=40, l=1], po2[d=3, x=210, y=40, l=1], po2[d=4, x=210, y=40, l=1], p50[d=5, x=210, y=40, l=1], p50[d=6, x=210, y=40, l=1]
-
-plot p50[d=1, x=180, y=15s, l=1], p50[d=2, x=180, y=15s, l=1], po2[d=3, x=180, y=15s, l=1], po2[d=4, x=180, y=15s, l=1], p50[d=5, x=180, y=15s, l=1], p50[d=6, x=180, y=15s, l=1]
-
-plot p50[d=1, x=180, y=30, l=1], p50[d=2, x=180, y=30, l=1], po2[d=3, x=180, y=30, l=1], po2[d=4, x=180, y=30, l=1], p50[d=5, x=180, y=30, l=1], p50[d=6, x=180, y=30, l=1]
-
-plot p50[d=1, x=170, y=15s, l=1], p50[d=2, x=170, y=15s, l=1], po2[d=3, x=170, y=15s, l=1], po2[d=4, x=170, y=15s, l=1], p50[d=5, x=170, y=15s, l=1], p50[d=6, x=170, y=15s, l=1]
+plot p50[d=1, x=70, y=15, l=1], p50[d=2, x=70, y=15, l=1], po2[d=3, x=70, y=15, l=1], po2[d=4, x=70, y=15, l=1], p50[d=5, x=70, y=15, l=1], p50[d=6, x=70, y=15, l=1], t_an[d=7, x=70, y=15, l=1], temp_rcp[d=8, x=70, y=15, l=1]
 
 
-plot p50[d=1, x=220, y=30, l=6], p50[d=2, x=220, y=30, l=6], po2[d=3, x=220, y=30, l=1], po2[d=4, x=220, y=30, l=6], p50[d=5, x=220, y=30, l=6], p50[d=6, x=220, y=30, l=6]
+plot p50[d=1, x=210, y=40, l=1], p50[d=2, x=210, y=40, l=1], po2[d=3, x=210, y=40, l=1], po2[d=4, x=210, y=40, l=1], p50[d=5, x=210, y=40, l=1], p50[d=6, x=210, y=40, l=1], t_an[d=7, x=210, y=40, l=1], temp_rcp[d=8, x=210, y=40, l=1]
+
+plot p50[d=1, x=180, y=15s, l=1], p50[d=2, x=180, y=15s, l=1], po2[d=3, x=180, y=15s, l=1], po2[d=4, x=180, y=15s, l=1], p50[d=5, x=180, y=15s, l=1], p50[d=6, x=180, y=15s, l=1], t_an[d=7, x=180, y=15s, l=1], temp_rcp[d=8, x=180, y=15s, l=1]
+
+plot/x=170/y=45 p50[d=1, l=@ave], p50[d=2, l=@ave], po2[d=3, l=@ave], po2[d=4, l=@ave], p50[d=5, l=@ave], p50[d=6, l=@ave], t_an[d=7, l=@ave], temp_rcp[d=8, l=@ave]
+
+plot/x=170/y=15s p50[d=1, l=@ave], p50[d=2, l=@ave], po2[d=3, l=@ave], po2[d=4, l=@ave], p50[d=5, l=@ave], p50[d=6, l=@ave], t_an[d=7, l=@ave], temp_rcp[d=8, l=@ave]
+
+plot/x=220/y=30 p50[d=1, l=@ave], p50[d=2, l=@ave], po2[d=3, l=@ave], po2[d=4, l=@ave], p50[d=5, l=@ave], p50[d=6, l=@ave], t_an[d=7, l=@ave], temp_rcp[d=8, l=@ave]
+
+plot/x=18-/y=30 p50[d=1, l=@ave], p50[d=2, l=@ave], po2[d=3, l=@ave], po2[d=4, l=@ave], p50[d=5, l=@ave], p50[d=6, l=@ave], t_an[d=7, l=@ave], temp_rcp[d=8, l=@ave]
 
 
 

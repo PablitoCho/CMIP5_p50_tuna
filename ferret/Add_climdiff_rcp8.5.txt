@@ -9,7 +9,7 @@ define axis/t=1:12/unit=months/npoints=12 tax
 SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
 
 
-let o2_climdiff = o2[d=3]*22.391/1000
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
 let o2_rcp = o_an[d=1] + o2_climdiff
 
 set memory/size=200

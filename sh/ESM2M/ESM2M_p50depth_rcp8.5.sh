@@ -27,6 +27,10 @@ do
 
   echo "Let p50depth = p50_diff[z=@loc:0]" >> p50depth.jnl
 
+  echo "Let p50av = p50[l=@ave]" >> p50depth.jnl
+
+  echo "Let p50depthav = p50depth[l=@ave]" >> p50depth.jnl
+
   echo "define att p50.long_name = \"50% Blood Oxygenation\"" >> p50depth.jnl
 
   echo "define att p50.units = \"kPa\"" >> p50depth.jnl
@@ -47,15 +51,39 @@ do
 
   echo "define att p50depth.species_deltaH = \"${deltaH}\"" >> p50depth.jnl
 
+  echo "define att p50av.long_name = \"50% Blood Oxygenation\"" >> p50depth.jnl
+
+  echo "define att p50av.units = \"kPa\"" >> p50depth.jnl
+
+  echo "define att p50av.species = \"${species}\"" >> p50depth.jnl
+
+  echo "define att p50av.species_p50 = \"${p50}\"" >> p50depth.jnl
+
+  echo "define att p50av.species_deltaH = \"${deltaH}\"" >> p50depth.jnl
+
+  echo "define att p50depthav.long_name = \"Depth of P50 Threshold\"" >> p50depth.jnl
+
+  echo "define att p50depthav.units = \"m\"" >> p50depth.jnl
+
+  echo "define att p50depthav.species = \"${species}\"" >> p50depth.jnl
+
+  echo "define att p50depthav.species_p50 = \"${p50}\"" >> p50depth.jnl
+
+  echo "define att p50depthav.species_deltaH = \"${deltaH}\"" >> p50depth.jnl
+
   echo "Set memory/size=200" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50/esm2m.rcp85.2081-2100.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50/esm2m.rcp85.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50/esm2m.rcp85.2081-2100.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50/esm2m.rcp85.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50depth/esm2m.rcp85.2081-2100.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50depth/esm2m.rcp85.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50depth/esm2m.rcp85.2081-2100.p50depth.${species}.nc\"/L=\`l\` p50depth)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50depth/esm2m.rcp85.p50depth.${species}.nc\"/L=\`l\` p50depth)" >> p50depth.jnl
+
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50/esm2m.rcp85.p50av.${species}.nc\" p50av" >> p50depth.jnl
+
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/ESM2M/${species}/p50depth/esm2m.rcp85.p50depthav.${species}.nc\" p50depthav" >> p50depth.jnl
 
   echo "quit" >> p50depth.jnl
 

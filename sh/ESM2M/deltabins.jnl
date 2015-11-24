@@ -1,0 +1,35 @@
+SET DATA "/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth/esm2m.deltap50depth.Katsuwonus_pelamis.nc"
+Let deltap50depthav = deltap50depth[d=2, l=@ave]
+Let p50depthav = p50depth[d=1, l=@ave]
+Let depth0to100 = if p50depthav lt 100 then p50depthav
+Let depth100to200 = if p50depthav ge 100 and p50depthav lt 200 then p50depthav
+Let depth200to300 = if p50depthav ge 200 and p50depthav lt 300 then p50depthav
+Let depth300to400 = if p50depthav ge 300 and p50depthav lt 400 then p50depthav
+Let depth400to500 = if p50depthav ge 400 and p50depthav lt 500 then p50depthav
+Let depth500to600 = if p50depthav ge 500 and p50depthav lt 600 then p50depthav
+Let depth600to700 = if p50depthav ge 600 and p50depthav lt 700 then p50depthav
+Let depth700to800 = if p50depthav ge 700 and p50depthav lt 800 then p50depthav
+Let depth800to900 = if p50depthav ge 800 and p50depthav lt 900 then p50depthav
+Let depth900to1000 = if p50depthav ge 900 and p50depthav lt 1000 then p50depthav
+Let delta0to100 = (depth0to100*0+1)*deltap50depthav
+Let delta100to200 = (depth100to200*0+1)*deltap50depthav
+Let delta200to300 = (depth200to300*0+1)*deltap50depthav
+Let delta300to400 = (depth300to400*0+1)*deltap50depthav
+Let delta400to500 = (depth400to500*0+1)*deltap50depthav
+Let delta500to600 = (depth500to600*0+1)*deltap50depthav
+Let delta600to700 = (depth600to700*0+1)*deltap50depthav
+Let delta700to800 = (depth700to800*0+1)*deltap50depthav
+Let delta800to900 = (depth800to900*0+1)*deltap50depthav
+Let delta900to1000 = (depth900to1000*0+1)*deltap50depthav
+list/clobber/nohead/file="/Data/Projects/CMIP5_p50/ESM2M/deltap50depth_bins.txt"/format=tab/append  "mean", "Katsuwonus_pelamis", 3.07, 1.5, delta0to100[x=@ave, y=@ave], delta100to200[x=@ave, y=@ave], delta200to300[x=@ave, y=@ave], delta300to400[x=@ave, y=@ave], delta400to500[x=@ave, y=@ave], delta500to600[x=@ave, y=@ave], delta600to700[x=@ave, y=@ave], delta700to800[x=@ave, y=@ave], delta800to900[x=@ave, y=@ave], delta900to1000[x=@ave, y=@ave]
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0000.0100.Katsuwonus_pelamis.nc" delta0to100
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0100.0200.Katsuwonus_pelamis.nc" delta100to200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0200.0300.Katsuwonus_pelamis.nc" delta200to300
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0300.0400.Katsuwonus_pelamis.nc" delta300to400
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0400.0500.Katsuwonus_pelamis.nc" delta400to500
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0500.0600.Katsuwonus_pelamis.nc" delta500to600
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0600.0700.Katsuwonus_pelamis.nc" delta600to700
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0700.0800.Katsuwonus_pelamis.nc" delta700to800
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0800.0900.Katsuwonus_pelamis.nc" delta800to900
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2M/Katsuwonus_pelamis/deltap50depth_bins/ESM2M.rcp85.deltap50depth.0900.1000.Katsuwonus_pelamis.nc" delta900to1000
+quit
