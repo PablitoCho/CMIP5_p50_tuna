@@ -12,8 +12,11 @@ bins_rcp<-bins_rcp[order(bins_rcp$deltaH),]
 
 specieslist<-unique(bins_woa$species)
 
-quartz()
+#quartz()
+outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/ESM2M_binsdeltaarea.ps")
+postscript(outfile, height=10, width=7.5)
 par(mfrow=c(3,2))
+par(mar=c(2, 2, 2, 2))
 
 for(a in 1:length(specieslist)){
 	
@@ -41,14 +44,16 @@ for(a in 1:length(specieslist)){
 
 	if(specieslist[a]=="Thunnus_maccoyii"){
 
-	barplot(deltaarea2$change, names.arg=deltaarea2$idbin, ylim=c(-4000000, 4000000), main=specieslist[a], col="black")
+	barplot(deltaarea2$change, names.arg=deltaarea2$idbin, ylim=c(-6000000, 6000000), main=specieslist[a], col="black")
 	abline(h=0)
 	}else{
 
-	barplot(deltaarea2$change, names.arg=deltaarea2$idbin, ylim=c(-4000000, 4000000), main=specieslist[a], col="black")
+	barplot(deltaarea2$change, names.arg=deltaarea2$idbin, ylim=c(-6000000, 6000000), main=specieslist[a], col="black")
 	abline(h=0)
 		
 	}
 	
 }
+
+dev.off()
 
