@@ -1,3 +1,7 @@
+!------------------------
+! ESM2M
+!------------------------
+
 set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_GFDL-ESM2M_r1i1p1_2071-2100_climdiff_1971-2000_woagrid.nc"
 
 let temp_rcp = t_an[d=2] + thetao[d=3]
@@ -16,3 +20,115 @@ set memory/size=200
 define axis/t=1:12/unit=months/npoints=12 tax
 define att o2_rcp.units = "ml l^-1"
 SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2M_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+
+!------------------------
+! CESM1
+!------------------------
+set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_CESM1-BGC_r1i1p1_2071-2100_climdiff_1971-2000_woagrid.nc"
+
+let temp_rcp = t_an[d=2] + thetao[d=3]
+!let xyz_grid = x[GX=t_an[d=2]] + y[GY=t_an[d=2]] + z[GZ=t_an[d=2]] + t[GT=t_an[d=2]]
+!let temp_rcp = reshape(t_future, xyz_grid)
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/CESM1_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
+
+
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
+let o2_rcp = o_an[d=1] + o2_climdiff
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+define att o2_rcp.units = "ml l^-1"
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/CESM1_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+
+!------------------------
+! ESM2G
+!------------------------
+set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_GFDL-ESM2G_r1i1p1_2071-2100_climdiff_1971-2000_woagrid.nc"
+
+let temp_rcp = t_an[d=2] + thetao[d=3]
+!let xyz_grid = x[GX=t_an[d=2]] + y[GY=t_an[d=2]] + z[GZ=t_an[d=2]] + t[GT=t_an[d=2]]
+!let temp_rcp = reshape(t_future, xyz_grid)
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2G_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
+
+
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
+let o2_rcp = o_an[d=1] + o2_climdiff
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+define att o2_rcp.units = "ml l^-1"
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/ESM2G_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+
+!------------------------
+! HadGEM2
+!------------------------
+set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_HadGEM2-ES_r1-4_2071-2100_climdiff_1971-2000_woagrid.nc"
+
+let temp_rcp = t_an[d=2] + thetao[d=3]
+!let xyz_grid = x[GX=t_an[d=2]] + y[GY=t_an[d=2]] + z[GZ=t_an[d=2]] + t[GT=t_an[d=2]]
+!let temp_rcp = reshape(t_future, xyz_grid)
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/HadGEM2_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
+
+
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
+let o2_rcp = o_an[d=1] + o2_climdiff
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+define att o2_rcp.units = "ml l^-1"
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/HadGEM2_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+
+
+!------------------------
+! IPSL-CM5A
+!------------------------
+set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_IPSL-CM5A-LR_r1-4_2071-2100_climdiff_1971-2000_woagrid.nc"
+
+let temp_rcp = t_an[d=2] + thetao[d=3]
+!let xyz_grid = x[GX=t_an[d=2]] + y[GY=t_an[d=2]] + z[GZ=t_an[d=2]] + t[GT=t_an[d=2]]
+!let temp_rcp = reshape(t_future, xyz_grid)
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/IPSL-CM5A_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
+
+
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
+let o2_rcp = o_an[d=1] + o2_climdiff
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+define att o2_rcp.units = "ml l^-1"
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/IPSL-CM5A_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+
+!------------------------
+! MPI-ESM
+!------------------------
+set data "/Data/WOA/WOA_o2/dissolved_oxygen_monthly_1deg.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc", "/Data/CMIP5/climdiff/modeldiff/thetao_Omon_MPI-ESM-LR_r1-3_2071-2100_climdiff_1971-2000_woagrid.nc"
+
+let temp_rcp = t_an[d=2] + thetao[d=3]
+!let xyz_grid = x[GX=t_an[d=2]] + y[GY=t_an[d=2]] + z[GZ=t_an[d=2]] + t[GT=t_an[d=2]]
+!let temp_rcp = reshape(t_future, xyz_grid)
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/MPI-ESM_rcp8.5_temp.nc" temp_rcp[GT=tax@asn]
+
+
+let o2_climdiff = o2[d=3]*22.391 !convert mol m^-3 to ml l^-1
+let o2_rcp = o_an[d=1] + o2_climdiff
+
+set memory/size=200
+define axis/t=1:12/unit=months/npoints=12 tax
+define att o2_rcp.units = "ml l^-1"
+SAVE/FILE="/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/MPI-ESM_rcp8.5_o2.nc" o2_rcp[GT=tax@asn]
+

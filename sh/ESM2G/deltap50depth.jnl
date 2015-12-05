@@ -1,0 +1,18 @@
+SET DATA "/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/p50depth/esm2g.rcp85.p50depth.Katsuwonus_pelamis.nc"
+Let deltap50depth = p50depth[d=1]-p50depth[d=2]
+Let deltap50depthav = deltap50depth[l=@ave]
+define att deltap50depth.long_name = "Delta Depth of P50 Threshold"
+define att deltap50depth.units = "m"
+define att deltap50depth.species = "Katsuwonus_pelamis"
+define att deltap50depth.species_p50 = "3.07"
+define att deltap50depth.species_deltaH = "1.5"
+define att deltap50depthav.long_name = "Delta Depth of P50 Threshold"
+define att deltap50depthav.units = "m"
+define att deltap50depthav.species = "Katsuwonus_pelamis"
+define att deltap50depthav.species_p50 = "3.07"
+define att deltap50depthav.species_deltaH = "1.5"
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/deltap50depth/esm2g.deltap50depth.Katsuwonus_pelamis.nc"/LLIMITS=1:12/L=1 deltap50depth
+repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/deltap50depth/esm2g.deltap50depth.Katsuwonus_pelamis.nc"/L=`l` deltap50depth)
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/ESM2G/Katsuwonus_pelamis/deltap50depth/esm2g.deltap50depthav.Katsuwonus_pelamis.nc" deltap50depthav
+quit
