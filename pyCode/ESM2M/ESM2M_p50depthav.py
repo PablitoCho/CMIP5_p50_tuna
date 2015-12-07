@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 
-Folder = '/Data/Projects/CMIP5_p50/ESM2M/'
+Folder = '/Data/Projects/CMIP5_p50/esm2m/'
 species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Scomber_japonicus', 'Thunnus_maccoyii']
 
 
@@ -58,5 +58,5 @@ while i<len(species1):
 
 plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/ESM2M_p50depthav.ps'
+outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/esm2m_p50depthav.ps'
 plt.savefig(outfig, dpi=300, bbox_inches=0)
