@@ -1,0 +1,9 @@
+ 	NOAA/PMEL TMAP
+ 	FERRET v6.82  
+ 	Darwin 9.8.0 - 08/06/12
+ 	 9-Dec-15 18:51     
+
+!-> REPEAT: L=2
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/WOA.rcp85.p50.Katsuwonus_pelamis.nc"/L=2 p50
+!-> REPEAT: L=2
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/WOA.rcp85.p50depth.Katsuwonus_pelamis.nc"/L=2 p50depth, p50depth_deltaH0

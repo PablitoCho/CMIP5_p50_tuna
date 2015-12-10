@@ -1,7 +1,7 @@
  	NOAA/PMEL TMAP
  	FERRET v6.82  
  	Darwin 9.8.0 - 08/06/12
- 	23-Nov-15 18:15     
+ 	 9-Dec-15 18:58     
 
 !-> REPEAT: L=2
  !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/woa.p50.Katsuwonus_pelamis.nc"/L=2 p50
@@ -26,24 +26,24 @@
 !-> REPEAT: L=12
  !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/woa.p50.Katsuwonus_pelamis.nc"/L=12 p50
 !-> REPEAT: L=2
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=2 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=2 p50depth, p50depth_deltaH0
 !-> REPEAT: L=3
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=3 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=3 p50depth, p50depth_deltaH0
 !-> REPEAT: L=4
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=4 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=4 p50depth, p50depth_deltaH0
 !-> REPEAT: L=5
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=5 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=5 p50depth, p50depth_deltaH0
 !-> REPEAT: L=6
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=6 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=6 p50depth, p50depth_deltaH0
 !-> REPEAT: L=7
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=7 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=7 p50depth, p50depth_deltaH0
 !-> REPEAT: L=8
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=8 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=8 p50depth, p50depth_deltaH0
 !-> REPEAT: L=9
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=9 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=9 p50depth, p50depth_deltaH0
 !-> REPEAT: L=10
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=10 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=10 p50depth, p50depth_deltaH0
 !-> REPEAT: L=11
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=11 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=11 p50depth, p50depth_deltaH0
 !-> REPEAT: L=12
- !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=12 p50depth
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.Katsuwonus_pelamis.nc"/L=12 p50depth, p50depth_deltaH0
