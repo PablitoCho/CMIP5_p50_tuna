@@ -47,11 +47,11 @@ while i<len(species1):
   else:
     m.drawparallels(np.arange(-90.,120.,30.),labels=[0,0,0,0])
   m.drawmeridians(np.arange(0.,420.,60.),labels=[0,0,0,0])
-  im1 = m.pcolor(x,y,depth,cmap=plt.cm.jet_r, vmin=0, vmax=500)
-  im2 = m.pcolor(a,b,depth,cmap=plt.cm.jet_r, vmin=0, vmax=500)
+  im1 = m.pcolor(x,y,depth,cmap=plt.cm.jet_r, vmin=0, vmax=1000)
+  im2 = m.pcolor(a,b,depth,cmap=plt.cm.jet_r, vmin=0, vmax=1000)
   cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
-  cb.set_ticks([0,100,200,300,400,500])
-  cb.set_ticklabels([0,100,200,300,400,500])
+  cb.set_ticks([0,200,400,600,800,1000])
+  cb.set_ticklabels([0,200,400,600,800,1000])
   plt.title(species1[i], fontsize=12)
   plt.suptitle("WOA P50 Depth")
   i=i+1
