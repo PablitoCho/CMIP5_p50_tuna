@@ -1,12 +1,19 @@
 #!/bin/sh
 rm geostats.jnl
-rm /Data/Projects/CMIP5_p50/CESM1/cesm1_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/cesm1/cesm1_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/esm2g/esm2g_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/esm2m/esm2m_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/hadgem2/hadgem2_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/ipsl/ipsl_p50depthav_area_rcp8.5.txt
+rm /Data/Projects/CMIP5_p50/mpi/mpi_p50depthav_area_rcp8.5.txt
 
 while IFS=, read -r species p50 deltaH
 do
 
 for model in cesm1 esm2g esm2m hadgem2 ipsl mpi
 do
+
+
 
       echo "SET DATA \"/Data/Projects/CMIP5_p50/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\", \"/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/${model}_rcp8.5_temp.nc\"" > geostats.jnl
 

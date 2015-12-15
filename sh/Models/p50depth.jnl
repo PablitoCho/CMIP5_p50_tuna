@@ -1,5 +1,5 @@
-SET DATA "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/WOA_rcp8.5_po2.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/WOA_rcp8.5_temp.nc"
-Let p50_critter = 3.07
+SET DATA "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_po2.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_temp.nc"
+Let p50_critter = 3.1
 Let deltaH_critter = 1.5
 Let R =  0.008314
 Let tempK = temp_rcp[d=2] + 273.15
@@ -16,33 +16,33 @@ Let p50depthav_deltaH0 = p50depth_deltaH0[l=@ave]
 define att p50.long_name = "50% Blood Oxygenation"
 define att p50.units = "kPa"
 define att p50.species = "Katsuwonus_pelamis"
-define att p50.species_p50 = "3.07"
+define att p50.species_p50 = "3.1"
 define att p50.species_deltaH = "1.5"
 define att p50depth.long_name = "Depth of P50 Threshold"
 define att p50depth.units = "m"
 define att p50depth.species = "Katsuwonus_pelamis"
-define att p50depth.species_p50 = "3.07"
+define att p50depth.species_p50 = "3.1"
 define att p50depth.species_deltaH = "1.5"
 define att p50depth_deltaH0.long_name = "Depth of P50 Threshold when deltaH=0"
 define att p50depth_deltaH0.units = "m"
 define att p50depth_deltaH0.species = "Katsuwonus_pelamis"
-define att p50depth_deltaH0.species_p50 = "3.07"
+define att p50depth_deltaH0.species_p50 = "3.1"
 define att p50depth_deltaH0.species_deltaH = "0"
 define att p50av.long_name = "50% Blood Oxygenation"
 define att p50av.units = "kPa"
 define att p50av.species = "Katsuwonus_pelamis"
-define att p50av.species_p50 = "3.07"
+define att p50av.species_p50 = "3.1"
 define att p50av.species_deltaH = "1.5"
 define att p50depthav_deltaH0.long_name = "Depth of P50 Threshold when deltaH=0"
 define att p50depthav_deltaH0.units = "m"
 define att p50depthav_deltaH0.species = "Katsuwonus_pelamis"
-define att p50depthav_deltaH0.species_p50 = "3.07"
+define att p50depthav_deltaH0.species_p50 = "3.1"
 define att p50depthav_deltaH0.species_deltaH = "0"
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/WOA.rcp85.p50.Katsuwonus_pelamis.nc"/LLIMITS=1:12/L=1 p50
-repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/WOA.rcp85.p50.Katsuwonus_pelamis.nc"/L=`l` p50)
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/WOA.rcp85.p50depth.Katsuwonus_pelamis.nc"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0
-repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/WOA.rcp85.p50depth.Katsuwonus_pelamis.nc"/L=`l` p50depth, p50depth_deltaH0)
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50/WOA.rcp85.p50av.Katsuwonus_pelamis.nc" p50av
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/WOA.rcp85.p50depthav.Katsuwonus_pelamis.nc" p50depthav, p50depthav_deltaH0
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50/mpi.rcp85.p50.Katsuwonus_pelamis.nc"/LLIMITS=1:12/L=1 p50
+repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50/mpi.rcp85.p50.Katsuwonus_pelamis.nc"/L=`l` p50)
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50depth/mpi.rcp85.p50depth.Katsuwonus_pelamis.nc"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0
+repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50depth/mpi.rcp85.p50depth.Katsuwonus_pelamis.nc"/L=`l` p50depth, p50depth_deltaH0)
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50/mpi.rcp85.p50av.Katsuwonus_pelamis.nc" p50av
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50depth/mpi.rcp85.p50depthav.Katsuwonus_pelamis.nc" p50depthav, p50depthav_deltaH0
 quit

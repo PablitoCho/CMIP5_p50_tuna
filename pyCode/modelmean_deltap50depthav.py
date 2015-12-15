@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 
 Folder = '/Data/Projects/CMIP5_p50/modelmean'
-species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Scomber_japonicus', 'Thunnus_maccoyii']
+species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_maccoyii']
 
 #leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
 leftlist = [0.02, 0.24, 0.48, 0.72]
