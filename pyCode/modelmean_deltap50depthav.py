@@ -9,21 +9,23 @@ import pandas
 
 Folder = '/Data/Projects/CMIP5_p50/modelmean'
 species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_maccoyii']
+species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus alalunga', 'Thunnus thynnus', 'Thunnus maccoyii']
+
 
 #leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
-leftlist = [0.02, 0.24, 0.48, 0.72]
+#leftlist = [0.02, 0.24, 0.48, 0.72]
 #bottomlist = [0.755, 0.51, 0.265, 0.02]
 #bottomlist = [0.7525, 0.505, 0.2575, 0.01]
 bottomlist = [0.66, 0.42, 0.17]
 
 width = 0.42
 #height = 0.225
-height = 0.23
-#height = 0.20
+#height = 0.23
+height = 0.20
 
-g = [[0.06, bottomlist[0], width, height], [0.56, bottomlist[0], width, height],
-     [0.06, bottomlist[1], width, height], [0.56, bottomlist[1], width, height],
-[0.06, bottomlist[2], width, height], [0.56, bottomlist[2], width, height]]
+g = [[0.04, bottomlist[0], width, height], [0.54, bottomlist[0], width, height],
+     [0.04, bottomlist[1], width, height], [0.54, bottomlist[1], width, height],
+     [0.04, bottomlist[2], width, height], [0.54, bottomlist[2], width, height]]
 
 i = 0
 while i<len(species1):
@@ -53,11 +55,11 @@ while i<len(species1):
   cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
   cb.set_ticks([-200,-100,0,100,200])
   cb.set_ticklabels([-200,-100,0,100,200])
-  plt.title(species1[i], fontsize=12)
+  plt.title(species2[i], fontsize=12)
   plt.suptitle("Model Mean P50 Depth Change")
   i=i+1
 
 plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/modelmean_deltap50depthav.pdf'
+outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/modelmean_deltap50depthav.ps'
 plt.savefig(outfig, dpi=100, bbox_inches=0)

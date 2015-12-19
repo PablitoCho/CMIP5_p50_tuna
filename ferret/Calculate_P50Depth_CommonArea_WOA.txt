@@ -1,0 +1,130 @@
+SET DATA "/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_alalunga/p50depth/woa.p50depthav.Thunnus_alalunga.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_albacares/p50depth/woa.p50depthav.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50depth/woa.p50depthav.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50depth/woa.p50depthav.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_thynnus/p50depth/woa.p50depthav.Thunnus_thynnus.nc"
+
+Let mask1 = P50DEPTHAV[d=1]*0+1
+Let mask2 = P50DEPTHAV[d=2]*0+1
+Let mask3 = P50DEPTHAV[d=3]*0+1
+Let mask4 = P50DEPTHAV[d=4]*0+1
+Let mask5 = P50DEPTHAV[d=5]*0+1
+Let mask6 = P50DEPTHAV[d=6]*0+1
+
+Let maskall = mask1 * mask2 * mask3 * mask4 * mask5 * mask6
+
+Let mask1_H0 = P50DEPTHAV_DELTAH0[d=1]*0+1
+Let mask2_H0 = P50DEPTHAV_DELTAH0[d=2]*0+1
+Let mask3_H0 = P50DEPTHAV_DELTAH0[d=3]*0+1
+Let mask4_H0 = P50DEPTHAV_DELTAH0[d=4]*0+1
+Let mask5_H0 = P50DEPTHAV_DELTAH0[d=5]*0+1
+Let mask6_H0 = P50DEPTHAV_DELTAH0[d=6]*0+1
+
+Let maskall_H0 = mask1_H0 * mask2_H0 * mask3_H0 * mask4_H0 * mask5_H0 * mask6_H0
+
+Let p50depthav_mask = P50DEPTHAV[d=1]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=1]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Katsuwonus_pelamis"
+define att p50depthav_mask.species_p50 = "3.1"
+define att p50depthav_mask.species_deltaH = "1.5"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Katsuwonus_pelamis"
+define att p50depthav_deltaH_mask.species_p50 = "3.1"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.common.Katsuwonus_pelamis.nc" p50depthav_mask, p50depthav_deltaH_mask
+
+Let p50depthav_mask = P50DEPTHAV[d=2]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=2]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Thunnus_alalunga"
+define att p50depthav_mask.species_p50 = "1.9"
+define att p50depthav_mask.species_deltaH = "7.2"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Thunnus_alalunga"
+define att p50depthav_deltaH_mask.species_p50 = "1.9"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_alalunga/p50depth/woa.p50depth.common.Thunnus_alalunga.nc" p50depthav_mask, p50depthav_deltaH_mask
+
+
+Let p50depthav_mask = P50DEPTHAV[d=3]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=3]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Thunnus_albacares"
+define att p50depthav_mask.species_p50 = "2.7"
+define att p50depthav_mask.species_deltaH = "-0.8"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Thunnus_albacares"
+define att p50depthav_deltaH_mask.species_p50 = "2.7"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_albacares/p50depth/woa.p50depth.common.Thunnus_albacares.nc" p50depthav_mask, p50depthav_deltaH_mask
+
+Let p50depthav_mask = P50DEPTHAV[d=4]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=4]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Thunnus_maccoyii"
+define att p50depthav_mask.species_p50 = "2.9"
+define att p50depthav_mask.species_deltaH = "28.6"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Thunnus_maccoyii"
+define att p50depthav_deltaH_mask.species_p50 = "2.9"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50depth/woa.p50depth.common.Thunnus_maccoyii.nc" p50depthav_mask, p50depthav_deltaH_mask
+
+
+Let p50depthav_mask = P50DEPTHAV[d=5]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=5]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Thunnus_obesus"
+define att p50depthav_mask.species_p50 = "2.1"
+define att p50depthav_mask.species_deltaH = "-17"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Thunnus_obesus"
+define att p50depthav_deltaH_mask.species_p50 = "2.1"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50depth/woa.p50depth.common.Thunnus_obesus.nc" p50depthav_mask, p50depthav_deltaH_mask
+
+Let p50depthav_mask = P50DEPTHAV[d=6]*maskall 
+Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=6]*maskall_H0
+
+define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
+define att p50depthav_mask.units = "m"
+define att p50depthav_mask.species = "Thunnus_thynnus"
+define att p50depthav_mask.species_p50 = "3.1"
+define att p50depthav_mask.species_deltaH = "13.4"
+
+define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
+define att p50depthav_deltaH_mask.units = "m"
+define att p50depthav_deltaH_mask.species = "Thunnus_thynnus"
+define att p50depthav_deltaH_mask.species_p50 = "3.1"
+define att p50depthav_deltaH_mask.species_deltaH = "0"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_thynnus/p50depth/woa.p50depth.common.Thunnus_thynnus.nc" p50depthav_mask, p50depthav_deltaH_mask
+

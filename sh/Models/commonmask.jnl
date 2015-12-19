@@ -1,0 +1,20 @@
+SET DATA "/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/deltap50depth/mpi.deltap50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_alalunga/deltap50depth/mpi.deltap50depthav.Thunnus_alalunga.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_albacares/deltap50depth/mpi.deltap50depthav.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_maccoyii/deltap50depth/mpi.deltap50depthav.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_obesus/deltap50depth/mpi.deltap50depthav.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_thynnus/deltap50depth/mpi.deltap50depthav.Thunnus_thynnus.nc"
+Let mask1 = DELTAP50DEPTHAV[d=1]*0+1
+Let mask2 = DELTAP50DEPTHAV[d=2]*0+1
+Let mask3 = DELTAP50DEPTHAV[d=3]*0+1
+Let mask4 = DELTAP50DEPTHAV[d=4]*0+1
+Let mask5 = DELTAP50DEPTHAV[d=5]*0+1
+Let mask6 = DELTAP50DEPTHAV[d=6]*0+1
+Let maskall = mask1 * mask2 * mask3 * mask4 * mask5 * mask6
+Let mask1_H0 = DELTAP50DEPTHAV_DELTAH0[d=1]*0+1
+Let mask2_H0 = DELTAP50DEPTHAV_DELTAH0[d=2]*0+1
+Let mask3_H0 = DELTAP50DEPTHAV_DELTAH0[d=3]*0+1
+Let mask4_H0 = DELTAP50DEPTHAV_DELTAH0[d=4]*0+1
+Let mask5_H0 = DELTAP50DEPTHAV_DELTAH0[d=5]*0+1
+Let mask6_H0 = DELTAP50DEPTHAV_DELTAH0[d=6]*0+1
+Let maskall_H0 = mask1_H0 * mask2_H0 * mask3_H0 * mask4_H0 * mask5_H0 * mask6_H0
+define att maskall.long_name = "Mask for Common Area, mpi rcp8.5 deltap50depthav"
+define att maskall_H0.long_name = "Mask for Common Area, mpi rcp8.5 deltap50depthav deltaH=0"
+Set memory/size=200
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/mpi.mask.deltap50depthav.nc" maskall, maskall_H0
+quit
