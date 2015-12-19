@@ -4,7 +4,7 @@ rm modelmean.jnl
 while IFS=, read -r species p50 deltaH
 do
 
-  echo "SET DATA \"/Data/Projects/CMIP5_p50/cesm1/${species}/deltap50depth/cesm1.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2g/${species}/deltap50depth/esm2g.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2m/${species}/deltap50depth/esm2m.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/hadgem2/${species}/deltap50depth/hadgem2.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/ipsl/${species}/deltap50depth/ipsl.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/mpi/${species}/deltap50depth/mpi.deltap50depthav.${species}.nc\"" > modelmean.jnl
+  echo "SET DATA \"/Data/Projects/CMIP5_p50/cesm1/${species}/deltap50depth/cesm1.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2g/${species}/deltap50depth/esm2g.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2m/${species}/deltap50depth/esm2m.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/hadgem2/${species}/deltap50depth/hadgem2.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/ipsl/${species}/deltap50depth/ipsl.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/mpi/${species}/deltap50depth/mpi.deltap50depthav.${species}.nc\", \"/Data/WOA/WOA_temp/temperature_monthly_5deg.nc\"" > modelmean.jnl
 
   echo "Let modelmean = (DELTAP50DEPTHAV[d=1] + DELTAP50DEPTHAV[d=2] + DELTAP50DEPTHAV[d=3] + DELTAP50DEPTHAV[d=4] + DELTAP50DEPTHAV[d=5] + DELTAP50DEPTHAV[d=6])/6" >> modelmean.jnl  
 
@@ -73,28 +73,41 @@ do
 
   echo "Let signagree = signfind3*0+1" >> modelmean.jnl 
 
+  echo "Let signagree_5deg = signagree[gx=t_mn[d=7], gy=t_mn[d=7]]" >> modelmean.jnl
+
 
   echo "define att modelmean.long_name = \"Model Mean Delta P50 Depth\"">> modelmean.jnl
  
   echo "define att modelmean.units = \"m\"" >> modelmean.jnl 
 
-  echo "define att modelmean.species = \"Katsuwonus_pelamis\"" >> modelmean.jnl 
+  echo "define att modelmean.species = \"${species}\"" >> modelmean.jnl 
 
-  echo "define att modelmean.species_p50 = \"3.07\"" >> modelmean.jnl 
+  echo "define att modelmean.species_p50 = \"${p50}\"" >> modelmean.jnl 
 
-  echo "define att modelmean.species_deltaH = \"1.5\"" >> modelmean.jnl 
+  echo "define att modelmean.species_deltaH = \"${deltaH}\"" >> modelmean.jnl 
 
   echo "define att signagree.long_name = \"Mask for Gridpoints with Sign Agreement\"" >> modelmean.jnl 
 
-  echo "define att signagree.species = \"Katsuwonus_pelamis\"" >> modelmean.jnl
+  echo "define att signagree.species = \"${species}\"" >> modelmean.jnl
  
-  echo "define att signagree.species_p50 = \"3.07\"" >> modelmean.jnl 
+  echo "define att signagree.species_p50 = \"${p50}\"" >> modelmean.jnl 
 
-  echo "define att signagree.species_deltaH = \"1.5\"" >> modelmean.jnl 
+  echo "define att signagree.species_deltaH = \"${deltaH}\"" >> modelmean.jnl 
+
+
+  echo "define att signagree_5deg.species = \"${species}\"" >> modelmean.jnl
+ 
+  echo "define att signagree_5deg.species_p50 = \"${p50}\"" >> modelmean.jnl 
+
+  echo "define att signagree_5deg.species_deltaH = \"${deltaH}\"" >> modelmean.jnl 
+
 
   echo "Set memory/size=200" >> modelmean.jnl 
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/modelmean.deltap50depth.${species}.nc\" modelmean, signagree" >> modelmean.jnl 
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/modelmean/modelmean.deltap50depth.${species}.nc\" modelmean, signagree" >> modelmean.jnl 
+
+
+  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/modelmean/signagree.5deg.deltap50depth.${species}.nc\" signagree_5deg" >> modelmean.jnl 
 
   echo "quit" >> modelmean.jnl 
 

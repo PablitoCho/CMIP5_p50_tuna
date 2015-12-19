@@ -106,9 +106,9 @@ for(b in 1:length(models)){
 depthtable.all2<-depthtable.all[,c("Thunnus_obesus.cesm1", "Thunnus_obesus.esm2g", "Thunnus_obesus.esm2m", "Thunnus_obesus.hadgem2", "Thunnus_obesus.ipsl", "Thunnus_obesus.mpi", "Thunnus_albacares.cesm1", "Thunnus_albacares.esm2g", "Thunnus_albacares.esm2m", "Thunnus_albacares.hadgem2", "Thunnus_albacares.ipsl", "Thunnus_albacares.mpi", "Katsuwonus_pelamis.cesm1", "Katsuwonus_pelamis.esm2g", "Katsuwonus_pelamis.esm2m", "Katsuwonus_pelamis.hadgem2", "Katsuwonus_pelamis.ipsl", "Katsuwonus_pelamis.mpi", "Thunnus_alalunga.cesm1", "Thunnus_alalunga.esm2g", "Thunnus_alalunga.esm2m", "Thunnus_alalunga.hadgem2", "Thunnus_alalunga.ipsl", "Thunnus_alalunga.mpi", "Thunnus_thynnus.cesm1", "Thunnus_thynnus.esm2g", "Thunnus_thynnus.esm2m", "Thunnus_thynnus.hadgem2", "Thunnus_thynnus.ipsl", "Thunnus_thynnus.mpi", "Thunnus_maccoyii.cesm1", "Thunnus_maccoyii.esm2g", "Thunnus_maccoyii.esm2m", "Thunnus_maccoyii.hadgem2", "Thunnus_maccoyii.ipsl", "Thunnus_maccoyii.mpi")]
 
 
-quartz(height=8, width=5.5)
-#outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/delta_allmodels_deltaH0.ps")
-#postscript(outfile, height=8, width=5.5)
+#quartz(height=8, width=5.5)
+outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/delta_allmodels_deltaH0.ps")
+postscript(outfile, height=8, width=5.5)
 par(mfrow=c(2,1))
 par(mar=c(1, 4.5, 0, 0.5))
 par(oma=c(2, 0, 1, 1))
@@ -129,5 +129,5 @@ abline(h=0)
 boxplot(depthtable.all2, col=cols, xaxt="n", ylim=c(-500, 500), at=locs, notch=TRUE, outline=FALSE, add=TRUE)
 specieslist<-c("Thunnus\nobesus", "Thunnus\nalbacares", "Katsuwonus\npelamis", "Thunnus\nalalunga", "Thunnus\nthynnus",  "Thunnus\nmaccoyii")
 axis(side=1, at=c(3.5,11.5,19.5,27.5,35.5,43.5), line=-0.8, labels=specieslist, tick=FALSE, outer=TRUE, cex.axis=0.7)
-#dev.off()
+dev.off()
 

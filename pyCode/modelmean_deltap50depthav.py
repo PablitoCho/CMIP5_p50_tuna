@@ -5,6 +5,7 @@ from netCDF4 import Dataset
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
+import pandas
 
 Folder = '/Data/Projects/CMIP5_p50/modelmean'
 species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_maccoyii']
@@ -26,37 +27,37 @@ g = [[0.06, bottomlist[0], width, height], [0.56, bottomlist[0], width, height],
 
 i = 0
 while i<len(species1):
-  file = Folder + '/modelmean.deltaH0.deltap50depth.' + species1[i] + '.nc'
+  file = Folder + '/modelmean.deltap50depth.' + species1[i] + '.nc'
+  file2 = Folder + '/signagree.' + species1[i] + '.csv'
   nc = Dataset(file,'r')
   lats = nc.variables['LAT'][:]
   lons = nc.variables['LON'][:]
-  lons2 = lons+360
   depth = nc.variables['MODELMEAN'][:]
   depth = depth.squeeze()
-  agree = nc.variables['SIGNAGREE'][:]
-  agree = agree.squeeze()
-  agree = agree*0+0.01
+  agree = pandas.read_csv(file2, names=['lons', 'lats'])
+  agree['lons2'] = np.where(agree['lons'] <= 20 , agree['lons'] + 360, agree['lons'])
+  agreelons = agree['lons2']
+  agreelats = agree['lats']
   fig = plt.figure(1, figsize(8,10))
   axg1 = plt.axes(g[i])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='cyl',lon_0=200)
   depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
   depth_cyclic, lons_cyclic = shiftgrid(20., depth_cyclic, lons_cyclic, start=True)
-  agree_cyclic, lons_cyclic = addcyclic(agree[:,:], lons)
-  agree_cyclic, lons_cyclic = shiftgrid(20., agree_cyclic, lons_cyclic, start=True)
   x, y = m(*np.meshgrid(lons_cyclic, lats))
+  a, b = m(agreelons, agreelats)
   m.drawmapboundary(fill_color='0.7') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='black', lake_color='0.5')
   im1 = m.pcolor(x,y,depth_cyclic,cmap=plt.cm.BrBG, vmin=-200, vmax=200)
- # im2 = m.scatter(x,y,agree_cyclic,marker='.', color='k')
+  im2 = m.scatter(a,b,s=1, marker='o', facecolor='0', lw=0)
   cb = m.colorbar(im1,"bottom", size="5%", pad="2%")
   cb.set_ticks([-200,-100,0,100,200])
   cb.set_ticklabels([-200,-100,0,100,200])
   plt.title(species1[i], fontsize=12)
-  plt.suptitle("Model Mean P50 Depth Change, deltaH=0")
+  plt.suptitle("Model Mean P50 Depth Change")
   i=i+1
 
 plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/modelmean_deltap50depthav_deltaH0.ps'
+outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/modelmean_deltap50depthav.pdf'
 plt.savefig(outfig, dpi=100, bbox_inches=0)
