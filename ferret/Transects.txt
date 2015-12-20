@@ -1,0 +1,13 @@
+SET DATA "/Data/Projects/CMIP5_p50/cesm1/Katsuwonus_pelamis/p50/cesm1.rcp85.p50av.Katsuwonus_pelamis.nc"
+
+SET DATA "/Data/Projects/CMIP5_p50/cesm1/Thunnus_maccoyii/p50/cesm1.rcp85.p50av.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/cesm1/Thunnus_obesus/p50/cesm1.rcp85.p50av.Thunnus_obesus.nc"
+
+set window/size=0.5/new/aspect=1.5
+
+set viewport upper
+
+shade/x=152w/y=60s:60n p50av[d=2]
+
+set viewport lower
+
+shade/x=152w/y=60s:60n p50av[d=1]
