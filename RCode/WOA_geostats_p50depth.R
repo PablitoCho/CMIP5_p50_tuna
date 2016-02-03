@@ -174,7 +174,7 @@ cdepthtable2<-cbind(depthtable2[,"Thunnus_obesus"], depthtable2.H0[,"Thunnus_obe
 
 
 #quartz(height=8, width=4)
-outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/WOA_geostats.ps")
+outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/WOA_geostats_zoom.ps")
 postscript(outfile, height=8, width=4)
 par(mfrow=c(3,1))
 par(mar=c(1, 4.5, 0, 0.5))
@@ -182,20 +182,49 @@ par(oma=c(2, 0, 2, 1))
 par(las=1)
 par(yaxs="i")
 
-  barplot(woa, ylim=c(0, 200), col=c("black", "white"), legend=c(expression(paste(Delta, "H", "\U2260", "0 (Effect of Temperature)", sep=""), paste(Delta, "H", "\U003D", "0 (No Effect of Temperature)", sep=""))), args.legend = list(x = "topleft", inset=c(0.05, 0.02), cex=1), xaxt="n", ylab=expression(paste("area (10"^"6", " km"^"2", ")", sep="")), space=c(0,0.8), beside=TRUE)
+  collist<-c("#7fc97f", "white", "#beaed4", "white", "#fdc086", "white", "#ffff99", "white", "#386cb0", "white", "#f0027f", "white")
+
+  barplot(woa, ylim=c(0, 200), col=collist, legend=c(expression(paste(Delta, "H", "\U2260", "0 (Effect of Temperature)", sep=""), paste(Delta, "H", "\U003D", "0 (No Effect of Temperature)", sep=""))), args.legend = list(x = "topleft", inset=c(0.05, 0.02), cex=1), xaxt="n", ylab=expression(paste("area (10"^"6", " km"^"2", ")", sep="")), space=c(0,0.8), beside=TRUE)
   box()
   abline(h=0, lwd=2)
   
-  collist<-c("black", "white","", "black", "white", "", "black", "white", "", "black", "white", "", "black", "white", "", "black", "white")
-  medcollist<-c("white", "black", "","white", "black", "","white", "black", "","white", "black", "","white", "black", "","white", "black")
-  boxplot(cdepthtable, ylim=c(-1500, 0), xaxt="n", ylab="depth (m)", col=collist, medcol=medcollist, notch=TRUE, outline=FALSE)
-  locs<-c(1,2,4,5,7,8,10,11,13,14,16,17)
-  axis(side=1, at=locs, labels=FALSE, tick=TRUE)
+   
+  collist<-c("#7fc97f", "white","", "#beaed4", "white", "", "#fdc086", "white", "", "#ffff99", "white", "", "#386cb0", "white", "", "#f0027f", "white")
+  medcollist<-c("black", "black", "","black", "black", "","black", "black", "","black", "black", "","black", "black", "","black", "black")
+  
+    collist_border<-c("black","#7fc97f", "","black", "#beaed4",  "", "black", "#fdc086",  "", "black","#ffff99",  "","black", "#386cb0",  "", "black", "#f0027f")
+    
+  
+#  collist<-c("black", "white","", "black", "white", "", "black", "white", "", "black", "white", "", "black", "white", "", "black", "white")
+#  medcollist<-c("white", "black", "","white", "black", "","white", "black", "","white", "black", "","white", "black", "","white", "black")
+  
+  
+#  boxplot(cdepthtable, ylim=c(-1500, 0), xaxt="n", ylab="depth (m)", col=collist, medcol=medcollist, notch=TRUE, outline=FALSE)
+#  locs<-c(1,2,4,5,7,8,10,11,13,14,16,17)
+#  axis(side=1, at=locs, labels=FALSE, tick=TRUE)
   
   boxplot(cdepthtable2, ylim=c(-1500, 0), xaxt="n", col=collist, medcol=medcollist, ylab="depth (m) for common areas", notch=TRUE, outline=FALSE)
   axis(side=1, at=locs, labels=FALSE, tick=TRUE)
   specieslist<-c("Thunnus\nobesus", "Thunnus\nalbacares", "Katsuwonus\npelamis", "Thunnus\nalalunga", "Thunnus\nthynnus",  "Thunnus\nmaccoyii")
   axis(side=1, at=c(1.5,4.5,7.5,10.5,13.5,16.5), line=-0.5, labels=specieslist, tick=FALSE, outer=TRUE, cex.axis=0.8)
   mtext("WOA P50Depth", adj=0.6, outer=TRUE)
+  
+  boxplot(cdepthtable2, ylim=c(-500, 0), xaxt="n", col=collist, medcol=medcollist, ylab="depth (m) for common areas", notch=TRUE, outline=FALSE)
+  axis(side=1, at=locs, labels=FALSE, tick=TRUE)
+  specieslist<-c("Thunnus\nobesus", "Thunnus\nalbacares", "Katsuwonus\npelamis", "Thunnus\nalalunga", "Thunnus\nthynnus",  "Thunnus\nmaccoyii")
+  axis(side=1, at=c(1.5,4.5,7.5,10.5,13.5,16.5), line=-0.5, labels=specieslist, tick=FALSE, outer=TRUE, cex.axis=0.8)
+  mtext("WOA P50Depth", adj=0.6, outer=TRUE)
 dev.off()
+
+
+#-------------------
+# Zoom in
+#-------------------
+
+#boxplot(cdepthtable2, ylim=c(-500, 0), xaxt="n", col=collist, medcol=medcollist, ylab="depth (m) for common areas", notch=TRUE, outline=FALSE)
+#  axis(side=1, at=locs, labels=FALSE, tick=TRUE)
+#  specieslist<-c("Thunnus\nobesus", "Thunnus\nalbacares", "Katsuwonus\npelamis", "Thunnus\nalalunga", "Thunnus\nthynnus",  "Thunnus\nmaccoyii")
+#  axis(side=1, at=c(1.5,4.5,7.5,10.5,13.5,16.5), line=-0.5, labels=specieslist, tick=FALSE, outer=TRUE, cex.axis=0.8)
+#  mtext("WOA P50Depth", adj=0.6, outer=TRUE)
+
 

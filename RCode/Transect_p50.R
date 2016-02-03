@@ -1,9 +1,9 @@
 library(RNetCDF)
 library(ncdf4)
-library(ncdf)
+library(viridis)
 
-source('Code/Projects/CMIP5_p50/RCode/filled.contour/filled.contour.R', chdir = TRUE)
-source('Code/Projects/CMIP5_p50/RCode/filled.contour/filled.legend.R', chdir = TRUE)
+source('~/Code/Projects/CMIP5_p50/RCode/filled.contour/filled.contour.R', chdir = TRUE)
+source('~/Code/Projects/CMIP5_p50/RCode/filled.contour/filled.legend.R', chdir = TRUE)
 
 trans.lon<-207.5
 
@@ -12,19 +12,76 @@ trans.lon<-207.5
 #-------------------------
 		
 	file.woa.To<-paste("/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50/woa.p50av.Thunnus_obesus.nc", sep="")
-	nc.woa.To<-open.ncdf(paste(file.woa.To, sep=""))
+	nc.woa.To<-nc_open(paste(file.woa.To, sep=""))
 	lons.woa.To<-nc.woa.To$dim$LON$vals	
 	lats.woa.To<-nc.woa.To$dim$LAT$vals	
 	depths.woa.To<-nc.woa.To$dim$DEPTH$vals	
-	data.woa.To<-get.var.ncdf(nc.woa.To, nc.woa.To$var[[2]], start=c(which(lons.woa.To==trans.lon),1,1), count=c(1, 180, 24))
-	close.ncdf(nc.woa.To)
+	data.woa.To<-ncvar_get(nc.woa.To, nc.woa.To$var[[2]], start=c(which(lons.woa.To==trans.lon),1,1), count=c(1, 180, 24))
+	nc_close(nc.woa.To)
 	
 	rownames(data.woa.To)<-lats.woa.To
-	colnames(data.woa.To)<-depths.woa.To
+	colnames(data.woa.To)<-depths.woa.To*-1
 	data.woa.To<-data.woa.To[,ncol(data.woa.To):1]
 	
-	quartz()
+	file.woa.Tm<-paste("/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50/woa.p50av.Thunnus_maccoyii.nc", sep="")
+	nc.woa.Tm<-nc_open(paste(file.woa.Tm, sep=""))
+	lons.woa.Tm<-nc.woa.Tm$dim$LON$vals	
+	lats.woa.Tm<-nc.woa.Tm$dim$LAT$vals	
+	depths.woa.Tm<-nc.woa.Tm$dim$DEPTH$vals	
+	data.woa.Tm<-ncvar_get(nc.woa.Tm, nc.woa.Tm$var[[2]], start=c(which(lons.woa.Tm==trans.lon),1,1), count=c(1, 180, 24))
+	nc_close(nc.woa.Tm)
 	
+	rownames(data.woa.Tm)<-lats.woa.Tm
+	colnames(data.woa.Tm)<-depths.woa.Tm*-1
+	data.woa.Tm<-data.woa.Tm[,ncol(data.woa.Tm):1]
+	
+
+	quartz(width=4, height=6)
+	par(plt = c(0.17,0.75,0.60,0.95), #c(left, right, bottom, top)  
+    las = 1,                      # orientation of axis labels
+    cex.axis = 1,                 # size of axis annotation
+    tck = -0.04,
+    xaxs="i",
+    yaxs="i")
+
+#	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
+	
+	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), color.palette=viridis, ylab="Depth (m)", xlab="", lwd=1)
+	
+	par(new = "TRUE",
+    plt = c(0.8,0.85,0.60,0.95),   # define plot region for legend
+    las = 1,
+    cex.axis = 0.8,
+    tck=-0.4)
+
+#filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z= data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)))
+
+filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z= data.woa.To, zlim=c(0,10), color.palette=viridis)
+
+
+	par(new = "TRUE",
+	plt = c(0.17,0.75,0.15,0.5), #c(left, right, bottom, top)  
+    las = 1,                      # orientation of axis labels
+    cex.axis = 1,                 # size of axis annotation
+    tck = -0.04,
+    xaxs="i",
+    yaxs="i")
+
+#	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
+
+	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color.palette=viridis, ylab="Depth (m)", xlab="", lwd=1)
+	
+	par(new = "TRUE",
+    plt = c(0.8,0.85,0.15,0.5),   # define plot region for legend
+    las = 1,
+    cex.axis = 0.8,
+    tck=-0.4)
+
+#	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z= data.woa.Tm, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)))
+
+	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z= data.woa.Tm, zlim=c(0,10), color.palette=viridis)
+
+
 	
 	
 	
@@ -51,9 +108,9 @@ depthtable<-depthtable*-1
 
 
 
-#quartz(height=8, width=4)
-outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/WOA_geostats.ps")
-postscript(outfile, height=8, width=4)
+quartz(height=8, width=4)
+#outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/WOA_geostats.ps")
+#postscript(outfile, height=8, width=4)
 par(mfrow=c(3,1))
 par(mar=c(1, 4.5, 0, 0.5))
 par(oma=c(2, 0, 2, 1))
