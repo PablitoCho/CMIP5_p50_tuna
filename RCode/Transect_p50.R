@@ -53,12 +53,27 @@ trans.lon<-207.5
 	nc_close(nc.woa.Tm.depth)
 	names(data.woa.Tm.depth)<-lats.woa.Tm.depth
 	data.woa.Tm.depth2<-data.woa.Tm.depth*-1
+	
+	
+	file.woa.po2<-paste("/Data/WOA/WOA_o2/WOA_po2av_annual_1deg.nc", sep="")
+	nc.woa.po2<-nc_open(paste(file.woa.po2, sep=""))
+	lons.woa.po2<-nc.woa.po2$dim$LON$vals	
+	lats.woa.po2<-nc.woa.po2$dim$LAT$vals
+	depths.woa.po2<-nc.woa.po2$dim$DEPTH$vals		
+	data.woa.po2<-ncvar_get(nc.woa.po2, nc.woa.po2$var[[2]], start=c(which(lons.woa.po2==trans.lon),1,1), count=c(1, 180, 24))
+	nc_close(nc.woa.po2)
+	rownames(data.woa.po2)<-lats.woa.po2	
+	colnames(data.woa.po2)<-depths.woa.po2*-1
+	data.woa.po2<-data.woa.po2[,ncol(data.woa.po2):1]
 
-	
-	
-	
 
-	quartz(width=5, height=7)
+#-------------------------
+# Create Plot
+#-------------------------
+
+graphout<-paste("~/Code/Projects/CMIP5_p50/graphs/WOA_PacificTransect2.ps")
+postscript(graphout, width=5.5, height=7)
+	#quartz(width=5.5, height=7)
 	par(plt = c(0.17,0.75,0.60,0.95), #c(left, right, bottom, top)  
     las = 1,                      # orientation of axis labels
     cex.axis = 1,                 # size of axis annotation
@@ -68,12 +83,13 @@ trans.lon<-207.5
 
 #	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
 	
-	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,10), nlevels=10, color.palette=viridis, axes=FALSE, ylab="Depth (m)", xlab="", lwd=1)
+	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,3), nlevels=10, color.palette=viridis, axes=FALSE, ylab="Depth (m)", xlab="", lwd=1)
+	contour(x=as.numeric(rownames(data.woa.po2)), y=as.numeric(colnames(data.woa.po2)), z=data.woa.po2, add=TRUE, nlevels=15, levels=c(1,2,5,10,15), col="white")
 	axis(side=1, at=seq(-70,70,20), labels=FALSE)
 	axis(side=2, at=seq(-1600,0,200), labels=TRUE)
 	axis(side=3, at=c(-70,70), lwd.ticks=0, labels=FALSE)
 	axis(side=4, at=c(-1500,0), lwd.ticks=0, labels=FALSE)
-	lines(as.numeric(names(data.woa.To.depth)), data.woa.To.depth2, col="white", lwd=2.5)
+	lines(as.numeric(names(data.woa.To.depth)), data.woa.To.depth2, col="#FF1493", lwd=2.5)
 	
 	par(new = "TRUE",
     plt = c(0.8,0.85,0.60,0.95),   # define plot region for legend
@@ -83,8 +99,8 @@ trans.lon<-207.5
 
 #filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z= data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)))
 
-filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), nlevels=10, color.palette=viridis)
-filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), nlevels=10, color.palette=viridis)
+filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,3), nlevels=10, color.palette=viridis)
+filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,3), nlevels=10, color.palette=viridis)
 
 
 	par(new = "TRUE",
@@ -98,11 +114,12 @@ filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.wo
 #	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
 
 	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,10), nlevels=10, color.palette=viridis, axes=FALSE, ylab="Depth (m)", xlab="Degrees Latitude", lwd=1)
+	contour(x=as.numeric(rownames(data.woa.po2)), y=as.numeric(colnames(data.woa.po2)), z=data.woa.po2, add=TRUE, nlevels=15, levels=c(1,2,5,10,15), col="white")
 	axis(side=1, at=seq(-70,70,20), labels=TRUE)
 	axis(side=2, at=seq(-1600,0,200), labels=TRUE)
 	axis(side=3, at=c(-70,70), lwd.ticks=0, labels=FALSE)
 	axis(side=4, at=c(-1500,0), lwd.ticks=0, labels=FALSE)
-	lines(as.numeric(names(data.woa.Tm.depth)), data.woa.Tm.depth2, col="white", lwd=2.5)
+	lines(as.numeric(names(data.woa.Tm.depth)), data.woa.Tm.depth2, col="#FF1493", lwd=2.5)
 	
 	par(new = "TRUE",
     plt = c(0.8,0.85,0.15,0.5),   # define plot region for legend
@@ -115,3 +132,4 @@ filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.wo
 	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color=viridis, nlevels=10)
 	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color=viridis, nlevels=10)
 
+dev.off()

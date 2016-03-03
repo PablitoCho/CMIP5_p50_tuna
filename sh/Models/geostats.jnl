@@ -1,8 +1,8 @@
-SET DATA "/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/p50depth/mpi.rcp85.p50depth.Katsuwonus_pelamis.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_temp.nc"
+SET DATA "/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depth.Thunnus_orientalis.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_temp.nc"
 Let p50depthav = p50depth[d=1, l=@ave]
 Let p50deptharea = p50depthav*0+1
 Let p50depthav_deltaH0 = p50depth_deltaH0[d=1, l=@ave]
 Let p50deptharea_deltaH0 = p50depthav_deltaH0*0+1
 Let ocean = temp_rcp[d=2, l=@ave]*0+1
-list/clobber/nohead/file="/Data/Projects/CMIP5_p50/mpi/mpi_p50depthav_area_rcp8.5.txt"/format=tab/append "rcp8.5", "Katsuwonus_pelamis", 3.1, 1.5, ocean[x=@din, y=@din, k=1], p50deptharea[x=@din, y=@din], p50deptharea_deltaH0[x=@din, y=@din], p50depthav[x=@ave, y=@ave], p50depthav[x=@var, y=@var], p50depthav[x=@ngd, y=@ngd]
+list/clobber/nohead/file="/Data/Projects/CMIP5_p50/mpi/mpi_p50depthav_area_rcp8.5.txt"/format=tab/append "rcp8.5", "Thunnus_orientalis", 5.8, 13.5, ocean[x=@din, y=@din, k=1], p50deptharea[x=@din, y=@din], p50deptharea_deltaH0[x=@din, y=@din], p50depthav[x=@ave, y=@ave], p50depthav[x=@var, y=@var], p50depthav[x=@ngd, y=@ngd]
 quit

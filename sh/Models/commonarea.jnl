@@ -1,6 +1,6 @@
-SET DATA "/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/deltap50depth/mpi.deltap50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/mpi/mpi.mask.deltap50depthav.nc"
+SET DATA "/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/mpi/mpi.mask.deltap50depthav.nc"
 Let deltap50depthav_mask = DELTAP50DEPTHAV[d=1] * maskall[d=2]
 Let deltap50depthav_deltaH_mask = DELTAP50DEPTHAV_DELTAH0[d=1] * maskall_H0[d=2]
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Katsuwonus_pelamis/deltap50depth/mpi.deltap50depthav.commonarea.Katsuwonus_pelamis.nc" deltap50depthav_mask, deltap50depthav_deltaH_mask
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depthav.commonarea.Thunnus_orientalis.nc" deltap50depthav_mask, deltap50depthav_deltaH_mask
 quit
