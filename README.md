@@ -16,6 +16,10 @@ Type in bash shell:
 Install GMT5:    
 [http://gmt.soest.hawaii.edu/projects/gmt/wiki/Download](http://gmt.soest.hawaii.edu/projects/gmt/wiki/Download)
 
-Type in GMT5 bash shell (grid the same as World Ocean Atlas 1° grid):  
+Type in GMT5 bash shell (create the same grid as the World Ocean Atlas 1° grid):  
 
     gmt grdmask -R-179.5/179.5/-89.5/89.5 -I1 -f0x -f1y -NNaN/1/1 species.gmt -Gspecies.nc  
+
+Use NCO tools:   
+
+    ncrename -vz,mask species.nc
