@@ -138,6 +138,7 @@ filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.wo
 	axis(side=4, at=c(-1500,0), lwd.ticks=0, labels=FALSE)
 	lines(as.numeric(names(data.woa.Tm.depth)), data.woa.Tm.depth2, col="#FF1493", lwd=2.5)
 	points(lats.habitat.Tm, data.habitat.Tm, pch=20, cex=0.3)
+	abline(h=-550)
 	
 	par(new = "TRUE",
     plt = c(0.8,0.85,0.15,0.5),   # define plot region for legend

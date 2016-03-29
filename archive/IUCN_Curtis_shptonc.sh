@@ -7,7 +7,6 @@ done
 
 mv Birds/shp/*.gmt Birds/gmt
 
-
 for GMTfile in Birds/gmt/*.gmt
 do
 gmt grdmask -Rglobal_land_tmp.nc?atmat -f0x -f1y -NNaN/1/1 ${GMTfile} -G${GMTfile%.*}.nc
@@ -15,5 +14,8 @@ done
 
 mv Birds/gmt/*.nc Birds/nc
 
-ncrename -vz,mask Birds/nc/*.nc
+for ncfile in Birds/nc/*.nc
+do
+ncrename -vz,mask ${ncfile}
+done
 
