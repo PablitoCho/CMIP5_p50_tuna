@@ -9,14 +9,24 @@ import pandas
 np.set_printoptions(threshold=np.nan)
 
 Folder = '/Data/Projects/CMIP5_p50'
-species1 = ['Thunnus_obesus', 'Thunnus_orientalis']
-species2 = ['Thunnus obesus', 'Thunnus orientalis']
+species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
+species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus alalunga', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
 
-bottomlist = [0.5, 0.05]
-width = 0.8
-height = 0.5
+#leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
+#leftlist = [0.02, 0.24, 0.48, 0.72]
+#bottomlist = [0.755, 0.51, 0.265, 0.02]
+bottomlist = [0.7525, 0.505, 0.2575, 0.01]
+#bottomlist = [0.66, 0.42, 0.17]
 
-g = [[0.1, bottomlist[0], width, height], [0.1, bottomlist[1], width, height]]
+width = 0.42
+#height = 0.225
+#height = 0.23
+height = 0.20
+
+g = [[0.04, bottomlist[0], width, height], [0.54, bottomlist[0], width, height],
+     [0.04, bottomlist[1], width, height], [0.54, bottomlist[1], width, height],
+     [0.04, bottomlist[2], width, height], [0.54, bottomlist[2], width, height],
+     [0.04, bottomlist[3], width, height]]
 
 i = 0
 while i<len(species1):
@@ -31,7 +41,7 @@ while i<len(species1):
   agree['lons2'] = np.where(agree['lons'] <= 20 , agree['lons'] + 360, agree['lons'])
   agreelons = agree['lons2']
   agreelats = agree['lats']
-  fig = plt.figure(1, figsize(5,5.5))
+  fig = plt.figure(1, figsize(7.5,8))
   axg1 = plt.axes(g[i])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='eck4',lon_0=205)
   depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
@@ -41,15 +51,21 @@ while i<len(species1):
   m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='grey', lake_color='0.5')
-  im1 = m.pcolor(x,y,depth_cyclic,cmap='plasma_r', vmin=0, vmax=1000)
+  levels=[0,100,200,300,400,500,600,700,800,900,1000]
+  im1 = m.contourf(x,y,depth_cyclic,cmap='plasma_r',extend='max')
   im2 = m.scatter(a,b,s=1.2, marker='o', facecolor='0', lw=0)
   plt.title(species2[i], fontsize=12)
 #  plt.suptitle("WOA P50 Depth, Stippling=IUCN Habitat")
   i=i+1
 
-cb = m.colorbar(im1,"bottom", size="10%", pad="5%")
-cb.set_ticks([0,250,500,750,1000])
-cb.set_ticklabels([0,250,500,750,1000])
+#cb = m.colorbar(im1,"bottom", size="10%", pad="5%")
+#cb.set_ticks([0,250,500,750,1000])
+#cb.set_ticklabels([0,250,500,750,1000])
+
+cax = fig.add_axes([0.54, 0.2, 0.42, 0.03])
+cb=fig.colorbar(im1, cax=cax, orientation='horizontal')
+cb.set_ticklabels([0,'',200,'',400,'',600,'',800,'',1000])
+
 plt.show()
 
 outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.p50depthav.ps'
