@@ -1,6 +1,6 @@
 #!/bin/sh
 rm geostats.jnl
-rm /Data/Projects/CMIP5_p50/IUCN_WOA/IUCN_WOA_p50depthav_area.txt
+rm /Data/Projects/CMIP5_p50/IUCN_WOA/IUCN_WOA_p50depthav_area_200.txt
 
 while IFS=, read -r species p50 deltaH
 do
@@ -13,11 +13,11 @@ do
 
       echo "Let ocean = t_an[d=3, l=@ave]*0+1" >> geostats.jnl
 
-      echo "Let p50depth_200 = if p50depth lt 200 then p50depth" >> geostats.jnl
+      echo "Let p50depth_200 = if p50depth[d=4] lt 200 then p50depth" >> geostats.jnl
 
-      echo "Let p50deptharea_200 = p50depth_200*0+1" >> geostats.jnl
+      echo "Let p50deptharea_200 = p50depth_200[l=@ave]*0+1" >> geostats.jnl
 
-      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN_WOA_p50depthav_area.txt\"/format=tab/append \"WOA\", \"${species}\", ${p50}, ${deltaH}, ocean[x=@din, y=@din, k=1], habitatarea[x=@din, y=@din], p50deptharea[x=@din, y=@din], p50deptharea_200[x=@din, y=@din],  GEOGP50ZAV[d=1, x=@ave, y=@ave], GEOGP50ZAV[d=1, x=@var, y=@var], GEOGP50ZAV[d=1, x=@ngd, y=@ngd]" >> geostats.jnl
+      echo "list/clobber/nohead/file=\"/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN_WOA_p50depthav_area_200.txt\"/format=tab/append \"WOA\", \"${species}\", ${p50}, ${deltaH}, ocean[x=@din, y=@din, k=1], habitatarea[x=@din, y=@din], p50deptharea[x=@din, y=@din], p50deptharea_200[x=@din, y=@din],  GEOGP50ZAV[d=1, x=@ave, y=@ave], GEOGP50ZAV[d=1, x=@var, y=@var], GEOGP50ZAV[d=1, x=@ngd, y=@ngd]" >> geostats.jnl
 
       echo "quit" >> geostats.jnl
 
