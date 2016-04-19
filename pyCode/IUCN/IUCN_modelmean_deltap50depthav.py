@@ -52,9 +52,9 @@ while i<len(species1):
   m.drawcoastlines()
   m.fillcontinents(color='grey', lake_color='0.5')
   levels=[-200,-150, -100, -50, 0, 50, 100, 150, 200]
-  im1 = m.contourf(x,y,depth_cyclic, levels, cmap=plt.cm.PiYG_r, extend='both')
+  im1 = m.contourf(x,y,depth_cyclic, levels, cmap=plt.cm.RdBu_r, extend='both')
   im2 = m.scatter(a,b,s=1.2, marker='o', facecolor='0', lw=0)
-  plt.title(species2[i], fontsize=12)
+  plt.title(species2[i], fontsize=12, style='italic')
 #  plt.suptitle("Model Mean P50 Depth Change")
 #  if i==5:
 #    cb_axes = plt.subplot2grid((4, 2), (0, 1), rowspan=3)
@@ -63,9 +63,12 @@ while i<len(species1):
 #    cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
   i=i+1
 
-cax = fig.add_axes([0.54, 0.2, 0.42, 0.03])
+cax = fig.add_axes([0.54, 0.19, 0.42, 0.03])
 cb=fig.colorbar(im1, cax=cax, orientation='horizontal')
 cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
+text(0.6, 1.3, 'compression', fontsize=12)
+text(0.1, 1.3, 'expansion', fontsize=12)
+
 
 plt.show()
 

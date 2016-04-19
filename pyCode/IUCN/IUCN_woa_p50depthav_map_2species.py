@@ -54,7 +54,7 @@ while i<len(species1):
   levels=[0,100,200,300,400,500,600,700,800,900,1000]
   im1 = m.contourf(x,y,depth_cyclic,levels, cmap='plasma_r',extend='max')
   im2 = m.scatter(a,b,s=1.2, marker='o', facecolor='0', lw=0)
-  plt.title(species2[i], fontsize=12)
+  plt.title(species2[i], fontsize=12, style='italic')
 #  plt.suptitle("WOA P50 Depth, Stippling=IUCN Habitat")
   i=i+1
 
@@ -62,7 +62,7 @@ while i<len(species1):
 #cb.set_ticks([0,250,500,750,1000])
 #cb.set_ticklabels([0,250,500,750,1000])
 
-cax = fig.add_axes([0.54, 0.2, 0.42, 0.03])
+cax = fig.add_axes([0.54, 0.19, 0.42, 0.03])
 cb=fig.colorbar(im1, cax=cax, ticks=levels, orientation='horizontal')
 cb.set_ticklabels([0,'',200,'',400,'',600,'',800,'',1000])
 
