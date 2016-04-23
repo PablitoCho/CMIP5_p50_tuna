@@ -1,4 +1,8 @@
 SET DATA "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/WOA/WOA_temp/temperature_monthly_5deg.nc"
+
+
+
+
 Let mask_5deg = mask[d=1, gx=t_mn[d=2], gy=t_mn[d=2]]
 SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN/nc_5deg/IUCN_5deg_Thunnus_orientalis.nc" mask_5deg
 quit
