@@ -13,11 +13,11 @@ bottom = 0.1
 width = 0.9
 height = 0.9
 
-file = '/Data/Projects/CMIP5_p50/IUCN/geography_numspecies.nc'
+file = '/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.deltaseparation.nc'
 nc = Dataset(file,'r')
 lats = nc.variables['LAT'][:]
 lons = nc.variables['LON'][:]
-nsp = nc.variables['NUMSPECIES'][:]
+nsp = nc.variables['CHANGE'][:]
 nsp = nsp.squeeze()
 fig = plt.figure(1, figsize(4,3))
 axg1 = plt.axes([left,bottom,width,height])
@@ -28,16 +28,16 @@ x, y = m(*np.meshgrid(lons_cyclic, lats))
 m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
 m.drawcoastlines()
 m.fillcontinents(color='grey', lake_color='0.5')
-levels=[1,2,3,4,5,6,7]
-im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff33','#e41a1c','#377eb8','#984ea3','#4daf4a','#ff7f00'))
+levels=[0,1,2,3]
+im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff99','#386cb0','#f0027f'))
 
 
-cax = fig.add_axes([0.2, 0.15, 0.6, 0.06])
-cb=fig.colorbar(im1, cax=cax, ticks=[0.5,1.5,2.5,3.5,4.5,5.5,6.5],orientation='horizontal')
-cb.ax.set_xticklabels(['1','2','3','4','5','6'])
-text(0.2,-2, 'number of species', fontsize=12)
+cax = fig.add_axes([0.1, 0.15, 0.8, 0.06])
+cb=fig.colorbar(im1, cax=cax, ticks=[0.5,1.5,2.5,3.5],orientation='horizontal')
+cb.ax.set_xticklabels(['expansion','mixed','compression'])
+text(0.17,-2, 'change in vertical separation', fontsize=12)
 
 plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/Geo_NumSpecies.ps'
+outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/deltaseparation.ps'
 plt.savefig(outfig, dpi=300, bbox_inches=0)

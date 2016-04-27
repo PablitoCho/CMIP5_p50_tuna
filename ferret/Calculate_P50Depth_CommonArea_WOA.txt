@@ -1,130 +1,182 @@
-SET DATA "/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_alalunga/p50depth/woa.p50depthav.Thunnus_alalunga.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_albacares/p50depth/woa.p50depthav.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50depth/woa.p50depthav.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50depth/woa.p50depthav.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/WOA/Thunnus_thynnus/p50depth/woa.p50depthav.Thunnus_thynnus.nc"
+SET DATA "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_alalunga.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_thynnus.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_alalunga.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_thynnus.nc", "/Data/Projects/CMIP5_p50/IUCN/geography_numspecies.nc"
 
-Let mask1 = P50DEPTHAV[d=1]*0+1
-Let mask2 = P50DEPTHAV[d=2]*0+1
-Let mask3 = P50DEPTHAV[d=3]*0+1
-Let mask4 = P50DEPTHAV[d=4]*0+1
-Let mask5 = P50DEPTHAV[d=5]*0+1
-Let mask6 = P50DEPTHAV[d=6]*0+1
+Let model12 = ABS(GEOGP50[d=1] - GEOGP50[d=2])
+Let woa12 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=9])
+Let change12 = woa12 - model12
+Let change12a = if (change12 gt 10) then 1 else 0
+Let change12b = if (change12 lt -10) then (-1) else 0
+Let change12z = change12a+change12b
 
-Let maskall = mask1 * mask2 * mask3 * mask4 * mask5 * mask6
+Let model13 = ABS(GEOGP50[d=1] - GEOGP50[d=3])
+Let woa13 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=10])
+let change13 = woa13 - model13
+Let change13a = if (change13 gt 10) then 1 else 0
+Let change13b = if (change13 lt -10) then (-1) else 0
+Let change13z = change13a+change13b
 
-Let mask1_H0 = P50DEPTHAV_DELTAH0[d=1]*0+1
-Let mask2_H0 = P50DEPTHAV_DELTAH0[d=2]*0+1
-Let mask3_H0 = P50DEPTHAV_DELTAH0[d=3]*0+1
-Let mask4_H0 = P50DEPTHAV_DELTAH0[d=4]*0+1
-Let mask5_H0 = P50DEPTHAV_DELTAH0[d=5]*0+1
-Let mask6_H0 = P50DEPTHAV_DELTAH0[d=6]*0+1
+Let model14 = ABS(GEOGP50[d=1] - GEOGP50[d=4])
+Let woa14 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=11])
+let change14 = woa14 - model14
+Let change14a = if (change14 gt 10) then 1 else 0
+Let change14b = if (change14 lt -10) then (-1) else 0
+Let change14z = change14a+change14b
 
-Let maskall_H0 = mask1_H0 * mask2_H0 * mask3_H0 * mask4_H0 * mask5_H0 * mask6_H0
+Let model15 = ABS(GEOGP50[d=1] - GEOGP50[d=5])
+Let woa15 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=12])
+let change15 = woa15 - model15
+Let change15a = if (change15 gt 10) then 1 else 0
+Let change15b = if (change15 lt -10) then (-1) else 0
+Let change15z = change15a+change15b
 
-Let p50depthav_mask = P50DEPTHAV[d=1]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=1]*maskall_H0
+Let model16 = ABS(GEOGP50[d=1] - GEOGP50[d=6])
+Let woa16 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=13])
+let change16 = woa16 - model16
+Let change16a = if (change16 gt 10) then 1 else 0
+Let change16b = if (change16 lt -10) then (-1) else 0
+Let change16z = change16a+change16b
 
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Katsuwonus_pelamis"
-define att p50depthav_mask.species_p50 = "3.1"
-define att p50depthav_mask.species_deltaH = "1.5"
+Let model17 = ABS(GEOGP50[d=1] - GEOGP50[d=7])
+Let woa17 = ABS(GEOGP50ZAV[d=8] - GEOGP50ZAV[d=14])
+let change17 = woa17 - model17
+Let change17a = if (change17 gt 10) then 1 else 0
+Let change17b = if (change17 lt -10) then (-1) else 0
+Let change17z = change17a+change17b
 
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Katsuwonus_pelamis"
-define att p50depthav_deltaH_mask.species_p50 = "3.1"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
+Let model23 = ABS(GEOGP50[d=2] - GEOGP50[d=3])
+Let woa23 = ABS(GEOGP50ZAV[d=9] - GEOGP50ZAV[d=10])
+let change23 = woa23 - model23
+Let change23a = if (change23 gt 10) then 1 else 0
+Let change23b = if (change23 lt -10) then (-1) else 0
+Let change23z = change23a+change23b
+
+Let model24 = ABS(GEOGP50[d=2] - GEOGP50[d=4])
+Let woa24 = ABS(GEOGP50ZAV[d=9] - GEOGP50ZAV[d=11])
+let change24 = woa24 - model24
+Let change24a = if (change24 gt 10) then 1 else 0
+Let change24b = if (change24 lt -10) then (-1) else 0
+Let change24z = change24a+change24b
+
+Let model25 = ABS(GEOGP50[d=2] - GEOGP50[d=5])
+Let woa25 = ABS(GEOGP50ZAV[d=9] - GEOGP50ZAV[d=12])
+let change25 = woa25 - model25
+Let change25a = if (change25 gt 10) then 1 else 0
+Let change25b = if (change25 lt -10) then (-1) else 0
+Let change25z = change25a+change25b
+
+Let model26 = ABS(GEOGP50[d=2] - GEOGP50[d=6])
+Let woa26 = ABS(GEOGP50ZAV[d=9] - GEOGP50ZAV[d=13])
+let change26 = woa26 - model26
+Let change26a = if (change26 gt 10) then 1 else 0
+Let change26b = if (change26 lt -10) then (-1) else 0
+Let change26z = change26a+change26b
+
+Let model27 = ABS(GEOGP50[d=2] - GEOGP50[d=7])
+Let woa27 = ABS(GEOGP50ZAV[d=9] - GEOGP50ZAV[d=14])
+let change27 = woa27 - model27
+Let change27a = if (change27 gt 10) then 1 else 0
+Let change27b = if (change27 lt -10) then (-1) else 0
+Let change27z = change27a+change27b
+
+Let model34 = ABS(GEOGP50[d=3] - GEOGP50[d=4])
+Let woa34 = ABS(GEOGP50ZAV[d=10] - GEOGP50ZAV[d=11])
+let change34 = woa34 - model34
+Let change34a = if (change34 gt 10) then 1 else 0
+Let change34b = if (change34 lt -10) then (-1) else 0
+Let change34z = change34a+change34b
+
+Let model35 = ABS(GEOGP50[d=3] - GEOGP50[d=5])
+Let woa35 = ABS(GEOGP50ZAV[d=10] - GEOGP50ZAV[d=12])
+let change35 = woa35 - model35
+Let change35a = if (change35 gt 10) then 1 else 0
+Let change35b = if (change35 lt -10) then (-1) else 0
+Let change35z = change35a+change35b
+
+Let model36 = ABS(GEOGP50[d=3] - GEOGP50[d=6])
+Let woa36 = ABS(GEOGP50ZAV[d=10] - GEOGP50ZAV[d=13])
+let change36 = woa36 - model36
+Let change36a = if (change36 gt 10) then 1 else 0
+Let change36b = if (change36 lt -10) then (-1) else 0
+Let change36z = change36a+change36b
+
+Let model37 = ABS(GEOGP50[d=3] - GEOGP50[d=7])
+Let woa37 = ABS(GEOGP50ZAV[d=10] - GEOGP50ZAV[d=14])
+let change37 = woa37 - model37
+Let change37a = if (change37 gt 10) then 1 else 0
+Let change37b = if (change37 lt -10) then (-1) else 0
+Let change37z = change37a+change37b
+
+Let model45 = ABS(GEOGP50[d=4] - GEOGP50[d=5])
+Let woa45 = ABS(GEOGP50ZAV[d=11] - GEOGP50ZAV[d=12])
+let change45 = woa45 - model45
+Let change45a = if (change45 gt 10) then 1 else 0
+Let change45b = if (change45 lt -10) then (-1) else 0
+Let change45z = change45a+change45b
+
+Let model46 = ABS(GEOGP50[d=4] - GEOGP50[d=6])
+Let woa46 = ABS(GEOGP50ZAV[d=11] - GEOGP50ZAV[d=13])
+let change46 = woa46 - model46
+Let change46a = if (change46 gt 10) then 1 else 0
+Let change46b = if (change46 lt -10) then (-1) else 0
+Let change46z = change46a+change46b
+
+Let model47 = ABS(GEOGP50[d=4] - GEOGP50[d=7])
+Let woa47 = ABS(GEOGP50ZAV[d=11] - GEOGP50ZAV[d=14])
+let change47 = woa47 - model47
+Let change47a = if (change47 gt 10) then 1 else 0
+Let change47b = if (change47 lt -10) then (-1) else 0
+Let change47z = change47a+change47b
+
+Let model56 = ABS(GEOGP50[d=5] - GEOGP50[d=6])
+Let woa56 = ABS(GEOGP50ZAV[d=12] - GEOGP50ZAV[d=13])
+let change56 = woa56 - model56
+Let change56a = if (change56 gt 10) then 1 else 0
+Let change56b = if (change56 lt -10) then (-1) else 0
+Let change56z = change56a+change56b
+
+Let model57 = ABS(GEOGP50[d=5] - GEOGP50[d=7])
+Let woa57 = ABS(GEOGP50ZAV[d=12] - GEOGP50ZAV[d=14])
+let change57 = woa57 - model57
+Let change57a = if (change57 gt 10) then 1 else 0
+Let change57b = if (change57 lt -10) then (-1) else 0
+Let change57z = change57a+change57b
+
+Let model67 = ABS(GEOGP50[d=6] - GEOGP50[d=7])
+Let woa67 = ABS(GEOGP50ZAV[d=13] - GEOGP50ZAV[d=14])
+let change67 = woa67 - model67
+Let change67a = if (change67 gt 10) then 1 else 0
+Let change67b = if (change67 lt -10) then (-1) else 0
+Let change67z = change67a+change67b
+
+Let numspecies_adj = numspecies-0.5
+Let numspecies_adj6 = if (numspecies_adj eq 6) then 15 else 0
+Let numspecies_adj5 = if (numspecies_adj eq 5) then 10 else 0
+Let numspecies_adj4 = if (numspecies_adj eq 4) then 6 else 0 
+Let numspecies_adj3 = if (numspecies_adj eq 3) then 3 else 0 
+Let numspecies_adj2 = if (numspecies_adj eq 2) then 1 else 0 
+Let numspecies_all = numspecies_adj6 + numspecies_adj5 + numspecies_adj4 + numspecies_adj3 + numspecies_adj2
+
+Let numspecies0 = ignore0(numspecies_all)
+
+Let changeall = (change12z + change13z + change14z + change15z + change16z + change17z + change23z + change24z + change25z + change26z + change27z + change34z + change35z+ change36z + change37z + change45z + change46z + change47z + change56z + change57z + change67z)/numspecies0
+
+Let changeall0 = ignore0(changeall)
+
+Let compress = if (changeall0 eq 1) then 3 else  0
+
+Let mixed = if (changeall0 lt 1 AND changeall0 gt -1) then 2 else 0
+
+Let expand = if (changeall0 eq -1) then 1 else 0
+
+Let changemask = changeall0*0+1
+
+Let change = (compress + mixed + expand)*changemask
+
+!shade/palette=blue mixed
+!shade/overlay/palette=red compress
+!shade/overlay/palette=yellow expand
+
+define att change.long_name = "Predicted changes in vertical separation for tuna"
 
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Katsuwonus_pelamis/p50depth/woa.p50depth.common.Katsuwonus_pelamis.nc" p50depthav_mask, p50depthav_deltaH_mask
-
-Let p50depthav_mask = P50DEPTHAV[d=2]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=2]*maskall_H0
-
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Thunnus_alalunga"
-define att p50depthav_mask.species_p50 = "1.9"
-define att p50depthav_mask.species_deltaH = "7.2"
-
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Thunnus_alalunga"
-define att p50depthav_deltaH_mask.species_p50 = "1.9"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
-
-Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_alalunga/p50depth/woa.p50depth.common.Thunnus_alalunga.nc" p50depthav_mask, p50depthav_deltaH_mask
-
-
-Let p50depthav_mask = P50DEPTHAV[d=3]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=3]*maskall_H0
-
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Thunnus_albacares"
-define att p50depthav_mask.species_p50 = "2.7"
-define att p50depthav_mask.species_deltaH = "-0.8"
-
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Thunnus_albacares"
-define att p50depthav_deltaH_mask.species_p50 = "2.7"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
-
-Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_albacares/p50depth/woa.p50depth.common.Thunnus_albacares.nc" p50depthav_mask, p50depthav_deltaH_mask
-
-Let p50depthav_mask = P50DEPTHAV[d=4]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=4]*maskall_H0
-
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Thunnus_maccoyii"
-define att p50depthav_mask.species_p50 = "2.9"
-define att p50depthav_mask.species_deltaH = "28.6"
-
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Thunnus_maccoyii"
-define att p50depthav_deltaH_mask.species_p50 = "2.9"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
-
-Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50depth/woa.p50depth.common.Thunnus_maccoyii.nc" p50depthav_mask, p50depthav_deltaH_mask
-
-
-Let p50depthav_mask = P50DEPTHAV[d=5]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=5]*maskall_H0
-
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Thunnus_obesus"
-define att p50depthav_mask.species_p50 = "2.1"
-define att p50depthav_mask.species_deltaH = "-17"
-
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Thunnus_obesus"
-define att p50depthav_deltaH_mask.species_p50 = "2.1"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
-
-Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_obesus/p50depth/woa.p50depth.common.Thunnus_obesus.nc" p50depthav_mask, p50depthav_deltaH_mask
-
-Let p50depthav_mask = P50DEPTHAV[d=6]*maskall 
-Let p50depthav_deltaH_mask = P50DEPTHAV_DELTAH0[d=6]*maskall_H0
-
-define att p50depthav_mask.long_name = "WOA P50 Depth Common Area"
-define att p50depthav_mask.units = "m"
-define att p50depthav_mask.species = "Thunnus_thynnus"
-define att p50depthav_mask.species_p50 = "3.1"
-define att p50depthav_mask.species_deltaH = "13.4"
-
-define att p50depthav_deltaH_mask.long_name = "WOA P50 Depth when deltaH=0 Common Area"
-define att p50depthav_deltaH_mask.units = "m"
-define att p50depthav_deltaH_mask.species = "Thunnus_thynnus"
-define att p50depthav_deltaH_mask.species_p50 = "3.1"
-define att p50depthav_deltaH_mask.species_deltaH = "0"
-
-Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_thynnus/p50depth/woa.p50depth.common.Thunnus_thynnus.nc" p50depthav_mask, p50depthav_deltaH_mask
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.deltaseparation.nc" change
 

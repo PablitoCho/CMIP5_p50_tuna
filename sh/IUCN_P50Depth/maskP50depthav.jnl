@@ -1,9 +1,9 @@
-SET DATA "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/modelmean/modelmean.deltap50depth.Thunnus_orientalis.nc"
-Let geogdeltaP50 = mask[d=1] * modelmean[d=2]
-define att geogdeltaP50.long_name = "Delta P50 Depth in the Species Range"
-define att geogdeltaP50.units = "m"
-define att geogdeltaP50.species = "Thunnus_orientalis"
-define att geogdeltaP50.species_p50 = "5.8"
-define att geogdeltaP50.species_deltaH = "13.5"
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.deltap50depth.Thunnus_orientalis.nc" geogdeltaP50
+SET DATA "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/modelmean/modelmean.p50depth.Thunnus_orientalis.nc"
+Let geogP50 = mask[d=1] * modelmean[d=2]
+define att geogP50.long_name = "P50 Depth in the Species Range"
+define att geogP50.units = "m"
+define att geogP50.species = "Thunnus_orientalis"
+define att geogP50.species_p50 = "5.8"
+define att geogP50.species_deltaH = "13.5"
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_orientalis.nc" geogP50
 quit
