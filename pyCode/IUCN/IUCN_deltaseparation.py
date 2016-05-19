@@ -29,7 +29,7 @@ m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
 m.drawcoastlines()
 m.fillcontinents(color='grey', lake_color='0.5')
 levels=[0,1,2,3]
-im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff99','#386cb0','#f0027f'))
+im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#e6ab02','#386cb0','#f0027f'))
 
 
 cax = fig.add_axes([0.1, 0.15, 0.8, 0.06])
