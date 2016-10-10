@@ -1,8 +1,8 @@
-SET DATA "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_po2.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_temp.nc"
+SET DATA "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_po2.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc"
 Let p50_critter = 5.8
-Let deltaH_critter = 13.5
+Let deltaH_critter = 13  
 Let R =  0.008314
-Let tempK = temp_rcp[d=2] + 273.15
+Let tempK = t_an[d=2] + 273.15
 Let tempK_ml = tempK[z=10]
 Let tempshift_p50 = (deltaH_critter*((1/tempK)-(1/tempK_ml))/(2.303*R))
 Let p50 = 10^(log(p50_critter) + tempshift_p50)
@@ -17,32 +17,22 @@ define att p50.long_name = "50% Blood Oxygenation"
 define att p50.units = "kPa"
 define att p50.species = "Thunnus_orientalis"
 define att p50.species_p50 = "5.8"
-define att p50.species_deltaH = "13.5"
+define att p50.species_deltaH = "13  "
 define att p50depth.long_name = "Depth of P50 Threshold"
 define att p50depth.units = "m"
 define att p50depth.species = "Thunnus_orientalis"
 define att p50depth.species_p50 = "5.8"
-define att p50depth.species_deltaH = "13.5"
-define att p50depth_deltaH0.long_name = "Depth of P50 Threshold when deltaH=0"
-define att p50depth_deltaH0.units = "m"
-define att p50depth_deltaH0.species = "Thunnus_orientalis"
-define att p50depth_deltaH0.species_p50 = "5.8"
-define att p50depth_deltaH0.species_deltaH = "0"
+define att p50depth.species_deltaH = "13  "
 define att p50av.long_name = "50% Blood Oxygenation"
 define att p50av.units = "kPa"
 define att p50av.species = "Thunnus_orientalis"
 define att p50av.species_p50 = "5.8"
-define att p50av.species_deltaH = "13.5"
-define att p50depthav_deltaH0.long_name = "Depth of P50 Threshold when deltaH=0"
-define att p50depthav_deltaH0.units = "m"
-define att p50depthav_deltaH0.species = "Thunnus_orientalis"
-define att p50depthav_deltaH0.species_p50 = "5.8"
-define att p50depthav_deltaH0.species_deltaH = "0"
+define att p50av.species_deltaH = "13  "
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.rcp85.p50.Thunnus_orientalis.nc"/LLIMITS=1:12/L=1 p50
-repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.rcp85.p50.Thunnus_orientalis.nc"/L=`l` p50)
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depth.Thunnus_orientalis.nc"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0
-repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depth.Thunnus_orientalis.nc"/L=`l` p50depth, p50depth_deltaH0)
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.rcp85.p50av.Thunnus_orientalis.nc" p50av
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depthav.Thunnus_orientalis.nc" p50depthav, p50depthav_deltaH0
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.O2rcp85.TempWOA.p50.Thunnus_orientalis.nc"/LLIMITS=1:12/L=1 p50
+repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.O2rcp85.TempWOA.p50.Thunnus_orientalis.nc"/L=`l` p50)
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.O2rcp85.TempWOA.p50depth.Thunnus_orientalis.nc"/LLIMITS=1:12/L=1 p50depth
+repeat/L=2:12 (SAVE/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.O2rcp85.TempWOA.p50depth.Thunnus_orientalis.nc"/L=`l` p50depth)
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50/mpi.O2rcp85.TempWOA.p50av.Thunnus_orientalis.nc" p50av
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.O2rcp85.TempWOA.p50depthav.Thunnus_orientalis.nc" p50depthav
 quit

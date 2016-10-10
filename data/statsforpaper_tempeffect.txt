@@ -1,0 +1,9 @@
+> #--------------------------
+> # Calculate Statistics
+> #---------------------------
+> Median_O2Temp<-apply(depthtable, MARGIN=2, FUN=median, na.rm=TRUE)
+> Median_O2<-apply(depthtableH0, MARGIN=2, FUN=median, na.rm=TRUE)
+> 
+> Median_O2Temp-Median_O2
+    Thunnus_obesus  Thunnus_albacares Katsuwonus_pelamis    Thunnus_thynnus Thunnus_orientalis   Thunnus_maccoyii 
+        -5.3251541         -0.3425375          0.5821354                 NA         10.7486776        184.2845833 

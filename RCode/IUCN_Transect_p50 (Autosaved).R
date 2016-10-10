@@ -2,8 +2,10 @@ library(RNetCDF)
 library(ncdf4)
 library(viridis)
 
-source('~/Code/Projects/CMIP5_p50/RCode/filled.contour/filled.contour.R', chdir = TRUE)
-source('~/Code/Projects/CMIP5_p50/RCode/filled.contour/filled.legend.R', chdir = TRUE)
+setwd("~/Code/Projects/CMIP5_p50/RCode")
+
+source('filled.contour/filled.contour.R', chdir = TRUE)
+source('filled.contour/filled.legend.R', chdir = TRUE)
 
 trans.lon<-207.5
 
@@ -89,7 +91,7 @@ trans.lon<-207.5
 #-------------------------
 
 graphout<-paste("~/Code/Projects/CMIP5_p50/graphs/IUCN_WOA_PacificTransect.ps")
-postscript(graphout, width=5.5, height=7)
+postscript(graphout, width=4, height=6)
 #	quartz(width=5.5, height=7)
 	par(plt = c(0.17,0.75,0.60,0.95), #c(left, right, bottom, top)  
     las = 1,                      # orientation of axis labels
@@ -100,7 +102,7 @@ postscript(graphout, width=5.5, height=7)
 
 #	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
 	
-	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,3), nlevels=10, color.palette=viridis, axes=FALSE, ylab="depth (m)", xlab="", lwd=1)
+	filled.contour3(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,6), nlevels=6, color.palette=viridis, axes=FALSE, ylab="depth (m)", xlab="", lwd=1)
 	contour(x=as.numeric(rownames(data.woa.po2)), y=as.numeric(colnames(data.woa.po2)), z=data.woa.po2, add=TRUE, nlevels=15, levels=c(1,2,5,10,15), col="white")
 	axis(side=1, at=seq(-70,70,20), labels=FALSE)
 	axis(side=2, at=seq(-1600,0,200), labels=TRUE)
@@ -117,8 +119,8 @@ postscript(graphout, width=5.5, height=7)
 
 #filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z= data.woa.To, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)))
 
-filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,3), nlevels=10, color.palette=viridis)
-filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,3), nlevels=10, color.palette=viridis)
+filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,6), nlevels=6, color.palette=viridis)
+filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.woa.To)), z=data.woa.To, zlim=c(0,6), nlevels=6, color.palette=viridis)
 
 
 	par(new = "TRUE",
@@ -131,7 +133,7 @@ filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.wo
 
 #	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)), ylab="Depth (m)", xlab="", lwd=1)
 
-	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,10), nlevels=10, color.palette=viridis, axes=FALSE, ylab="depth (m)", xlab="degrees latitude", lwd=1)
+	filled.contour3(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, xlim=c(-70, 70), ylim=c(-1500,0), zlim=c(0,6), nlevels=6, color.palette=viridis, axes=FALSE, ylab="depth (m)", xlab="degrees latitude", lwd=1)
 	contour(x=as.numeric(rownames(data.woa.po2)), y=as.numeric(colnames(data.woa.po2)), z=data.woa.po2, add=TRUE, nlevels=15, levels=c(1,2,5,10,15), col="white")
 	axis(side=1, at=seq(-70,70,20), labels=TRUE)
 	axis(side=2, at=seq(-1600,0,200), labels=TRUE)
@@ -148,7 +150,7 @@ filled.legend(x=as.numeric(rownames(data.woa.To)), y=as.numeric(colnames(data.wo
 
 #	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z= data.woa.Tm, zlim=c(0,10), color.palette=colorRampPalette(viridis(20, begin=1, end=0)))
 
-	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color=viridis, nlevels=10)
-	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,10), color=viridis, nlevels=10)
+	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,6), color=viridis, nlevels=6)
+	filled.legend(x=as.numeric(rownames(data.woa.Tm)), y=as.numeric(colnames(data.woa.Tm)), z=data.woa.Tm, zlim=c(0,6), color=viridis, nlevels=6)
 
-#dev.off()
+dev.off()

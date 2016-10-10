@@ -9,8 +9,8 @@ import pandas
 np.set_printoptions(threshold=np.nan)
 
 Folder = '/Data/Projects/CMIP5_p50'
-species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
-species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus alalunga', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
+species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
+species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
 
 #leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
 #leftlist = [0.02, 0.24, 0.48, 0.72]
@@ -30,12 +30,12 @@ g = [[0.04, bottomlist[0], width, height], [0.54, bottomlist[0], width, height],
 
 i = 0
 while i<len(species1):
-  file = Folder + '/WOA/'+ species1[i] + '/p50depth/woa.p50depthav.' + species1[i] + '.nc'
+  file = Folder + '/modelmean/modelmean.p50depth.' + species1[i] + '.nc'
   file2 = Folder + '/IUCN/csv_5deg/IUCN_5deg_' + species1[i] + '.csv'
   nc = Dataset(file,'r')
   lats = nc.variables['LAT'][:]
   lons = nc.variables['LON'][:]
-  depth = nc.variables['P50DEPTHAV'][:]
+  depth = nc.variables['MODELMEAN'][:]
   depth = depth.squeeze()
   agree = pandas.read_csv(file2, names=['lons', 'lats'])
   agree['lons2'] = np.where(agree['lons'] <= 20 , agree['lons'] + 360, agree['lons'])

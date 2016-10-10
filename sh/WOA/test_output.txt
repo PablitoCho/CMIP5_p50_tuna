@@ -1,7 +1,7 @@
  	NOAA/PMEL TMAP
- 	FERRET v6.82  
- 	Darwin 9.8.0 - 08/06/12
- 	29-Feb-16 14:36     
+ 	FERRET v7 (optimized)
+ 	Darwin 15.6.0 64-bit - 07/26/16
+ 	 5-Oct-16 16:13     
 
 !-> REPEAT: L=2
  !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/WOA/Thunnus_orientalis/p50/woa.p50.Thunnus_orientalis.nc"/L=2 p50

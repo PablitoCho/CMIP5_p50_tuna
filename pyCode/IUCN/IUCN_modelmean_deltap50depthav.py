@@ -8,8 +8,8 @@ import matplotlib.mlab as mlab
 import pandas
 
 Folder = '/Data/Projects/CMIP5_p50'
-species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_alalunga', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
-species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus alalunga', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
+species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
+species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
 
 
 #leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]

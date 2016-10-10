@@ -1,10 +1,48 @@
-SET DATA "/Data/Projects/CMIP5_p50/cesm1/Thunnus_orientalis/p50depth/cesm1.rcp85.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/esm2g/Thunnus_orientalis/p50depth/esm2g.rcp85.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/esm2m/Thunnus_orientalis/p50depth/esm2m.rcp85.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/hadgem2/Thunnus_orientalis/p50depth/hadgem2.rcp85.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/ipsl/Thunnus_orientalis/p50depth/ipsl.rcp85.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depthav.Thunnus_orientalis.nc"
-Let modelmean = (P50DEPTHAV[d=1] + P50DEPTHAV[d=2] + P50DEPTHAV[d=3] + P50DEPTHAV[d=4] + P50DEPTHAV[d=5] + P50DEPTHAV[d=6])/6
-define att modelmean.long_name = "Model Mean P50 Depth"
+SET DATA "/Data/Projects/CMIP5_p50/cesm1/Thunnus_orientalis/deltap50depth/cesm1.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/esm2g/Thunnus_orientalis/deltap50depth/esm2g.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/esm2m/Thunnus_orientalis/deltap50depth/esm2m.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/hadgem2/Thunnus_orientalis/deltap50depth/hadgem2.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/ipsl/Thunnus_orientalis/deltap50depth/ipsl.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depthav.O2rcp85.TempWOA.Thunnus_orientalis.nc", "/Data/WOA/WOA_temp/temperature_monthly_5deg.nc"
+Let modelmean = (DELTAP50DEPTHAV[d=1] + DELTAP50DEPTHAV[d=2] + DELTAP50DEPTHAV[d=3] + DELTAP50DEPTHAV[d=4] + DELTAP50DEPTHAV[d=5] + DELTAP50DEPTHAV[d=6])/6
+Let mask1 = DELTAP50DEPTHAV[d=1]*0
+Let possign1 = if DELTAP50DEPTHAV[d=1] GT 0 then (1) else 0
+Let negsign1 = if DELTAP50DEPTHAV[d=1] LT 0 then (-1) else 0
+Let sign1 = mask1+possign1+negsign1
+Let mask2 = DELTAP50DEPTHAV[d=2]*0
+Let possign2 = if DELTAP50DEPTHAV[d=2] GT 0 then (1) else 0
+Let negsign2 = if DELTAP50DEPTHAV[d=2] LT 0 then (-1) else 0
+Let sign2 = mask2+possign2+negsign2
+Let mask3 = DELTAP50DEPTHAV[d=3]*0
+Let possign3 = if DELTAP50DEPTHAV[d=3] GT 0 then (1) else 0
+Let negsign3 = if DELTAP50DEPTHAV[d=3] LT 0 then (-1) else 0
+Let sign3 = mask3+possign3+negsign3
+Let mask4 = DELTAP50DEPTHAV[d=4]*0
+Let possign4 = if DELTAP50DEPTHAV[d=4] GT 0 then (1) else 0
+Let negsign4 = if DELTAP50DEPTHAV[d=3] LT 0 then (-1) else 0
+Let sign4 = mask3+possign4+negsign4
+Let mask5 = DELTAP50DEPTHAV[d=5]*0
+Let possign5 = if DELTAP50DEPTHAV[d=5] GT 0 then (1) else 0
+Let negsign5 = if DELTAP50DEPTHAV[d=5] LT 0 then (-1) else 0
+Let sign5 = mask5+possign5+negsign5
+Let mask6 = DELTAP50DEPTHAV[d=6]*0
+Let possign6 = if DELTAP50DEPTHAV[d=6] GT 0 then (1) else 0
+Let negsign6 = if DELTAP50DEPTHAV[d=6] LT 0 then (-1) else 0
+Let sign6 = mask6+possign6+negsign6
+Let signsum = sign1 + sign2 + sign3 + sign4 + sign5 + sign6
+Let signfind = if (signsum ne (6) AND signsum ne (-6)) then 0 else 1
+Let signfind2 = signsum*signfind
+Let signfind3 = ignore0(signfind2)
+Let signagree = signfind3*0+1
+Let signagree_5deg = signagree[gx=t_mn[d=7], gy=t_mn[d=7]]
+define att modelmean.long_name = "Model Mean Delta P50 Depth"
 define att modelmean.units = "m"
 define att modelmean.species = "Thunnus_orientalis"
 define att modelmean.species_p50 = "5.8"
-define att modelmean.species_deltaH = "13.5"
+define att modelmean.species_deltaH = "13  "
+define att signagree.long_name = "Mask for Gridpoints with Sign Agreement"
+define att signagree.species = "Thunnus_orientalis"
+define att signagree.species_p50 = "5.8"
+define att signagree.species_deltaH = "13  "
+define att signagree_5deg.species = "Thunnus_orientalis"
+define att signagree_5deg.species_p50 = "5.8"
+define att signagree_5deg.species_deltaH = "13  "
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/modelmean/modelmean.p50depth.Thunnus_orientalis.nc" modelmean
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/modelmean/modelmean.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc" modelmean, signagree
+SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/modelmean/signagree.5deg.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc" signagree_5deg
 quit

@@ -1,5 +1,27 @@
  	NOAA/PMEL TMAP
- 	FERRET v6.82  
- 	Darwin 9.8.0 - 08/06/12
- 	29-Feb-16 17:08     
+ 	FERRET v7 (optimized)
+ 	Darwin 15.6.0 64-bit - 07/26/16
+ 	 5-Oct-16 16:21     
 
+!-> REPEAT: L=2
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=2 deltap50depth
+!-> REPEAT: L=3
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=3 deltap50depth
+!-> REPEAT: L=4
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=4 deltap50depth
+!-> REPEAT: L=5
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=5 deltap50depth
+!-> REPEAT: L=6
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=6 deltap50depth
+!-> REPEAT: L=7
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=7 deltap50depth
+!-> REPEAT: L=8
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=8 deltap50depth
+!-> REPEAT: L=9
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=9 deltap50depth
+!-> REPEAT: L=10
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=10 deltap50depth
+!-> REPEAT: L=11
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=11 deltap50depth
+!-> REPEAT: L=12
+ !-> LIST/FORMAT=CDF/APPEND/FILE="/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/deltap50depth/mpi.deltap50depth.O2rcp85.TempWOA.Thunnus_orientalis.nc"/L=12 deltap50depth
