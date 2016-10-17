@@ -5,7 +5,7 @@ filled.legend <-
     levels = pretty(zlim, nlevels), nlevels = 20, color.palette = cm.colors, 
     col = color.palette(length(levels) - 1), plot.title, plot.axes, 
     key.title, key.axes, asp = NA, xaxs = "i", yaxs = "i", las = 1, 
-    axes = TRUE, frame.plot = axes, ...) 
+    axes = TRUE, frame.plot = axes, horiz = FALSE, ...) 
 {
   # modification of filled.contour by Carey McGilliard and Bridget Ferris
   # designed to just plot the legend
@@ -39,15 +39,24 @@ filled.legend <-
   #  mar[2L] <- 1
   #  par(mar = mar)
    # plot.new()
-    plot.window(xlim = c(0, 1), ylim = range(levels), xaxs = "i", 
-        yaxs = "i")
-    rect(0, levels[-length(levels)], 1, levels[-1L], col = col)
+   if(horiz==TRUE){
+   	plot.window(xlim = range(levels), ylim = c(0, 1), xaxs = "i", yaxs = "i")
+    rect(levels[-length(levels)], 0, levels[-1L], 1, col = col)
     if (missing(key.axes)) {
         if (axes) 
-            axis(4)
+            axis(1, padj=-1.2)
     }
     else key.axes
     box()
+    }else{
+	  plot.window(xlim = c(0, 1), ylim = range(levels), xaxs = "i", yaxs = "i")
+	  rect(0, levels[-length(levels)], 1, levels[-1L], col = col)
+	  if (missing(key.axes)) {
+	  	     if (axes) 
+	          axis(4)
+	  }
+ 	  else key.axes
+  	 box()}
 }
     #
 #    if (!missing(key.title)) 

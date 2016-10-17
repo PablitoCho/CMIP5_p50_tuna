@@ -9,24 +9,16 @@ import pandas
 
 Folder = '/Data/Projects/CMIP5_p50'
 species1 = ['Thunnus_obesus', 'Thunnus_albacares', 'Katsuwonus_pelamis', 'Thunnus_thynnus', 'Thunnus_orientalis', 'Thunnus_maccoyii']
-species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
+#species2 = ['Thunnus obesus', 'Thunnus albacares', 'Katsuwonus pelamis', 'Thunnus thynnus', 'Thunnus orientalis', 'Thunnus maccoyii']
+species2 = ['bigeye tuna', 'yellowfin tuna', 'skipjack tuna', 'Atlantic bluefin tuna', 'Pacific bluefin tuna', 'southern bluefin tuna']
 
+bottomlist = [0.72, 0.43, 0.14]
+width = 0.46
+height = 0.24
 
-#leftlist = [0.02, 0.216, 0.412, 0.608, 0.804]
-#leftlist = [0.02, 0.24, 0.48, 0.72]
-#bottomlist = [0.755, 0.51, 0.265, 0.02]
-bottomlist = [0.7525, 0.505, 0.2575, 0.01]
-#bottomlist = [0.66, 0.42, 0.17]
-
-width = 0.42
-#height = 0.225
-#height = 0.23
-height = 0.20
-
-g = [[0.04, bottomlist[0], width, height], [0.54, bottomlist[0], width, height],
-     [0.04, bottomlist[1], width, height], [0.54, bottomlist[1], width, height],
-     [0.04, bottomlist[2], width, height], [0.54, bottomlist[2], width, height],
-     [0.04, bottomlist[3], width, height]]
+g = [[0.02, bottomlist[0], width, height], [0.52, bottomlist[0], width, height],
+     [0.02, bottomlist[1], width, height], [0.52, bottomlist[1], width, height],
+     [0.02, bottomlist[2], width, height], [0.52, bottomlist[2], width, height]]
 
 i = 0
 while i<len(species1):
@@ -41,7 +33,7 @@ while i<len(species1):
   agree['lons2'] = np.where(agree['lons'] <= 20 , agree['lons'] + 360, agree['lons'])
   agreelons = agree['lons2']
   agreelats = agree['lats']
-  fig = plt.figure(1, figsize(7.5,8))
+  fig = plt.figure(1, figsize(6,5.75))
   axg1 = plt.axes(g[i])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='eck4',lon_0=205)
   depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
@@ -54,7 +46,7 @@ while i<len(species1):
   levels=[-200,-150, -100, -50, 0, 50, 100, 150, 200]
   im1 = m.contourf(x,y,depth_cyclic, levels, cmap=plt.cm.RdBu_r, extend='both')
   im2 = m.scatter(a,b,s=1.2, marker='o', facecolor='0', lw=0)
-  plt.title(species2[i], fontsize=12, style='italic')
+  plt.title(species2[i], fontsize=12)
 #  plt.suptitle("Model Mean P50 Depth Change")
 #  if i==5:
 #    cb_axes = plt.subplot2grid((4, 2), (0, 1), rowspan=3)
@@ -63,12 +55,13 @@ while i<len(species1):
 #    cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
   i=i+1
 
-cax = fig.add_axes([0.54, 0.19, 0.42, 0.03])
+cax = fig.add_axes([0.29, 0.06, 0.42, 0.03])
 cb=fig.colorbar(im1, cax=cax, orientation='horizontal')
 cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
 text(0.6, 1.3, 'compression', fontsize=12)
-text(0.1, 1.3, 'expansion', fontsize=12)
+text(0.01, 1.3, 'expansion', fontsize=12)
 
+pylab.text(-0.6, -0.8, 'Change in\nP$_{50}$ depth (m)', fontsize = 12)
 
 plt.show()
 
