@@ -25,7 +25,7 @@ specieslist<-c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pelamis", "Thu
 		}	
 		
 	}
-#Thunnus thynnus has no habitat area with a P50 depth.
+#Thunnus thynnus is removed from the table because it has no habitat with a P50 depth.
 depthtable<-depthtable[,c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pelamis", "Thunnus_orientalis", "Thunnus_maccoyii")]
 
 #-----------------------------------------
@@ -55,7 +55,7 @@ specieslist<-c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pelamis", "Thu
 		}	
 		
 	}
-#Thunnus thynnus has no habitat area with a P50 depth.
+#Thunnus thynnus is removed from the table because it has no habitat with a P50 depth.
 depthtable_Thist<-depthtable_Thist[,c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pelamis", "Thunnus_orientalis", "Thunnus_maccoyii")]
 
 
@@ -75,19 +75,22 @@ par(tck = 0.03)
 par(mgp = c(2,0.3,0))
 collist<-c("#1b9e77", "#d95f02", "#d95f02", "#7570b3", "#7570b3", "#7570b3", "#7570b3")
 
+#Create boxplots for (a)
 locs<-seq(0.7,6.5,1.2)
 vlocs<-c(1.3, 3.7)
-depthtable[,5]<-depthtable[,5]/3.2
+depthtable[,5]<-depthtable[,5]/3.2  #Adjust Thunnus_maccoyii y-axis
 boxplot(depthtable, col=collist, xaxt="n", ylab="Change in depths (m)", ylim=c(-250, 250), at=locs, cex.axis=0.8, notch=TRUE, outline=FALSE, lty=1)
 axis(side=1, at=locs, labels=FALSE, tick=TRUE, tck=0.03)
 abline(h=0, lwd=1)
 boxplot(depthtable, col=collist, xaxt="n", yaxt="n", at=locs, notch=TRUE, outline=FALSE, add=TRUE, lty=1)
+#Add axis for Thunnus_maccoyii
 altaxis<-c(-600,-300,0,300,600)
 converttcks<-altaxis/3.2
-axis(side=4, at=converttcks, line=-3.5, labels=altaxis, tick=TRUE, outer=TRUE, lwd=1, cex.axis=0.8, tck=0.03, adj=0.5)
+axis(side=4, at=converttcks, line=-3.5, labels=altaxis, tick=TRUE, outer=TRUE, lwd=1, cex.axis=0.8, tck=0.03, adj=0.5) 
 mtext("Change in depths (m)", side=4, at=0.2, las=0, line=2, adj=0.5)
-abline(v=vlocs[1], lty=3, lwd=1.5)
-abline(v=vlocs[2], lty=3, lwd=1.5)
+#Add lines and text to the plot
+abline(v=vlocs[1], lty=2, lwd=1.5)
+abline(v=vlocs[2], lty=2, lwd=1.5)
 segments(4.9, -60, 4.9, 250, lty=1)
 arrows(4.9,-60, 6.2, -60, lwd=1, lty=1, length=0.1, angle=30)
 text(5, -45,"this", cex=0.8, pos=4)
@@ -96,20 +99,23 @@ text(0, -200,"exo-\nthermic", cex=0.8, pos=4)
 text(1.6, -200,"independent", cex=0.8, pos=4)
 text(4, -200,"endothermic", cex=0.8, pos=4)
 mtext("(a)", side=3, at=0.2)
-mtext("ocean surface", side=3, las=1, at=5.4, cex=0.8)
-mtext("ocean bottom", side=1, las=1, at=5.4, line=-0.2, cex=0.8)
+mtext("ocean surface", side=3, las=1, at=6.5, cex=0.8)
+mtext("ocean bottom", side=1, las=1, at=6.5, line=-0.2, cex=0.8)
 
-depthtable_Thist[,5]<-depthtable_Thist[,5]/3.2
+#Create boxplots for (b)
+depthtable_Thist[,5]<-depthtable_Thist[,5]/3.2 #Adjust Thunnus_maccoyii y-axis
 boxplot(depthtable_Thist, col=collist, xaxt="n", ylab="Change in depths (m)", ylim=c(-250, 250), at=locs, notch=TRUE, outline=FALSE, lty=1, cex.axis=0.8)
 axis(side=1, at=locs, labels=FALSE, tick=TRUE, tck=0.03)
 abline(h=0, lwd=1)
 boxplot(depthtable_Thist, col=collist, xaxt="n", yaxt="n", ylim=c(-400, 800), at=locs, notch=TRUE, outline=FALSE, add=TRUE, lty=1)
 specieslist<-c("bigeye", "yellowfin", "skipjack", "P. bluefin", "S. bluefin")
 axis(side=1, at=locs, line=-1, las=2, labels=specieslist, tick=FALSE, outer=TRUE, cex.axis=0.8, tck=0.03)
+#Add axis for Thunnus_maccoyii
 axis(side=4, at=converttcks, line=-3.5, labels=altaxis, tick=TRUE, outer=TRUE, lwd=1, cex.axis=0.8, tck=0.03, adj=0.5)
 mtext("Change in depths (m)", side=4, at=0.2, las=0, line=2, adj=0.5)
-abline(v=vlocs[1], lty=3, lwd=1.5)
-abline(v=vlocs[2], lty=3, lwd=1.5)
+#Add lines and text to the plot
+abline(v=vlocs[1], lty=2, lwd=1.5)
+abline(v=vlocs[2], lty=2, lwd=1.5)
 segments(4.9, -60, 4.9, 250, lty=1)
 arrows(4.9,-60, 6.2, -60, lwd=1, lty=1, length=0.1, angle=30)
 text(5, -45,"this", cex=0.8, pos=4)
@@ -118,7 +124,8 @@ text(0, -200,"exo-\nthermic", cex=0.8, pos=4)
 text(1.6, -200,"independent", cex=0.8, pos=4)
 text(4, -200,"endothermic", cex=0.8, pos=4)
 mtext("(b)", side=3, at=0.2)
-mtext("ocean surface", side=3, las=1, at=5.4, cex=0.8)
+mtext("ocean surface", side=3, las=1, at=6.5, cex=0.8)
+mtext("ocean bottom", side=1, las=1, at=6.5, line=-0.2, cex=0.8)
 dev.off()
 
 #--------------------------
