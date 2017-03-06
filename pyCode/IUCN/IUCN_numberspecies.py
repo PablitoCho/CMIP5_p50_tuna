@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import pandas
+import cmocean
 np.set_printoptions(threshold=np.nan)
 
 left = 0.04
@@ -29,8 +30,8 @@ m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
 m.drawcoastlines()
 m.fillcontinents(color='grey', lake_color='0.5')
 levels=[1,2,3,4,5,6,7]
-im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff33','#e41a1c','#377eb8','#984ea3','#4daf4a','#ff7f00'))
-
+#im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff33','#e41a1c','#377eb8','#984ea3','#4daf4a','#ff7f00'))
+im1 = m.contourf(x,y,nsp_cyclic, levels, cmap=cmocean.cm.dense)
 
 cax = fig.add_axes([0.2, 0.15, 0.6, 0.06])
 cb=fig.colorbar(im1, cax=cax, ticks=[0.5,1.5,2.5,3.5,4.5,5.5,6.5],orientation='horizontal')
