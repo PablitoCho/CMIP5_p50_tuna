@@ -12,7 +12,7 @@ Folder = '/Data/Projects/CMIP5_p50'
 species1 = ['Thunnus_obesus', 'Katsuwonus_pelamis', 'Thunnus_orientalis']
 species2 = ['bigeye tuna', 'skipjack tuna', 'Pacific bluefin tuna']
 
-bottomlist = [0.72, 0.43, 0.14]
+bottomlist = [0.72, 0.44, 0.16]
 width = 0.46
 height = 0.24
 
@@ -35,7 +35,7 @@ while i<len(species1):
   geoarea['lons2'] = np.where(geoarea['lons'] <= 20 , geoarea['lons'] + 360, geoarea['lons'])
   geoarealons = geoarea['lons2']
   geoarealats = geoarea['lats']
-  fig = plt.figure(1, figsize(6,5.75))
+  fig = plt.figure(1, figsize(6,6))
   axg1 = plt.axes(g[j])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='eck4',lon_0=205)
   depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
@@ -45,11 +45,10 @@ while i<len(species1):
   m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='grey', lake_color='0.5')
-  levels=[0,100,200,300,400,500,600,700,800,900,1000]
-  im1 = m.contourf(x1,y1,depth_cyclic,levels, cmap='plasma_r',extend='max')
+  levels1=[0,100,200,300,400,500,600,700,800,900,1000]
+  im1 = m.contourf(x1,y1,depth_cyclic,levels1, cmap='plasma_r',extend='max')
   im2 = m.scatter(a1,b1,s=1.2, marker='o', facecolor='0', lw=0)
   plt.title(species2[i], fontsize=12)
-
   nc_model = Dataset(file_model,'r')
   lats = nc_model.variables['LAT'][:]
   lons = nc_model.variables['LON'][:]
@@ -65,25 +64,29 @@ while i<len(species1):
   m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
   m.drawcoastlines()
   m.fillcontinents(color='grey', lake_color='0.5')
-  levels=[-200,-150, -100, -50, 0, 50, 100, 150, 200]
-  im1 = m.contourf(x2,y2,depth_cyclic, levels, cmap=plt.cm.RdBu_r, extend='both')
-  im2 = m.scatter(a2,b2,s=1.2, marker='o', facecolor='0', lw=0)
+  levels2=[-200,-150, -100, -50, 0, 50, 100, 150, 200]
+  im3 = m.contourf(x2,y2,depth_cyclic, levels2, cmap=plt.cm.RdBu_r, extend='both')
+  im4 = m.scatter(a2,b2,s=1.2, marker='o', facecolor='0', lw=0)
   plt.title(species2[i], fontsize=12)
-
 #  plt.suptitle("WOA P50 Depth, Stippling=IUCN Habitat")
   i=i+1
-  j=j+1
+  j=j+2
 #cb = m.colorbar(im1,"bottom", size="10%", pad="5%")
 #cb.set_ticks([0,250,500,750,1000])
 #cb.set_ticklabels([0,250,500,750,1000])
 
-cax = fig.add_axes([0.29, 0.06, 0.42, 0.03])
-cb=fig.colorbar(im1, cax=cax, ticks=levels, orientation='horizontal')
+cax = fig.add_axes([0.07, 0.08, 0.36, 0.03])  #[left,bottom,width,height]
+cb=fig.colorbar(im1, cax=cax, ticks=levels1, orientation='horizontal')
 cb.set_ticklabels([0,'',200,'',400,'',600,'',800,'',1000])
+pylab.text(0.28, 1.3, 'P$_{50}$ depth (m)', fontsize = 12)
 
-pylab.text(0.3, 1.4, 'P$_{50}$ depth (m)', fontsize = 12)
+cax = fig.add_axes([0.57, 0.08, 0.36, 0.03])
+cb=fig.colorbar(im3, cax=cax, orientation='horizontal')
+cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
+text(0.6, -1.8, 'compression', fontsize=12)
+text(-0.05, -1.8, 'expansion', fontsize=12)
+pylab.text(0.01, 1.3, 'Change in P$_{50}$ depth (m)', fontsize = 12)
 
-plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.p50depthav.ps'
+outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.ModelMean.P50depth.ps'
 plt.savefig(outfig, dpi=300, bbox_inches=0)
