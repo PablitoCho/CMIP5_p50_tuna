@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import pandas
 np.set_printoptions(threshold=np.nan)
+plt.rc('font', family='serif', serif='Times New Roman')
 
 Folder = '/Data/Projects/CMIP5_p50'
 species1 = ['Thunnus_obesus', 'Katsuwonus_pelamis', 'Thunnus_orientalis']
@@ -19,6 +20,8 @@ height = 0.24
 g = [[0.02, bottomlist[0], width, height], [0.52, bottomlist[0], width, height],
      [0.02, bottomlist[1], width, height], [0.52, bottomlist[1], width, height],
      [0.02, bottomlist[2], width, height], [0.52, bottomlist[2], width, height]]
+
+letters = ["(a)", "(b)", "(c)", "(d)", "(e)", "(f)"]
 
 i = 0
 j = 0
@@ -49,6 +52,7 @@ while i<len(species1):
   im1 = m.contourf(x1,y1,depth_cyclic,levels1, cmap='plasma_r',extend='max')
   im2 = m.scatter(a1,b1,s=1.2, marker='o', facecolor='0', lw=0)
   plt.title(species2[i], fontsize=12)
+  plt.annotate(letters[j], xy=(0,1), xycoords='axes fraction')
   nc_model = Dataset(file_model,'r')
   lats = nc_model.variables['LAT'][:]
   lons = nc_model.variables['LON'][:]
@@ -68,6 +72,7 @@ while i<len(species1):
   im3 = m.contourf(x2,y2,depth_cyclic, levels2, cmap=plt.cm.RdBu_r, extend='both')
   im4 = m.scatter(a2,b2,s=1.2, marker='o', facecolor='0', lw=0)
   plt.title(species2[i], fontsize=12)
+  plt.annotate(letters[j+1], xy=(0,1), xycoords='axes fraction')
 #  plt.suptitle("WOA P50 Depth, Stippling=IUCN Habitat")
   i=i+1
   j=j+2
@@ -86,7 +91,6 @@ cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
 text(0.55, -2, 'compression', fontsize=12)
 text(-0.05, -2, 'expansion', fontsize=12)
 pylab.text(0.01, 1.3, 'Change in P$_{50}$ depth (m)', fontsize = 12)
-
 
 outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.ModelMean.P50depth.ps'
 plt.savefig(outfig, dpi=300, bbox_inches=0)
