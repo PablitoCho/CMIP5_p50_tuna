@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import pandas
 np.set_printoptions(threshold=np.nan)
+plt.rc('font', family='serif', serif='Times New Roman')
 
 left1 = 0.025
 bottom1 = 0.15
