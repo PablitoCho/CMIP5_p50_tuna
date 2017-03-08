@@ -11,7 +11,7 @@ np.set_printoptions(threshold=np.nan)
 plt.rc('font', family='serif', serif='Times New Roman')
 
 left = 0.04
-bottom = 0.1
+bottom = 0.15
 width = 0.9
 height = 0.9
 
@@ -34,10 +34,10 @@ levels=[1,2,3,4,5,6,7]
 #im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#ffff33','#e41a1c','#377eb8','#984ea3','#4daf4a','#ff7f00'))
 im1 = m.contourf(x,y,nsp_cyclic, levels, cmap=cmocean.cm.dense)
 
-cax = fig.add_axes([0.2, 0.15, 0.6, 0.06])
+cax = fig.add_axes([0.2, 0.18, 0.6, 0.06])
 cb=fig.colorbar(im1, cax=cax, ticks=[0.5,1.5,2.5,3.5,4.5,5.5,6.5],orientation='horizontal')
 cb.ax.set_xticklabels(['1','2','3','4','5','6'])
-text(0.2,-2, 'number of species', fontsize=12)
+text(0.2,-2.5, 'Number of species', fontsize=12)
 
 plt.show()
 

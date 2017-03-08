@@ -10,7 +10,7 @@ np.set_printoptions(threshold=np.nan)
 plt.rc('font', family='serif', serif='Times New Roman')
 
 left = 0.04
-bottom = 0.1
+bottom = 0.15
 width = 0.9
 height = 0.9
 
@@ -33,10 +33,10 @@ levels=[0,1,2,3]
 im1 = m.contourf(x,y,nsp_cyclic,levels, colors=('#e6ab02','#386cb0','#f0027f'))
 
 
-cax = fig.add_axes([0.1, 0.15, 0.8, 0.06])
+cax = fig.add_axes([0.1, 0.18, 0.8, 0.06])
 cb=fig.colorbar(im1, cax=cax, ticks=[0.5,1.5,2.5,3.5],orientation='horizontal')
 cb.ax.set_xticklabels(['expansion','mixed','compression'])
-text(0.17,-2, 'change in vertical separation', fontsize=12)
+text(0.17,-2.5, 'Change in vertical separation', fontsize=12)
 
 plt.show()
 
