@@ -83,8 +83,8 @@ pylab.text(0.28, 1.3, 'P$_{50}$ depth (m)', fontsize = 12)
 cax = fig.add_axes([0.57, 0.08, 0.36, 0.03])
 cb=fig.colorbar(im3, cax=cax, orientation='horizontal')
 cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
-text(0.6, -1.8, 'compression', fontsize=12)
-text(-0.05, -1.8, 'expansion', fontsize=12)
+text(0.55, -2, 'compression', fontsize=12)
+text(-0.05, -2, 'expansion', fontsize=12)
 pylab.text(0.01, 1.3, 'Change in P$_{50}$ depth (m)', fontsize = 12)
 
 
