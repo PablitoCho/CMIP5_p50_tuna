@@ -8,6 +8,9 @@ import matplotlib.mlab as mlab
 import pandas
 np.set_printoptions(threshold=np.nan)
 plt.rc('font', family='serif', serif='Times New Roman')
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 3
 
 Folder = '/Data/Projects/CMIP5_p50'
 species1 = ['Thunnus_obesus', 'Katsuwonus_pelamis', 'Thunnus_orientalis']
@@ -93,4 +96,4 @@ text(-0.05, -2, 'expansion', fontsize=12)
 pylab.text(0.08, 1.3, 'Change in P$_{50}$ depth (m)', fontsize = 12)
 
 outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.ModelMean.P50depth.ps'
-plt.savefig(outfig, dpi=300, bbox_inches=0)
+plt.savefig(outfig, transparent=True)
