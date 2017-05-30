@@ -63,9 +63,9 @@ depthtable_Thist<-depthtable_Thist[,c("Thunnus_obesus", "Thunnus_albacares", "Ka
 # Plot P50 Depth Changes 
 #------------------------
 
-outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/IUCN_deltadepth_modelmean.ps")
-postscript(outfile, height=5.5, width=5, family="Times")
-#quartz(height=5.5, width=5)
+outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/IUCN_deltadepth_modelmean_alt.ps")
+postscript(outfile, height=6, width=5, family="Times")
+#quartz(height=6, width=5)
 par(mfrow=c(2,1))
 par(mar=c(1, 4.5, 1, 3.5))
 par(oma=c(3.8, 0, 1, 1))

@@ -1,5 +1,21 @@
-### CMIP5 P50 Analysis
+### CMIP5 P<sub>50</sub> Analysis  
+-----------------------------  
 
+
+---------------------------
+#### Software dependencies
+---------------------------
+
+
+---------------
+#### Folders
+---------------
+
+
+--------------------------
+#### Environmental data
+--------------------------
+#### IUCN data
 
 Request spatial data for range areas from IUCN Red List of Threatened Species:  
 [http://www.iucnredlist.org](http://www.iucnredlist.org)
@@ -23,3 +39,21 @@ Type in GMT5 bash shell (create the same grid as the World Ocean Atlas 1° grid)
 Use NCO tools:   
 
     ncrename -vz,mask species.nc
+
+
+-------------------------------
+#### Running the analysis code
+-------------------------------
+
+-----------------------------
+#### Verifying the results
+-----------------------------
+
+
+-----------------------------
+#### Graphing the results
+-----------------------------
+
+-----------------------------
+#### Acknowledgements
+-----------------------------
