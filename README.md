@@ -1,6 +1,9 @@
 ### CMIP5 P<sub>50</sub> Analysis  
 -----------------------------  
 
+**Please cite the following paper if you use this code:**
+
+Mislan, K. A. S., C. A. Deutsch, R. W. Brill, J. P. Dunne, and J. L. Sarmiento. (2017) Projections of climate driven changes in tuna vertical habitat based on species-specific differences in blood oxygen affinity. Global Change Biology.
 
 ---------------------------
 #### Software dependencies
