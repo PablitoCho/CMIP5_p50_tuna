@@ -1,6 +1,9 @@
 ### CMIP5 P<sub>50</sub> Analysis  
 -----------------------------  
 
+
+
+
 **Please cite the following paper if you use this code:**
 
 Mislan, K. A. S., C. A. Deutsch, R. W. Brill, J. P. Dunne, and J. L. Sarmiento. (2017) Projections of climate driven changes in tuna vertical habitat based on species-specific differences in blood oxygen affinity. Global Change Biology.
@@ -8,7 +11,26 @@ Mislan, K. A. S., C. A. Deutsch, R. W. Brill, J. P. Dunne, and J. L. Sarmiento. 
 ---------------------------
 #### Software dependencies
 ---------------------------
+**All the required software is open source.**
 
+NOAA Ferret v7:[http://www.ferret.noaa.gov/Ferret/](http://www.ferret.noaa.gov/Ferret/)
+
+
+Python v2.7.6: [https://www.python.org/](https://www.python.org/)  
+Python packages: scipy 0.14.0, basemap 1.0.7, numpy 1.9.2, netCDF4 1.1.8, matplotlib 1.4.3
+
+R v3.2.2: [http://www.r-project.org/](http://www.r-project.org/)  
+R packages: ncdf 1.6.8, colorRamps 2.3, fields 8.2-1, caTools 1.17.1
+library(RNetCDF)
+library(ncdf4)
+library(viridis)
+
+
+**Operating system information:**
+
+Mac OS X and Unix-like operating systems should be able to install NOAA Ferret and R without any additional dependencies.
+
+NOAA Ferret running under Windows is not currently supported.  The NOAA Ferret [documentation](http://ferret.pmel.noaa.gov/Ferret/downloads/downloading_ferret) has suggestions for running NOAA Ferret on Windows operating systems.
 
 ---------------
 #### Folders
@@ -47,6 +69,14 @@ Use NCO tools:
 -------------------------------
 #### Running the analysis code
 -------------------------------
+Generate climate projections for the end of the century by adding the modeled changes in climate to World Ocean Atlas data.  Results from 6 models are saved in the `data/CMIP5/projections` folder.
+
+    ferret < ferret/Projections_modeldiff_WOA_rcp8.5.jnl
+
+Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>).
+
+
+
 
 -----------------------------
 #### Verifying the results
