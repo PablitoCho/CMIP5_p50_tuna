@@ -73,9 +73,10 @@ Generate climate projections for the end of the century by adding the modeled ch
 
     ferret < ferret/Projections_modeldiff_WOA_rcp8.5.jnl
 
-Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>).
+Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>). Results from 6 models are saved in the `data/CMIP5/projections` folder.  WOA results are saved in the `data/WOA` folder.
 
-
+    ferret < ferret/Projections_convert_pO2.jnl  
+    ferret < ferret/WOA_convert_pO2.jnl
 
 
 -----------------------------

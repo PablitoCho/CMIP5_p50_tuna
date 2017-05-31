@@ -7,8 +7,8 @@ do
 for model in cesm1 esm2g esm2m hadgem2 ipsl mpi
 do
 
-  mkdir /Data/Projects/CMIP5_p50/${model}
-  mkdir /Data/Projects/CMIP5_p50/${model}/${species}	
+  mkdir results/${model}
+  mkdir results/${model}/${species}	
   mkdir /Data/Projects/CMIP5_p50/${model}/${species}/p50
   mkdir /Data/Projects/CMIP5_p50/${model}/${species}/p50depth
 
