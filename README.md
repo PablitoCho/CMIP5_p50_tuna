@@ -78,6 +78,15 @@ Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>). Results from 6 mod
     ferret < ferret/Projections_convert_pO2.jnl  
     ferret < ferret/WOA_convert_pO2.jnl
 
+Calculate p50 and p50 depth for the models and data.
+
+    sh sh/Models_p50/p50depth_rcp8.5.sh < sh/Species_global4.csv
+    sh sh/WOA_p50/WOA_p50depth.sh < sh/Species_global4.csv
+
+Calculate the change in p50 depth
+
+    
+
 
 -----------------------------
 #### Verifying the results

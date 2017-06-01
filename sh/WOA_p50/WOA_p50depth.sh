@@ -4,12 +4,12 @@ rm p50depth.jnl
 while IFS=, read -r species p50 deltaH
 do
   
-  mkdir /Data/Projects/CMIP5_p50/WOA
-  mkdir /Data/Projects/CMIP5_p50/WOA/${species}
-  mkdir /Data/Projects/CMIP5_p50/WOA/${species}/p50
-  mkdir /Data/Projects/CMIP5_p50/WOA/${species}/p50depth
+  mkdir results/WOA
+  mkdir results/WOA/${species}
+  mkdir results/WOA/${species}/p50
+  mkdir results/WOA/${species}/p50depth
 
-  echo "SET DATA \"/Data/WOA/WOA_o2/WOA_po2_monthly_1deg.nc\", \"/Data/WOA/WOA_temp/temperature_monthly_1deg.nc\"" >p50depth.jnl
+  echo "SET DATA \"data/WOA/WOA_po2_monthly_1deg.nc\", \"data/WOA/temperature_monthly_1deg.nc\"" >p50depth.jnl
 
   echo "Let p50_critter = ${p50}" >> p50depth.jnl #kPa
 
@@ -108,23 +108,24 @@ do
 
   echo "Set memory/size=200" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50/woa.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/WOA/${species}/p50/woa.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50/woa.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"results/WOA/${species}/p50/woa.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50depth/woa.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/WOA/${species}/p50depth/woa.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50depth/woa.p50depth.${species}.nc\"/L=\`l\` p50depth, p50depth_deltaH0)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"results/WOA/${species}/p50depth/woa.p50depth.${species}.nc\"/L=\`l\` p50depth, p50depth_deltaH0)" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50/woa.p50av.${species}.nc\" p50av" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/WOA/${species}/p50/woa.p50av.${species}.nc\" p50av" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/WOA/${species}/p50depth/woa.p50depthav.${species}.nc\" p50depthav, p50depthav_deltaH0" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/WOA/${species}/p50depth/woa.p50depthav.${species}.nc\" p50depthav, p50depthav_deltaH0" >> p50depth.jnl
 
   echo "quit" >> p50depth.jnl
 
-  ferret < p50depth.jnl > test_output.txt
+  ferret < p50depth.jnl 
 	
   rm ferret.jnl*
+  rm p50depth.jnl 
 	
 done
 

@@ -4,15 +4,15 @@ rm p50depth.jnl
 while IFS=, read -r species p50 deltaH
 do
 
-for model in cesm1 esm2g esm2m hadgem2 ipsl mpi
+for model in cesm1 esm2g esm2m hadgem2 ipsl-cm5a mpi-esm
 do
 
   mkdir results/${model}
   mkdir results/${model}/${species}	
-  mkdir /Data/Projects/CMIP5_p50/${model}/${species}/p50
-  mkdir /Data/Projects/CMIP5_p50/${model}/${species}/p50depth
+  mkdir results/${model}/${species}/p50
+  mkdir results/${model}/${species}/p50depth
 
-  echo "SET DATA \"/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/${model}_rcp8.5_po2.nc\", \"/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/${model}_rcp8.5_temp.nc\"" >p50depth.jnl
+  echo "SET DATA \"data/CMIP5/projections/${model}_rcp8.5_po2.nc\", \"data/CMIP5/projections/${model}_rcp8.5_temp.nc\"" >p50depth.jnl
 
   echo "Let p50_critter = ${p50}" >> p50depth.jnl #kPa
 
@@ -99,23 +99,23 @@ do
 
   echo "Set memory/size=200" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50/${model}.rcp85.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/p50/${model}.rcp85.p50.${species}.nc\"/LLIMITS=1:12/L=1 p50" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50/${model}.rcp85.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"results/${model}/${species}/p50/${model}.rcp85.p50.${species}.nc\"/L=\`l\` p50)" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"/LLIMITS=1:12/L=1 p50depth, p50depth_deltaH0" >> p50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"/L=\`l\` p50depth, p50depth_deltaH0)" >> p50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"results/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"/L=\`l\` p50depth, p50depth_deltaH0)" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50/${model}.rcp85.p50av.${species}.nc\" p50av" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/p50/${model}.rcp85.p50av.${species}.nc\" p50av" >> p50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/p50depth/${model}.rcp85.p50depthav.${species}.nc\" p50depthav, p50depthav_deltaH0" >> p50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/p50depth/${model}.rcp85.p50depthav.${species}.nc\" p50depthav, p50depthav_deltaH0" >> p50depth.jnl
 
   echo "quit" >> p50depth.jnl
 
-  ferret < p50depth.jnl > test_output.txt
-	
+  ferret < p50depth.jnl 	
   rm ferret.jnl*
+  rm p50depth.jnl
 	
 done
 done
