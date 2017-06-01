@@ -85,7 +85,9 @@ Calculate p50 and p50 depth for the models and data.
 
 Calculate the change in p50 depth
 
-    
+    sh sh/Models_p50/deltap50depth_rcp8.5.sh < sh/Species_global4.csv
+
+
 
 
 -----------------------------
