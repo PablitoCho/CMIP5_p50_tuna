@@ -9,7 +9,7 @@ do
 
   mkdir results/${model}/${species}/deltap50depth
 
-  echo "SET DATA \"/Data/Projects/CMIP5_p50/WOA/${species}/p50depth/woa.p50depth.${species}.nc\", \"/Data/Projects/CMIP5_p50/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"" > deltap50depth.jnl
+  echo "SET DATA \"results/WOA/${species}/p50depth/woa.p50depth.${species}.nc\", \"results/${model}/${species}/p50depth/${model}.rcp85.p50depth.${species}.nc\"" > deltap50depth.jnl
 
   echo "Let deltap50depth = p50depth[d=1]-p50depth[d=2]" >> deltap50depth.jnl #kPa
 
@@ -66,17 +66,18 @@ do
 
   echo "Set memory/size=200" >> deltap50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/deltap50depth/${model}.deltap50depth.${species}.nc\"/LLIMITS=1:12/L=1 deltap50depth, deltap50depth_deltaH0" >> deltap50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/deltap50depth/${model}.deltap50depth.${species}.nc\"/LLIMITS=1:12/L=1 deltap50depth, deltap50depth_deltaH0" >> deltap50depth.jnl
 
-  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/deltap50depth/${model}.deltap50depth.${species}.nc\"/L=\`l\` deltap50depth, deltap50depth_deltaH0)" >> deltap50depth.jnl
+  echo "repeat/L=2:12 (SAVE/APPEND/FILE=\"results/${model}/${species}/deltap50depth/${model}.deltap50depth.${species}.nc\"/L=\`l\` deltap50depth, deltap50depth_deltaH0)" >> deltap50depth.jnl
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/${model}/${species}/deltap50depth/${model}.deltap50depthav.${species}.nc\" deltap50depthav, deltap50depthav_deltaH0" >> deltap50depth.jnl
+  echo "SAVE/CLOBBER/FILE=\"results/${model}/${species}/deltap50depth/${model}.deltap50depthav.${species}.nc\" deltap50depthav, deltap50depthav_deltaH0" >> deltap50depth.jnl
 
   echo "quit" >> deltap50depth.jnl
 
-  ferret < deltap50depth.jnl > test_output.txt
+  ferret < deltap50depth.jnl
 
   rm ferret.jnl*
+  rm deltap50depth.jnl
 
 done
 done
