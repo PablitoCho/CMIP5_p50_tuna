@@ -4,7 +4,7 @@ rm modelmean.jnl
 while IFS=, read -r species p50 deltaH
 do
 
-  echo "SET DATA \"/Data/Projects/CMIP5_p50/cesm1/${species}/deltap50depth/cesm1.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2g/${species}/deltap50depth/esm2g.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/esm2m/${species}/deltap50depth/esm2m.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/hadgem2/${species}/deltap50depth/hadgem2.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/ipsl/${species}/deltap50depth/ipsl.deltap50depthav.${species}.nc\", \"/Data/Projects/CMIP5_p50/mpi/${species}/deltap50depth/mpi.deltap50depthav.${species}.nc\", \"/Data/WOA/WOA_temp/temperature_monthly_5deg.nc\"" > modelmean.jnl
+  echo "SET DATA \"results/cesm1/${species}/deltap50depth/cesm1.deltap50depthav.${species}.nc\", \"results/esm2g/${species}/deltap50depth/esm2g.deltap50depthav.${species}.nc\", \"results/esm2m/${species}/deltap50depth/esm2m.deltap50depthav.${species}.nc\", \"results/hadgem2/${species}/deltap50depth/hadgem2.deltap50depthav.${species}.nc\", \"results/ipsl-cm5a/${species}/deltap50depth/ipsl-cm5a.deltap50depthav.${species}.nc\", \"results/mpi-esm/${species}/deltap50depth/mpi-esm.deltap50depthav.${species}.nc\", \"data/WOA/temperature_monthly_5deg.nc\"" > modelmean.jnl
 
   echo "Let modelmean = (DELTAP50DEPTHAV[d=1] + DELTAP50DEPTHAV[d=2] + DELTAP50DEPTHAV[d=3] + DELTAP50DEPTHAV[d=4] + DELTAP50DEPTHAV[d=5] + DELTAP50DEPTHAV[d=6])/6" >> modelmean.jnl  
 
@@ -104,16 +104,17 @@ do
 
   echo "Set memory/size=200" >> modelmean.jnl 
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/modelmean/modelmean.deltap50depth.${species}.nc\" modelmean, signagree" >> modelmean.jnl 
+  echo "SAVE/CLOBBER/FILE=\"results/modelmean/modelmean.deltap50depth.${species}.nc\" modelmean, signagree" >> modelmean.jnl 
 
 
-  echo "SAVE/CLOBBER/FILE=\"/Data/Projects/CMIP5_p50/modelmean/signagree.5deg.deltap50depth.${species}.nc\" signagree_5deg" >> modelmean.jnl 
+#!  echo "SAVE/CLOBBER/FILE=\"results/modelmean/signagree.5deg.deltap50depth.${species}.nc\" signagree_5deg" >> modelmean.jnl 
 
   echo "quit" >> modelmean.jnl 
 
-  ferret < modelmean.jnl > test_output.txt
+  ferret < modelmean.jnl
 	
   rm ferret.jnl*
+  rm modelmean.jnl 
 	
 done
 
