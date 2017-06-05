@@ -11,3 +11,5 @@ gmt grdmask -R-179.5/179.5/-89.5/89.5 -I1 -f0x -f1y -NNaN/1/1 ${folder}species.g
 ncrename -vz,mask ${folder}species.nc
 cp ${folder}species.nc "data/IUCN/nc/IUCN_${filename}.nc"
 done
+
+rm gmt.history

@@ -1,6 +1,0 @@
-SET DATA "/Data/Projects/CMIP5_p50/IUCN_models/mpi/IUCN.mpi.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/mpi_rcp8.5_temp.nc"
-Let p50deptharea = geogP50depth[d=1]*0+1
-Let habitatarea = mask[d=2]*0+1
-Let ocean = temp_rcp[d=3, l=@ave]*0+1
-list/clobber/nohead/file="/Data/Projects/CMIP5_p50/IUCN_models/IUCN_mpi_p50depthav_area_rcp8.5.txt"/format=tab/append "rcp8.5", "Thunnus_orientalis", 5.8, 13  , ocean[x=@din, y=@din, k=1], habitatarea[x=@din, y=@din], p50deptharea[x=@din, y=@din], geogP50depth[d=1, x=@ave, y=@ave], geogP50depth[d=1, x=@var, y=@var], geogP50depth[d=1, x=@ngd, y=@ngd]
-quit

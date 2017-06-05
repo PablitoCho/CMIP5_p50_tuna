@@ -94,6 +94,13 @@ Convert IUCN Shape Files to NetCDF grid
     sh sh/IUCN/ConvertTo5deg.sh < sh/Species_global4.csv
     sh sh/IUCN/NetCDF_To_ascii.sh < sh/Species_global4.csv
 
+Use IUCN mask to extract P50 depth for the habitat range of each tuna species from the models and WOA data
+
+    sh sh/IUCN_P50Depth/IUCN_modelmean_P50Depth.sh < sh/Species_global4.csv
+    sh sh/IUCN_P50Depth/IUCN_modelmean_deltaP50Depth.sh < sh/Species_global4.csv
+    sh sh/IUCN_P50Depth/IUCN_WOA_P50Depth.sh < sh/Species_global4.csv
+
+
 -----------------------------
 #### Verifying the results
 -----------------------------

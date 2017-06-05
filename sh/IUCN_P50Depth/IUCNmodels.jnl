@@ -1,9 +1,0 @@
-SET DATA "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/mpi/Thunnus_orientalis/p50depth/mpi.rcp85.p50depthav.Thunnus_orientalis.nc"
-Let geogP50depth = mask[d=1] * P50DEPTHAV[d=2]
-define att geogP50depth.long_name = "Delta P50 Depth in the Species Range"
-define att geogP50depth.units = "m"
-define att geogP50depth.species = "Thunnus_orientalis"
-define att geogP50depth.species_p50 = "5.8"
-define att geogP50depth.species_deltaH = "13.5"
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN_models/mpi/IUCN.mpi.p50depthav.Thunnus_orientalis.nc" geogP50depth
-quit
