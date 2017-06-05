@@ -2,3 +2,4 @@ data/WOA/*.nc
 data/CMIP5/modeldiff/*.nc
 data/CMIP5/projections/*.nc
 results/*
+data/IUCN/*

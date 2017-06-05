@@ -86,9 +86,13 @@ Calculate p50 and p50 depth for the models and data.
 Calculate the change in p50 depth
 
     sh sh/Models_p50/deltap50depth_rcp8.5.sh < sh/Species_global4.csv
+    sh sh/Mean_AllModels/ModelMean_deltap50depth.sh < sh/Species_global4.csv
 
+Convert IUCN Shape Files to NetCDF grid
 
-
+    sh sh/IUCN/IUCN_shptonc.sh
+    sh sh/IUCN/ConvertTo5deg.sh < sh/Species_global4.csv
+    sh sh/IUCN/NetCDF_To_ascii.sh < sh/Species_global4.csv
 
 -----------------------------
 #### Verifying the results
