@@ -113,11 +113,18 @@ Calculate projected changes in vertical separation for tuna.  First step is to c
 -----------------------------
 #### Verifying the results
 -----------------------------
+Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50 folder.
 
+Command to run comparison tests:
+
+    Rscript RCode/RunTest.R
 
 -----------------------------
 #### Graphing the results
 -----------------------------
+
+
+
 
 -----------------------------
 #### Acknowledgements
