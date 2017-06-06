@@ -1,4 +1,8 @@
-SET DATA "results/IUCN_modelmean/IUCN.modelmean.p50depth.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_thynnus.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_orientalis.nc", "/Data/Projects/CMIP5_p50/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_thynnus.nc", "/Data/Projects/CMIP5_p50/IUCN/geography_numspecies_p50depthanalysis.nc"
+cancel mode journal ! turn off journaling
+sp rm -f ferret.jnl
+set mode/last verify
+
+SET DATA "results/IUCN_modelmean/IUCN.modelmean.p50depth.Katsuwonus_pelamis.nc", "results/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_albacares.nc", "results/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_maccoyii.nc", "results/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_obesus.nc", "results/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_orientalis.nc", "results/IUCN_modelmean/IUCN.modelmean.p50depth.Thunnus_thynnus.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Katsuwonus_pelamis.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_albacares.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_maccoyii.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_obesus.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_orientalis.nc", "results/IUCN_WOA/IUCN.WOA.p50depthav.Thunnus_thynnus.nc", "results/IUCN/geography_numspecies_p50depthanalysis.nc"
 
 Let model12 = ABS(GEOGP50[d=1] - GEOGP50[d=2])
 Let woa12 = ABS(GEOGP50ZAV[d=7] - GEOGP50ZAV[d=8])
@@ -143,5 +147,5 @@ Let change = (compress + mixed + expand)*changemask
 define att change.long_name = "Predicted changes in vertical separation for tuna"
 
 Set memory/size=200
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.deltaseparation.nc" change
+SAVE/CLOBBER/FILE="results/IUCN_modelmean/IUCN.modelmean.deltaseparation.nc" change
 

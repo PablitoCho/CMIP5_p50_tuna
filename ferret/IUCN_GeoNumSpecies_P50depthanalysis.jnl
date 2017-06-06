@@ -1,4 +1,8 @@
-SET DATA "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_thynnus.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_obesus.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_maccoyii.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_albacares.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Katsuwonus_pelamis.nc", "/Data/Projects/CMIP5_p50/IUCN/nc/IUCN_Thunnus_orientalis.nc", "/Data/WOA/WOA_temp/temperature_monthly_1deg.nc"
+cancel mode journal ! turn off journaling
+sp rm -f ferret.jnl
+set mode/last verify
+
+SET DATA "data/IUCN/nc/IUCN_Thunnus_thynnus.nc", "data/IUCN/nc/IUCN_Thunnus_obesus.nc", "data/IUCN/nc/IUCN_Thunnus_maccoyii.nc", "data/IUCN/nc/IUCN_Thunnus_albacares.nc", "data/IUCN/nc/IUCN_Katsuwonus_pelamis.nc", "data/IUCN/nc/IUCN_Thunnus_orientalis.nc", "data/WOA/temperature_monthly_1deg.nc"
 
 Let mask1 = if mask[d=1] eq 1 then mask[d=1] else 0
 
@@ -29,5 +33,5 @@ Let numspecies = numspecies1+0.5
 
 define att numspecies.long_name = "Number of species"
 
-SAVE/CLOBBER/FILE="/Data/Projects/CMIP5_p50/IUCN/geography_numspecies_p50depthanalysis.nc" numspecies
+SAVE/CLOBBER/FILE="results/IUCN/geography_numspecies_p50depthanalysis.nc" numspecies
 

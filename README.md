@@ -105,7 +105,10 @@ Calculate number of tuna species on a global map
     mkdir results/IUCN
     ferret < ferret/IUCN_GeoNumSpecies.jnl
 
+Calculate projected changes in vertical separation for tuna.  First step is to calculate the number of tuna species with P50 depth measurements globally
 
+    ferret < ferret/IUCN_GeoNumSpecies_P50depthanalysis.jnl
+    ferret < ferret/Calculate_P50Depth_CommonArea_deltaseparation.jnl
 
 -----------------------------
 #### Verifying the results

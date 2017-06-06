@@ -1,3 +1,7 @@
+cancel mode journal ! turn off journaling
+sp rm -f ferret.jnl
+set mode/last verify
+
 SET DATA "data/IUCN/nc/IUCN_Thunnus_thynnus.nc", "data/IUCN/nc/IUCN_Thunnus_obesus.nc", "data/IUCN/nc/IUCN_Thunnus_maccoyii.nc", "data/IUCN/nc/IUCN_Thunnus_albacares.nc", "data/IUCN/nc/IUCN_Thunnus_alalunga.nc", "data/IUCN/nc/IUCN_Katsuwonus_pelamis.nc", "data/IUCN/nc/IUCN_Thunnus_orientalis.nc", "data/IUCN/nc/IUCN_Thunnus_atlanticus.nc", "data/IUCN/nc/IUCN_Thunnus_tonggol.nc", "data/WOA/temperature_monthly_1deg.nc"
 
 Let mask1 = if mask[d=1] eq 1 then mask[d=1] else 0
