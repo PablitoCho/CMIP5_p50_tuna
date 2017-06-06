@@ -100,6 +100,12 @@ Use IUCN mask to extract P50 depth for the habitat range of each tuna species fr
     sh sh/IUCN_P50Depth/IUCN_modelmean_deltaP50Depth.sh < sh/Species_global4.csv
     sh sh/IUCN_P50Depth/IUCN_WOA_P50Depth.sh < sh/Species_global4.csv
 
+Calculate number of tuna species on a global map
+
+    mkdir results/IUCN
+    ferret < ferret/IUCN_GeoNumSpecies.jnl
+
+
 
 -----------------------------
 #### Verifying the results
