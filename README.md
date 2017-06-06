@@ -78,6 +78,10 @@ Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>). Results from 6 mod
     ferret < ferret/Projections_convert_pO2.jnl  
     ferret < ferret/WOA_convert_pO2.jnl
 
+Calculate annual average pO<sub>2</sub> from WOA files with monthly data.     
+
+    ferret < ferret/Calculate_PO2_monthly_average.jnl
+
 Calculate p50 and p50 depth for the models and data.
 
     sh sh/Models_p50/p50depth_rcp8.5.sh < sh/Species_global4.csv
@@ -123,8 +127,8 @@ Command to run comparison tests:
 #### Graphing the results
 -----------------------------
 
-
-
+    Rscript RCode/IUCN_allmodels_deltaP50depth.R
+    Rscript RCode/IUCN_Transect_p50.R
 
 -----------------------------
 #### Acknowledgements

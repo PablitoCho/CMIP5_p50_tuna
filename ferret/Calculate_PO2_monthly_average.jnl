@@ -1,0 +1,13 @@
+cancel mode journal ! turn off journaling
+sp rm -f ferret.jnl
+set mode/last verify
+
+SET DATA "data/WOA/WOA_po2_monthly_1deg.nc"
+
+LET po2av po2[l=@ave]
+
+define att po2av.long_name = "Oxygen Pressure"
+define att po2av.units = "kPa"
+
+Set memory/size=200
+SAVE/CLOBBER/FILE="data/WOA/WOA_po2av_annual_1deg.nc" po2av

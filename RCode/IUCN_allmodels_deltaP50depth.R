@@ -4,7 +4,7 @@
 library(ncdf4)
 specieslist<-c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pelamis", "Thunnus_thynnus", "Thunnus_orientalis", "Thunnus_maccoyii")
   for(c in 1:length(specieslist)){
-	file<-paste("/Data/Projects/CMIP5_p50/IUCN_modelmean/IUCN.modelmean.deltap50depth.", specieslist[c], ".nc", sep="")
+	file<-paste("results/IUCN_modelmean/IUCN.modelmean.deltap50depth.", specieslist[c], ".nc", sep="")
 	nc<-nc_open(paste(file, sep=""))	
 		data<-ncvar_get(nc, nc$var[[1]], start=c(1,1), count=c(360, 180))
 		nc_close(nc)
@@ -33,7 +33,7 @@ depthtable<-depthtable[,c("Thunnus_obesus", "Thunnus_albacares", "Katsuwonus_pel
 # Plot P50 Depth Changes 
 #------------------------
 
-outfile<-paste("~/Code/Projects/CMIP5_p50/graphs/IUCN_deltadepth_modelmean.ps")
+outfile<-paste("graphs/IUCN_deltadepth_modelmean.ps")
 postscript(outfile, height=3.5, width=4.5, family="Times")
 #quartz(height=3.5, width=4.5)
 par(mar=c(1, 4.5, 1, 3.5))
@@ -76,11 +76,11 @@ dev.off()
 #--------------------------
 # Calculate Statistics
 #---------------------------
-Median_O2Temp<-apply(depthtable, MARGIN=2, FUN=median, na.rm=TRUE)
-Median_O2<-apply(depthtable_Thist, MARGIN=2, FUN=median, na.rm=TRUE)
+#Median_O2Temp<-apply(depthtable, MARGIN=2, FUN=median, na.rm=TRUE)
+#Median_O2<-apply(depthtable_Thist, MARGIN=2, FUN=median, na.rm=TRUE)
 
-Median_O2Temp[5]<-Median_O2Temp[5]*3.2
-Median_O2[5]<-Median_O2[5]*3.2
+#Median_O2Temp[5]<-Median_O2Temp[5]*3.2
+#Median_O2[5]<-Median_O2[5]*3.2
 
-Median_O2Temp-Median_O2
+#Median_O2Temp-Median_O2
 
