@@ -159,3 +159,4 @@ Figure S3:
 -----------------------------
 #### Acknowledgements
 -----------------------------
+We thank Hartmut Frenzel for regridding the CMIP5 results. K.A.S. was supported by the Washington Research Foundation Fund for Innovation in Data-Intensive Discovery and the Moore/Sloan Data Science Environments Project at the University of Washington.  
