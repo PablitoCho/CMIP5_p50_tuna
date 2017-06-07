@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import pandas
+import pylab
 np.set_printoptions(threshold=np.nan)
 plt.rc('font', family='serif', serif='Times New Roman')
 
@@ -14,11 +15,11 @@ bottom1 = 0.15
 width1 = 0.45
 height1 = 0.8
 
-fig = plt.figure(1, figsize(5,3))
+fig = plt.figure(1, figsize=(5,3))
 
 axg1 = plt.axes([left1,bottom1,width1,height1])
-file_hist = '/Data/Projects/CMIP5_p50/WOA/Thunnus_maccoyii/p50depth/woa.p50depthav.Thunnus_maccoyii.nc'
-file2_hist = '/Data/Projects/CMIP5_p50/IUCN/csv_5deg/IUCN_5deg_Thunnus_maccoyii.csv'
+file_hist = 'results/WOA/Thunnus_maccoyii/p50depth/woa.p50depthav.Thunnus_maccoyii.nc'
+file2_hist = 'data/IUCN/csv_5deg/IUCN_5deg_Thunnus_maccoyii.csv'
 nc = Dataset(file_hist,'r')
 lats = nc.variables['LAT'][:]
 lons = nc.variables['LON'][:]
@@ -45,8 +46,8 @@ width2 = 0.45
 height2 = 0.8
 
 axg2 = plt.axes([left2,bottom2,width2,height2])
-file_future = '/Data/Projects/CMIP5_p50/modelmean/modelmean.p50depth.Thunnus_maccoyii.nc'
-file2_future = '/Data/Projects/CMIP5_p50/IUCN/csv_5deg/IUCN_5deg_Thunnus_maccoyii.csv'
+file_future = 'results/modelmean/modelmean.p50depth.Thunnus_maccoyii.nc'
+file2_future = 'data/IUCN/csv_5deg/IUCN_5deg_Thunnus_maccoyii.csv'
 nc = Dataset(file_future,'r')
 lats = nc.variables['LAT'][:]
 lons = nc.variables['LON'][:]
@@ -71,7 +72,6 @@ cax = fig.add_axes([0.29, 0.08, 0.42, 0.05])
 cb=fig.colorbar(im1, cax=cax, ticks=levels, orientation='horizontal')
 cb.set_ticklabels([0,'',200,'',400,'',600,'',800,'',1000])
 pylab.text(0.28, 1.4, 'P$_{50}$ depth (m)', fontsize = 12)
-plt.show()
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/southernbluefin_spawning.ps'
+outfig = 'graphs/southernbluefin_spawning.ps'
 plt.savefig(outfig, dpi=300, bbox_inches=0)

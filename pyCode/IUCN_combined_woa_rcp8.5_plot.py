@@ -9,10 +9,11 @@ import pandas
 np.set_printoptions(threshold=np.nan)
 plt.rc('font', family='serif', serif='Times New Roman')
 import matplotlib
+import pylab
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 3
 
-Folder = '/Data/Projects/CMIP5_p50'
+Folder = 'results'
 species1 = ['Thunnus_obesus', 'Katsuwonus_pelamis', 'Thunnus_orientalis']
 species2 = ['bigeye tuna', 'skipjack tuna', 'Pacific bluefin tuna']
 
@@ -30,7 +31,7 @@ i = 0
 j = 0
 while i<len(species1):
   file_WOA = Folder + '/WOA/'+ species1[i] + '/p50depth/woa.p50depthav.' + species1[i] + '.nc'
-  file_IUCN = Folder + '/IUCN/csv_5deg/IUCN_5deg_' + species1[i] + '.csv'
+  file_IUCN = 'data/IUCN/csv_5deg/IUCN_5deg_' + species1[i] + '.csv'
   file_model = Folder + '/modelmean/modelmean.deltap50depth.' + species1[i] + '.nc'
   nc_WOA = Dataset(file_WOA,'r')
   lats = nc_WOA.variables['LAT'][:]
@@ -41,11 +42,10 @@ while i<len(species1):
   geoarea['lons2'] = np.where(geoarea['lons'] <= 20 , geoarea['lons'] + 360, geoarea['lons'])
   geoarealons = geoarea['lons2']
   geoarealats = geoarea['lats']
-  fig = plt.figure(1, figsize(6,6))
+  fig = plt.figure(1, figsize=(6,6))
   axg1 = plt.axes(g[j])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='eck4',lon_0=205)
-  depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
-  depth_cyclic, lons_cyclic = shiftgrid(20., depth_cyclic, lons_cyclic, start=True)
+  depth_cyclic, lons_cyclic = shiftgrid(20, depth, lons, start=True)
   x1, y1 = m(*np.meshgrid(lons_cyclic, lats))
   a1, b1 = m(pandas.DataFrame.as_matrix(geoarealons), pandas.DataFrame.as_matrix(geoarealats))
   m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
@@ -61,11 +61,10 @@ while i<len(species1):
   lons = nc_model.variables['LON'][:]
   depth = nc_model.variables['MODELMEAN'][:]
   depth = depth.squeeze()
-  fig = plt.figure(1, figsize(6,5.75))
+  fig = plt.figure(1, figsize=(6,5.75))
   axg1 = plt.axes(g[j+1])
   m = Basemap(llcrnrlat=-80.,urcrnrlat=80.,projection='eck4',lon_0=205)
-  depth_cyclic, lons_cyclic = addcyclic(depth[:,:], lons)
-  depth_cyclic, lons_cyclic = shiftgrid(20., depth_cyclic, lons_cyclic, start=True)
+  depth_cyclic, lons_cyclic = shiftgrid(20., depth, lons, start=True)
   x2, y2 = m(*np.meshgrid(lons_cyclic, lats))
   a2, b2 = m(pandas.DataFrame.as_matrix(geoarealons), pandas.DataFrame.as_matrix(geoarealats))
   m.drawmapboundary(fill_color='#cccccc') #fill_color='0.5'
@@ -91,9 +90,9 @@ pylab.text(0.28, 1.3, 'P$_{50}$ depth (m)', fontsize = 12)
 cax = fig.add_axes([0.57, 0.08, 0.36, 0.03])
 cb=fig.colorbar(im3, cax=cax, orientation='horizontal')
 cb.set_ticklabels([-200,'',-100,'',0,'',100,'',200])
-text(0.6, -2, 'compression', fontsize=12)
-text(-0.05, -2, 'expansion', fontsize=12)
+pylab.text(0.6, -2, 'compression', fontsize=12)
+pylab.text(-0.05, -2, 'expansion', fontsize=12)
 pylab.text(0.08, 1.3, 'Change in P$_{50}$ depth (m)', fontsize = 12)
 
-outfig = '/Users/kasmith/Code/Projects/CMIP5_p50/graphs/WOA.ModelMean.P50depth.ps'
+outfig = 'graphs/WOA.ModelMean.P50depth.ps'
 plt.savefig(outfig, transparent=True)

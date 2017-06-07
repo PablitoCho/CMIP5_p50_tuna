@@ -19,11 +19,8 @@ NOAA Ferret v7:[http://www.ferret.noaa.gov/Ferret/](http://www.ferret.noaa.gov/F
 Python v2.7.6: [https://www.python.org/](https://www.python.org/)  
 Python packages: scipy 0.14.0, basemap 1.0.7, numpy 1.9.2, netCDF4 1.1.8, matplotlib 1.4.3
 
-R v3.2.2: [http://www.r-project.org/](http://www.r-project.org/)  
-R packages: ncdf 1.6.8, colorRamps 2.3, fields 8.2-1, caTools 1.17.1
-library(RNetCDF)
-library(ncdf4)
-library(viridis)
+R v3.3.3: [http://www.r-project.org/](http://www.r-project.org/)  
+R packages: ncdf4 1.16, viridis 0.4.0
 
 
 **Operating system information:**
@@ -127,8 +124,37 @@ Command to run comparison tests:
 #### Graphing the results
 -----------------------------
 
+Figure 1:
+
+    python pyCode/IUCN_numberspecies.py
+
+Figure 2:
+
+    python pyCode/IUCN_combined_woa_rcp8.5_plot.py
+
+Figure 3:
+
     Rscript RCode/IUCN_allmodels_deltaP50depth.R
+
+Figure 4:
+
+    python pyCode/IUCN_southernbluefin_spawning.py
+
+Figure 5:
+
+    python pyCode/IUCN_deltaseparation.py
+
+Figure S1:
+
     Rscript RCode/IUCN_Transect_p50.R
+
+Figure S2:
+
+    python pyCode/IUCN_woa_p50depthav_map.py
+
+Figure S3:
+
+    python pyCode/IUCN_rcp8.5_p50depthav_map.py
 
 -----------------------------
 #### Acknowledgements
