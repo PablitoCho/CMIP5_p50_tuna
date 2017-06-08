@@ -39,7 +39,7 @@ NOAA Ferret running under Windows is not currently supported.  The NOAA Ferret [
 #### Folders
 ---------------
 
-**data:** This folder is for the World Ocean Atlas (WOA) data, Climate Model Intercomparison Project 5 (CMIP5) model results, and the IUCN data.  The World Ocean Atlas data files and the CMIP5 model results files that we used for the analysis can be downloaded here: [webaddress].  The IUCN data must be requested from the IUCN (see below).  
+**data:** This folder is for the World Ocean Atlas (WOA) data, Coupled Model Intercomparison Project Phase 5 (CMIP5) model results, and the International Union for the Conservation of Nature (IUCN) data.  The World Ocean Atlas data files and the CMIP5 model results files that we used for the analysis can be downloaded here: [webaddress].  The IUCN data must be requested from the IUCN (see below).  
 
 **ferret:** This folder contains the NOAA ferret code for doing the analysis.
 
