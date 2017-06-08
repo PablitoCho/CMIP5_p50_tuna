@@ -145,6 +145,7 @@ Command to run comparison tests:
 -----------------------------
 #### Graphing the results
 -----------------------------
+Plots are produced and saved in the graphs folder.  The commands assume that the current directory is the CMIP5_p50 folder.
 
 Figure 1:
 
