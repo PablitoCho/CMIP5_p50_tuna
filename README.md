@@ -60,18 +60,29 @@ NOAA Ferret running under Windows is not currently supported.  The NOAA Ferret [
 --------------------------
 #### WOA data
 
+The WOA data files that serve as the starting point for this analysis can be downloaded here:   
+[https://doi.org/10.5281/zenodo.807748](https://doi.org/10.5281/zenodo.807748)
+
+The original files are from:   
+[https://www.nodc.noaa.gov/OC5/WOA09/netcdf_data.html](https://www.nodc.noaa.gov/OC5/WOA09/netcdf_data.html)
 
 
-#### CMIP5 results
-Files with some pre-processing were used for this study.  The pre-processing included regridding the results from each model to the WOA grid.  Also, the projected changes in temperature and oxygen concentrations were calculated by subtracting the 30 year average of historical results from 1975 to 2005 from the 30 year average of the future projections from 2070 to 2100.  The data files that serve as the starting point for the analysis commands below can be downloaded here:   
+#### CMIP5 results   
 
-The original data are from: [https://esgf-node.llnl.gov/search/cmip5/](https://esgf-node.llnl.gov/search/cmip5/).
+Files with some pre-processing were used for this study.  The pre-processing included regridding the results from each model to the WOA grid.  Also, the projected changes in temperature and oxygen concentrations were calculated by subtracting the 30 year average of historical results from 1975 to 2005 from the 30 year average of the future projections from 2070 to 2100.  
+<br>
+
+The CMIP5 files that serve as the starting point for this analysis can be downloaded here:   
+[https://doi.org/10.5281/zenodo.807748](https://doi.org/10.5281/zenodo.807748)
+
+The original files are from:
+[https://esgf-node.llnl.gov/search/cmip5/](https://esgf-node.llnl.gov/search/cmip5/)
 
 
 #### IUCN data
 
 Request spatial data for tuna range areas from IUCN Red List of Threatened Species:  
-[http://www.iucnredlist.org/]http://www.iucnredlist.org/)   
+[http://www.iucnredlist.org/](http://www.iucnredlist.org/)   
 <br>
 Tuna species: skipjack tuna (*Katsuwonus pelamis*), yellowfin tuna (*Thunnus albacares*), southern bluefin tuna (*Thunnus maccoyii*), bigeye tuna (*Thunnus obesus*), Pacific bluefin tuna (*Thunnus orientalis*), Atlantic bluefin tuna (*Thunnus thynnus*), albacore tuna (*Thunnus alalunga*), blackfin tuna (*Thunnus atlanticus*), and longtail tuna (*Thunnus tonggol*).  
 <br>
