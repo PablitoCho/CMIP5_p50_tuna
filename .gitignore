@@ -7,6 +7,6 @@ graphs/*.ps
 data/*tar.gz
 graphs/archive/*
 ferret/Archive/*
-archive/*
+archive/
 pyCode/Archive/*
 sh/archive/*
