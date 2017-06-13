@@ -1,9 +1,0 @@
-SET DATA "/Data/Projects/LTRANS_DVM/ModelInput/ROMS_bgc/pacmed_avg_M003.nc", "/Data/Projects/LTRANS_DVM/ModelInput/ROMS/roms_grd_pac_med_Z_DZ.nc"
-
-define axis/z=-5000:0:10/unit=meters zdepth
-let O2_z = ZAXREPLACE(O2[d=1], z_rho0[d=2], z[gz=zdepth])
-
-
-shade O2[l=1,d=1,k=10], lon_rho, lat_rho
-
-plot O2_z[l=1,d=1, x=782, y=139]

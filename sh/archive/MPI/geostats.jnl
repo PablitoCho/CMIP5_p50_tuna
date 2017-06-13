@@ -1,6 +1,0 @@
-SET DATA "/Data/Projects/CMIP5_p50/MPI/Katsuwonus_pelamis/p50depth/mpi.rcp85.p50depth.Katsuwonus_pelamis.nc", "/Data/CMIP5/climdiff/WOA_modeldiff_rcp8.5/MPI_rcp8.5_temp.nc"
-Let p50depthav = p50depth[d=1, l=@ave]
-Let p50deptharea = p50depthav*0+1
-Let ocean = temp_rcp[d=2, l=@ave]*0+1
-list/clobber/nohead/file="/Data/Projects/CMIP5_p50/MPI/mpi_p50depthav_area_rcp8.5.txt"/format=tab/append "rcp8.5", "Katsuwonus_pelamis", 3.07, 1.5, ocean[x=@din, y=@din, k=1], p50deptharea[x=@din, y=@din], p50depthav[x=@ave, y=@ave], p50depthav[x=@var, y=@var], p50depthav[x=@ngd, y=@ngd]
-quit
