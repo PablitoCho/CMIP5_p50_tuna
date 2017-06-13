@@ -11,3 +11,5 @@ archive/
 pyCode/Archive/*
 sh/archive/*
 RCode/archive
+.Rapp.history
+clean.sh
