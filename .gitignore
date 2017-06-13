@@ -5,3 +5,8 @@ results/*
 data/IUCN/*
 graphs/*.ps
 data/*tar.gz
+graphs/archive/*
+ferret/Archive/*
+archive
+pyCode/Archive/*
+sh/archive/*
