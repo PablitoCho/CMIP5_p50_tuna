@@ -22,12 +22,11 @@ Python packages: scipy 0.19.0, basemap 1.1.0, netcdf4 1.2.2, numpy 1.11.3, matpl
 R v3.3.3: [http://www.r-project.org/](http://www.r-project.org/)  
 R packages: ncdf4 1.16, viridis 0.4.0
 
-GMT version...
+GMT 5.4.1
 
-NCO version...
+NCO 4.6.7 (Installed using `conda install -c conda-forge nco` otherwise had an error with linking the hdf5 libraries.)
 
-GDAL version...
-
+GDAL version 1.11.5  (Installed using `brew install gdal`)
 
 **Operating system information:**
 
