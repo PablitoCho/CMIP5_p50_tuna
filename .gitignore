@@ -3,6 +3,7 @@ data/CMIP5/modeldiff/*.nc
 data/CMIP5/projections/*.nc
 results/*
 data/IUCN/*
+!data/IUCN/readme.md
 graphs/*.ps
 data/*tar.gz
 graphs/archive/*
@@ -13,3 +14,4 @@ sh/archive/*
 RCode/archive
 .Rapp.history
 clean.sh
+data/clean.sh
