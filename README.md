@@ -1,4 +1,4 @@
-### CMIP5 P<sub>50</sub> Analysis  
+### CMIP5 P<sub>50</sub> v1.0 Analysis  
 -----------------------------  
 
 
@@ -26,7 +26,7 @@ GMT 5.4.1
 
 NCO 4.6.7 (Installed using `conda install -c conda-forge nco` otherwise had an error with linking the hdf5 libraries.)
 
-GDAL version 1.11.5  (Installed using `brew install gdal`)
+GDAL 1.11.5  (Installed using `brew install gdal`)
 
 **Operating system information:**
 
@@ -58,40 +58,40 @@ NOAA Ferret running under Windows is not currently supported.  The NOAA Ferret [
 --------------------------
 #### Environmental data
 --------------------------
+#### WOA data
+
+
+
+#### CMIP5 results
+Files with some pre-processing were used for this study.  The pre-processing included regridding the results from each model to the WOA grid.  Also, the projected changes in temperature and oxygen concentrations were calculated by subtracting the 30 year average of historical results from 1975 to 2005 from the 30 year average of the future projections from 2070 to 2100.  The data files that serve as the starting point for the analysis commands below can be downloaded here:   
+
+The original data are from: [http://www.iucnredlist.org](http://www.iucnredlist.org) .
+
+
 #### IUCN data
 
-Request spatial data for range areas from IUCN Red List of Threatened Species:  
-[http://www.iucnredlist.org](http://www.iucnredlist.org)
-
-**Transform IUCN spatial data from shape file to a mask:**  
-
-Install the GDAL Geospatial Data Abstraction Library:   
-[https://trac.osgeo.org/gdal/wiki/BuildHints](https://trac.osgeo.org/gdal/wiki/BuildHints)
-
-Type in bash shell:  
-
-    ogr2ogr -f "GMT" -dim 3 species.gmt species.shp
-
-Install GMT5:    
-[http://gmt.soest.hawaii.edu/projects/gmt/wiki/Download](http://gmt.soest.hawaii.edu/projects/gmt/wiki/Download)
-
-Type in GMT5 bash shell (create the same grid as the World Ocean Atlas 1° grid):  
-
-    gmt grdmask -R-179.5/179.5/-89.5/89.5 -I1 -f0x -f1y -NNaN/1/1 species.gmt -Gspecies.nc  
-
-Use NCO tools:   
-
-    ncrename -vz,mask species.nc
+Request spatial data for tuna range areas from IUCN Red List of Threatened Species:  
+[https://esgf-node.llnl.gov/search/cmip5/](https://esgf-node.llnl.gov/search/cmip5/)   
+<br>
+Tuna species: skipjack tuna (*Katsuwonus pelamis*), yellowfin tuna (*Thunnus albacares*), southern bluefin tuna (*Thunnus maccoyii*), bigeye tuna (*Thunnus obesus*), Pacific bluefin tuna (*Thunnus orientalis*), Atlantic bluefin tuna (*Thunnus thynnus*), albacore tuna (*Thunnus alalunga*), blackfin tuna (*Thunnus atlanticus*), and longtail tuna (*Thunnus tonggol*).  
+<br>
+If granted access, download the data and put the folders, `species_#####`, with the data in the `data/IUCN` folder.  
 
 
 -------------------------------
 #### Running the analysis code
 -------------------------------
-Generate climate projections for the end of the century by adding the modeled changes in climate to World Ocean Atlas data.  Results from 6 models are saved in the `data/CMIP5/projections` folder.
+All of the following commands assume that the current directory is the CMIP5_p50_v1.0 folder. The analysis is run in NOAA Ferret using shell scripts in the sh folder and .jnl files in the ferret folder.  WOA data is World Ocean Atlas 2009 data.  Projections refer to results from the Coupled Model Intercomparison Project Phase 5 (CMIP5) models.  
+
+<br>
+
+The first step in the analysis is to calculate the projected changes in temperature and oxygen over the next century.  Also, oxygen concentrations are converted to oxygen pressure.  
+
+Generate projections for the end of the century by adding the modeled changes in ocean temperature and oxygen to WOA data.  Results from 6 models are saved in the `data/CMIP5/projections` folder.
 
     ferret < ferret/Projections_modeldiff_WOA_rcp8.5.jnl
 
-Convert dissolved oxygen to oxygen pressure (pO<sub>2</sub>). Results from 6 models are saved in the `data/CMIP5/projections` folder.  WOA results are saved in the `data/WOA` folder.
+Convert dissolved oxygen concentrations to oxygen pressure (pO<sub>2</sub>). Results from 6 models are saved in the `data/CMIP5/projections` folder.  WOA results are saved in the `data/WOA` folder.
 
     ferret < ferret/Projections_convert_pO2.jnl  
     ferret < ferret/WOA_convert_pO2.jnl
@@ -100,42 +100,49 @@ Calculate annual average pO<sub>2</sub> from WOA files with monthly data.
 
     ferret < ferret/Calculate_PO2_monthly_average.jnl
 
+<br>
+
+The second step in the analysis is to calculate P<sub>50</sub> depth for tuna species.  The P<sub>50</sub> and &Delta;H values for the tuna species are in the `sh/Species_global4.csv` file.
+
 Calculate p50 and p50 depth for the models and data.
 
     sh sh/Models_p50/p50depth_rcp8.5.sh < sh/Species_global4.csv
     sh sh/WOA_p50/WOA_p50depth.sh < sh/Species_global4.csv
 
-Calculate the change in p50 depth
+Calculate the change in P<sub>50</sub> depth and then find the mean of the projections from all 6 models.
 
     sh sh/Models_p50/deltap50depth_rcp8.5.sh < sh/Species_global4.csv
     sh sh/Mean_AllModels/ModelMean_deltap50depth.sh < sh/Species_global4.csv
 
-Convert IUCN Shape Files to NetCDF grid
+Convert IUCN Shape Files to NetCDF grid so that masks can be used to extract the P<sub>50</sub> depth just for the habitat area.
 
     sh sh/IUCN/IUCN_shptonc.sh
     sh sh/IUCN/ConvertTo5deg.sh < sh/Species_global4.csv
     sh sh/IUCN/NetCDF_To_ascii.sh < sh/Species_global4.csv
 
-Use IUCN mask to extract P50 depth for the habitat range of each tuna species from the models and WOA data
+Use IUCN mask to extract P<sub>50</sub> depth for the habitat range of each tuna species from the models and WOA data.
 
     sh sh/IUCN_P50Depth/IUCN_modelmean_P50Depth.sh < sh/Species_global4.csv
     sh sh/IUCN_P50Depth/IUCN_modelmean_deltaP50Depth.sh < sh/Species_global4.csv
     sh sh/IUCN_P50Depth/IUCN_WOA_P50Depth.sh < sh/Species_global4.csv
 
-Calculate number of tuna species on a global map
-
-    mkdir results/IUCN
-    ferret < ferret/IUCN_GeoNumSpecies.jnl
-
-Calculate projected changes in vertical separation for tuna.  First step is to calculate the number of tuna species with P50 depth measurements globally
+Calculate projected changes in vertical separation for tuna.  First step is to calculate the number of tuna species with P<sub>50</sub> depth measurements globally.  
 
     ferret < ferret/IUCN_GeoNumSpecies_P50depthanalysis.jnl
     ferret < ferret/Calculate_P50Depth_CommonArea_deltaseparation.jnl
 
+<br>
+
+Calculate geospatial distribution of the number of tuna species as supporting information for the paper.
+
+    mkdir results/IUCN
+    ferret < ferret/IUCN_GeoNumSpecies.jnl
+
+
 -----------------------------
 #### Verifying the results
 -----------------------------
-Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50 folder.
+Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50_v1.0 folder.
 
 Command to run comparison tests:
 

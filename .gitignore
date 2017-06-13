@@ -4,3 +4,4 @@ data/CMIP5/projections/*.nc
 results/*
 data/IUCN/*
 graphs/*.ps
+data/*tar.gz
