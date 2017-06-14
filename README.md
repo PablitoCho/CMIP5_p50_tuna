@@ -92,7 +92,7 @@ If granted access, download the data and put the folders, `species_#####`, with 
 -------------------------------
 #### Running the analysis code
 -------------------------------
-All of the following commands assume that the current directory is the CMIP5_p50_v1.0 folder. The analysis is run in NOAA Ferret using shell scripts in the sh folder and .jnl files in the ferret folder.  WOA data is World Ocean Atlas 2009 data.  Projections refer to results from the Coupled Model Intercomparison Project Phase 5 (CMIP5) models.  
+All of the following commands assume that the current directory is the CMIP5_p50_tuna folder. The analysis is run in NOAA Ferret using shell scripts in the sh folder and .jnl files in the ferret folder.  WOA data is World Ocean Atlas 2009 data.  Projections refer to results from the Coupled Model Intercomparison Project Phase 5 (CMIP5) models.  
 
 <br>
 
@@ -153,7 +153,7 @@ Calculate geospatial distribution of the number of tuna species as supporting in
 -----------------------------
 #### Verifying the results
 -----------------------------
-Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50_v1.0 folder.
+Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50_tuna folder.
 
 Command to run comparison tests:
 
@@ -162,7 +162,7 @@ Command to run comparison tests:
 -----------------------------
 #### Graphing the results
 -----------------------------
-Plots are produced and saved in the graphs folder.  The commands assume that the current directory is the CMIP5_p50 folder.
+Plots are produced and saved in the graphs folder.  The commands assume that the current directory is the CMIP5_p50_tuna folder.
 
 Figure 1:
 
