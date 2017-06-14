@@ -13,8 +13,8 @@ Mislan, K. A. S., C. A. Deutsch, R. W. Brill, J. P. Dunne, and J. L. Sarmiento. 
 
 NOAA Ferret v7:[http://www.ferret.noaa.gov/Ferret/](http://www.ferret.noaa.gov/Ferret/)
 
-Python 3.5.1 [https://www.python.org/](https://www.python.org/)
-Anaconda 4.0.0 (x86_64) [https://www.continuum.io](https://www.continuum.io)
+Python 3.5.1 [https://www.python.org/](https://www.python.org/)  
+Anaconda 4.0.0 (x86_64) [https://www.continuum.io](https://www.continuum.io)  
 Python packages: scipy 0.19.0, basemap 1.1.0, netcdf4 1.2.2, numpy 1.11.3, matplotlib 1.5.1, pandas 0.18.0, cmocean 1.0
 
 R v3.3.3: [http://www.r-project.org/](http://www.r-project.org/)  
