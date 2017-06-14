@@ -1,4 +1,4 @@
-### CMIP5 P<sub>50</sub> v1.0 Analysis  
+### CMIP5 P<sub>50</sub> Tuna Analysis  
 -----------------------------  
 
 
@@ -162,7 +162,7 @@ Command to run comparison tests:
 -----------------------------
 #### Graphing the results
 -----------------------------
-Plots are produced and saved in the graphs folder.  The commands assume that the current directory is the CMIP5_p50_tuna folder.
+Plots are produced and saved in the `graphs/` folder.  The commands assume that the current directory is the CMIP5_p50_tuna folder.
 
 Figure 1:
 
