@@ -1,8 +1,6 @@
 ### CMIP5 P<sub>50</sub> Tuna Analysis  
 -----------------------------  
-
-
-
+The CMIP5 P<sub>50</sub> Tuna analysis calculates blood-oxygen binding, which is a mechanism determining hypoxia tolerance in the ocean.  Blood-oxygen binding is measured as the oxygen pressure in the blood at which whole blood is 50% oxygenated, called P<sub>50</sub>. A low P<sub>50</sub> means that respiratory pigments in the blood of an organism equilibrate to 100% oxygenation at lower oxygen pressures, and the organism is more hypoxia tolerant. Temperature alters hypoxia tolerance by shifting the P<sub>50</sub> of organisms.  According to results from the Coupled Model Intercomparison Project Phase 5 (CMIP5) RCP 8.5, temperature and oxygen are projected to change by 2100.  This analysis calculates the effects of these changes on the blood-oxygen binding and hypoxia tolerance of tuna species.  Comparisons are made among tuna species with different physiological adaptations.   
 
 **Please cite the following paper if you use this code:**
 
