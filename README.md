@@ -70,7 +70,6 @@ The original files are from:
 #### CMIP5 results   
 
 Files with some pre-processing were used for this study.  The pre-processing included regridding the results from each model to the WOA grid.  Also, the projected changes in temperature and oxygen concentrations were calculated by subtracting the 30 year average of historical results from 1975 to 2005 from the 30 year average of the future projections from 2070 to 2100.  
-<br>
 
 The CMIP5 files that serve as the starting point for this analysis can be downloaded here:   
 [https://doi.org/10.5281/zenodo.807748](https://doi.org/10.5281/zenodo.807748)
@@ -153,7 +152,7 @@ Calculate geospatial distribution of the number of tuna species as supporting in
 -----------------------------
 #### Verifying the results
 -----------------------------
-Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the CMIP5_p50_tuna folder.
+Compare final results generated using the commands above to a set of test files to make sure the results are the same. The commands assume that the current directory is the `CMIP5_p50_tuna` folder.
 
 Command to run comparison tests:
 
@@ -162,13 +161,13 @@ Command to run comparison tests:
 -----------------------------
 #### Graphing the results
 -----------------------------
-Plots are produced and saved in the `graphs/` folder.  The commands assume that the current directory is the CMIP5_p50_tuna folder.
+Plots are produced and saved in the `graphs/` folder.  The commands assume that the current directory is the `CMIP5_p50_tuna` folder.
 
 Figure 1:
 
     python pyCode/IUCN_numberspecies.py
 
-Figure 2:
+Figure 2: (Ignore WARNING)
 
     python pyCode/IUCN_combined_woa_rcp8.5_plot.py
 
@@ -188,11 +187,11 @@ Figure S1:
 
     Rscript RCode/IUCN_Transect_p50.R
 
-Figure S2:
+Figure S2: (Ignore WARNING)
 
     python pyCode/IUCN_woa_p50depthav_map.py
 
-Figure S3:
+Figure S3: (Ignore WARNING)
 
     python pyCode/IUCN_rcp8.5_p50depthav_map.py
 
