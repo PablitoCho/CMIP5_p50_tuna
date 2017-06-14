@@ -11,7 +11,7 @@ Mislan, K. A. S., C. A. Deutsch, R. W. Brill, J. P. Dunne, and J. L. Sarmiento. 
 ---------------------------
 **All the required software is open source.**
 
-NOAA Ferret v7:[http://www.ferret.noaa.gov/Ferret/](http://www.ferret.noaa.gov/Ferret/)
+NOAA Ferret v7: [http://www.ferret.noaa.gov/Ferret/](http://www.ferret.noaa.gov/Ferret/)
 
 Python 3.5.1 [https://www.python.org/](https://www.python.org/)  
 Anaconda 4.0.0 (x86_64) [https://www.continuum.io](https://www.continuum.io)  
