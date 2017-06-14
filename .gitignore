@@ -6,6 +6,7 @@ data/IUCN/*
 !data/IUCN/readme.md
 graphs/*.ps
 graphs/*.pdf
+graphs/final/*.pdf
 data/*tar.gz
 graphs/archive/*
 ferret/Archive/*
