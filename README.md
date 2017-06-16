@@ -198,4 +198,4 @@ Figure S3: (Ignore WARNING)
 -----------------------------
 #### Acknowledgements
 -----------------------------
-We thank Hartmut Frenzel for regridding the CMIP5 results. K.A.S. was supported by the Washington Research Foundation Fund for Innovation in Data-Intensive Discovery and the Moore/Sloan Data Science Environments Project at the University of Washington.  
+We thank Hartmut Frenzel for regridding the CMIP5 results. K.A.S. was supported by the Washington Research Foundation Fund for Innovation in Data-Intensive Discovery and the Moore/Sloan Data Science Environments Project at the University of Washington. C.A.D. was supported by grant OCE-1458967 from the National Science Foundation. 
